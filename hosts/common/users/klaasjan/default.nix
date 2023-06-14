@@ -3,7 +3,6 @@
   users.users.klaasjan = {
     isNormalUser = true;
     initialPassword = "admin";
-    shell = pkgs.zsh;
     extraGroups = [
       "wheel"
       "video"
