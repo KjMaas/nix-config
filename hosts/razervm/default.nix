@@ -1,5 +1,6 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }: 
 
+{
   imports = [
     # Import the generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -7,13 +8,12 @@
     ../common/global
     # optional configurations
     ../common/optional/xserver.nix
-    ../common/optional/desktops/gnome.nix
+    # ../common/optional/desktops/gnome.nix
     # user-specific configurations
     ../common/users/klaasjan
   ];
 
   environment.systemPackages = with pkgs; [
-
     pciutils        # Programs for inspecting and manipulating configuration of PCI devices
     unzip           # An extraction utility for archives compressed in .zip format
 
