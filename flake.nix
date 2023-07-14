@@ -18,8 +18,20 @@
   let
     inherit (self) outputs;
 
+    forAllSystems = nixpkgs.lib.genAttrs [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+
   in
   {
+
+    # Devshell for bootstrapping
+    devShells = forAllSystems (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in import ./shell.nix { inherit pkgs; }
+    );
+
 
     nixopsConfigurations = {
       default = {
