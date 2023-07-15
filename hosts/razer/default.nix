@@ -1,10 +1,21 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    ./nvidia.nix
     ./wireless.nix
   ];
+
+  # Unfree Packages
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      # WiFi driver
+      "broadcom-sta"
+      # NVIDIA drivers
+      "nvidia-x11"
+      "nvidia-settings"
+    ];
 
   boot.loader = {
     efi = {
