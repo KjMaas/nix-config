@@ -1,5 +1,21 @@
 { pkgs, lib, ... }:
 
+let 
+  nixops_unstable_override = pkgs.nixops_unstable.override {
+    overrides = (self: super: {
+      nixopsvbox = super.nixopsvbox.overridePythonAttrs (
+        _: {
+          src = pkgs.fetchgit {
+            url = "https://github.com/KjMaas/nixops-vbox.git";
+            rev = "6db55874a3d426c07b4dc957a08678417efa0ca6";
+            sha256 = "sha256-ssNYLdkehhuBBZ+GuDq8wFq87zGnog+56wJP/Q/6ruc=";
+          };
+        }
+      );
+    });
+  };
+
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -40,6 +56,8 @@
 
   environment.systemPackages = with pkgs; [
 
+    nixops_unstable_override  # NixOS cloud provisioning and deployment tool
+
     firefox         # A web browser built from Firefox source tree
 
     neovim          # The most popular clone of the VI editor
@@ -59,6 +77,14 @@
     initialPassword = "admin";
     isNormalUser = true;
     extraGroups = [ "wheel" "network" ];
+  };
+
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "yes"; # needed to deploy on localhost with nixops
+    };
   };
 
   environment.variables = {
