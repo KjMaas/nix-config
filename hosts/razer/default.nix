@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./wireless.nix
   ];
 
   boot.loader = {
@@ -46,7 +47,7 @@
     home = "/home/klaasjan";
     initialPassword = "admin";
     isNormalUser = true;
-    extraGroups = [ "wheel"];
+    extraGroups = [ "wheel" "network" ];
   };
 
   environment.variables = {
