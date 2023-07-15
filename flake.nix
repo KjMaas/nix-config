@@ -17,6 +17,7 @@
 
   let
     inherit (self) outputs;
+    lib = nixpkgs.lib;
 
     forAllSystems = nixpkgs.lib.genAttrs [
       "aarch64-linux"
@@ -31,6 +32,15 @@
         let pkgs = nixpkgs.legacyPackages.${system};
         in import ./shell.nix { inherit pkgs; }
     );
+
+    nixosConfigurations = {
+      # Main Laptop
+      razer =  lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/razer ];
+        specialArgs = { inherit inputs outputs; };
+      };
+    };
 
 
     nixopsConfigurations = {
