@@ -1,17 +1,15 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }:
+
+{
 
   users.users.klaasjan = {
-    isNormalUser = true;
+    home = "/home/klaasjan";
     initialPassword = "admin";
-    extraGroups = [
-      "wheel"
-      "video"
-      "audio"
-    ];
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    extraGroups = [ "wheel" "network" ];
   };
 
-  environment.variables = {
-    EDITOR = "nvim";
-  };
+  programs.zsh.enable = true;
 
 }

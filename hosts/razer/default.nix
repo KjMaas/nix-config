@@ -23,6 +23,8 @@ in
     ./wireless.nix
 
     ../common/global
+
+    ../common/users/klaasjan
   ];
 
   # Unfree Packages
@@ -73,13 +75,6 @@ in
     nmap            # Utility for network discovery and security auditing
 
   ];
-
-  users.users.klaasjan = {
-    home = "/home/klaasjan";
-    initialPassword = "admin";
-    isNormalUser = true;
-    extraGroups = [ "wheel" "network" ];
-  };
 
   environment.variables = {
     EDITOR = "nvim";
