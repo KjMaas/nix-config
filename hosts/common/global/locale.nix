@@ -11,7 +11,7 @@
   };
 
   services.xserver = {
-    # Configure keymap in X11
+    # Configure keymap
     layout = "eu";
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;

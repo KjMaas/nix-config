@@ -21,6 +21,8 @@ in
     ./hardware-configuration.nix
     ./nvidia.nix
     ./wireless.nix
+
+    ../common/global
   ];
 
   # Unfree Packages
@@ -77,14 +79,6 @@ in
     initialPassword = "admin";
     isNormalUser = true;
     extraGroups = [ "wheel" "network" ];
-  };
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "yes"; # needed to deploy on localhost with nixops
-    };
   };
 
   environment.variables = {
