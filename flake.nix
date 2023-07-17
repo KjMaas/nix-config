@@ -12,6 +12,7 @@
   outputs = {
     self,
     nixpkgs,
+    home-manager,
     ...
   }@inputs: 
 
@@ -37,8 +38,20 @@
       # Main Laptop
       razer =  lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ ./hosts/razer ];
         specialArgs = { inherit inputs outputs; };
+        modules = [ 
+          ./hosts/razer
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;                   # makes hm use nixos's pkgs value
+              extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
+              users = {
+                klaasjan.imports = [ ./home/klaasjan/razer.nix ];
+              };
+            };
+          }
+        ];
       };
     };
 
