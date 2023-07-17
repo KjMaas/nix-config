@@ -1,6 +1,8 @@
 {
   networking = {
 
+      hostName = "razer";
+
       networkmanager.enable = false; # Easiest to use and most distros use this by default.
       wireless = {
         enable = true; # Enables wireless support via wpa_supplicant.
