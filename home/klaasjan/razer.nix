@@ -4,6 +4,7 @@
   imports = [
     ../common/global
 
+    ../common/optional/zsh
   ];
 
   home = {
