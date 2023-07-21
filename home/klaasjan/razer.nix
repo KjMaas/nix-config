@@ -5,6 +5,7 @@
     ../common/global
 
     ../common/optional/zsh
+    ../common/optional/kitty
   ];
 
   home = {
