@@ -1,4 +1,8 @@
 {
+  imports = [
+    ../common/global
+
+  ];
 
   home = {
     username = "klaasjan";
