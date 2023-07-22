@@ -9,6 +9,8 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+    nix-colors.url = "github:misterio77/nix-colors";
+
   };
 
   outputs = {

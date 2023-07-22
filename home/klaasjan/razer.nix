@@ -1,13 +1,17 @@
-{ pkgs }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
+    inputs.nix-colors.homeManagerModules.default
+
     ../common/global
 
     ../common/optional/wayland/hyprland
     ../common/optional/zsh
     ../common/optional/kitty
   ];
+
+  colorScheme = inputs.nix-colors.colorSchemes.nord;
 
   home = {
     username = "klaasjan";
