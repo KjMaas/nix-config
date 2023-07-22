@@ -30,6 +30,7 @@
   };
 
   home.packages = with pkgs; [ 
+    brave         # Privacy-oriented browser for Desktop and Laptop computers
     # screenshots
     grim          # Grab images from a Wayland compositor
     slurp         # Select a region in a Wayland compositor
