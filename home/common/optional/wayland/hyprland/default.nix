@@ -20,4 +20,13 @@
     '';
   };
 
+  # add script folder @ ~/.config/hypr/scripts/...
+  xdg.configFile."scripts" = {
+      enable = true;
+      executable = true;
+      recursive = true;
+      source = ./scripts;
+      target = "./hypr/scripts/";
+  };
+
 }
