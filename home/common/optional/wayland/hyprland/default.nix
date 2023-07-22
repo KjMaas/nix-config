@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ pkgs, inputs, lib, ... }:
 
 {
   imports = [
@@ -28,5 +28,12 @@
       source = ./scripts;
       target = "./hypr/scripts/";
   };
+
+  home.packages = with pkgs; [ 
+    # screenshots
+    grim          # Grab images from a Wayland compositor
+    slurp         # Select a region in a Wayland compositor
+    swappy        # A Wayland native snapshot editing tool
+  ];
 
 }
