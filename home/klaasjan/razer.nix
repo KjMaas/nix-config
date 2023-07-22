@@ -4,6 +4,7 @@
   imports = [
     ../common/global
 
+    ../common/optional/wayland/hyprland
     ../common/optional/zsh
     ../common/optional/kitty
   ];

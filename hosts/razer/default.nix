@@ -58,6 +58,8 @@ in
     };
   };
 
+  security.rtkit.enable = true;
+  
   environment.systemPackages = with pkgs; [
 
     nixops_unstable_override  # NixOS cloud provisioning and deployment tool
