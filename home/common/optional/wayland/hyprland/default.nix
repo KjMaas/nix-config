@@ -1,5 +1,10 @@
-{ pkgs, inputs, lib, ... }:
+{ pkgs, inputs,  ... }:
 
+let
+  customLib = import ./../../../../../customLib.nix;
+  stow_script = customLib.stow_dotfiles_script "common/optional/wayland/hyprland";
+
+in
 {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -10,24 +15,24 @@
   # load native (not nixified) configuration file
   wayland.windowManager.hyprland = {
     enable = true;
+    xwayland = {
+      enable = true;
+      hidpi = true;
+    };
+    nvidiaPatches = true;
     extraConfig = ''
-      source=/home/klaasjan/Documents/nix-config/${ with lib;
-        strings.concatStringsSep "/" (
-          lists.drop 4 (
-            strings.splitString "/" (toString ./hyprland.conf)
-          )
-        )
-      }
+
+      # source "out of store" configuration for hyprland.
+      # edits done to the following file will be taken into account directly after saving
+      # (there's no need to rebuild a new nixos/HM generation)
+      source=~/.config/hypr/hyprland_not_nixified.conf
     '';
   };
 
-  # add script folder @ ~/.config/hypr/scripts/...
-  xdg.configFile."scripts" = {
-      enable = true;
-      executable = true;
-      recursive = true;
-      source = ./scripts;
-      target = "./hypr/scripts/";
+  # generate the script to stow hyprland's configuration files
+  home.file."stow_dotfiles/stow_hyprland.sh" = {
+    text = stow_script;
+    executable = true;
   };
 
   home.packages = with pkgs; [ 
