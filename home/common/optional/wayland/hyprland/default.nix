@@ -36,11 +36,20 @@ in
   };
 
   home.packages = with pkgs; [ 
+    # hardware control
+    pamixer       # Pulseaudio command line mixer
+    # browser
     brave         # Privacy-oriented browser for Desktop and Laptop computers
+    # clipboard
+    wl-clipboard  # Command-line copy/paste utilities for Wayland
     # screenshots
     grim          # Grab images from a Wayland compositor
     slurp         # Select a region in a Wayland compositor
     swappy        # A Wayland native snapshot editing tool
   ];
+
+  services.clipman = {
+    enable = true; # A simple clipboard manager for Wayland
+  };
 
 }
