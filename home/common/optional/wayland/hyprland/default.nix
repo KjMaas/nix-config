@@ -4,6 +4,7 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
     ../../kitty
+    ../rofi
   ];
 
   # load native (not nixified) configuration file
