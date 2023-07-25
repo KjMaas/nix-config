@@ -24,6 +24,8 @@ in
 
     ../common/global
 
+    ../common/optional/pipewire.nix
+
     ../common/users/klaasjan
   ];
 
