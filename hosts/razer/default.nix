@@ -61,7 +61,10 @@ in
   };
 
   security.rtkit.enable = true;
-  
+
+  # ToDo restart geoclue service after wpa_supplicant
+  services.geoclue2.enable = true;  
+
   environment.systemPackages = with pkgs; [
 
     nixops_unstable_override  # NixOS cloud provisioning and deployment tool
