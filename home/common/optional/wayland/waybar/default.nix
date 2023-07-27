@@ -1,23 +1,19 @@
-{ outputs, config, lib, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 let
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
-  gamemoded = "${pkgs.gamemode}/bin/gamemoded";
   systemctl = "${pkgs.systemd}/bin/systemctl";
   journalctl = "${pkgs.systemd}/bin/journalctl";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
-  btm = "${pkgs.bottom}/bin/btm";
-  wofi = "${pkgs.wofi}/bin/wofi";
-  ikhal = "${pkgs.khal}/bin/ikhal";
+  btop = "${pkgs.btop}/bin/btop";
 
   terminal = "${pkgs.kitty}/bin/kitty";
   terminal-spawn = cmd: "${terminal} $SHELL -i -c ${cmd}";
 
-  calendar = terminal-spawn ikhal;
-  systemMonitor = terminal-spawn btm;
+  systemMonitor = terminal-spawn btop;
 
   # Function to simplify making waybar outputs
   jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
@@ -31,31 +27,74 @@ let
       --arg percentage "${percentage}" \
       '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
   ''}/bin/waybar-${name}";
+
 in
 {
+  imports = [
+    ../../btop
+    ../gammastep
+  ];
+
+  home.packages = [
+      pkgs.jq
+      pkgs.playerctl
+      pkgs.pavucontrol
+  ];
+
+
   programs.waybar = {
     enable = true;
+    package = inputs.hyprland.packages."x86_64-linux".waybar-hyprland;
+
     settings = {
 
       secondary = {
-        mode = "dock";
+        # mode = "dock"; # -> generates a bug where waybar is rendered below the windows
         layer = "top";
         height = 32;
-        width = 100;
         margin = "6";
         position = "bottom";
-        modules-center = (lib.optionals config.wayland.windowManager.hyprland.enable [
+        modules-left = [
+          "hyprland/window"
+        ];
+        modules-center = [
           "wlr/workspaces"
-        ]);
+        ];
+        modules-right = [
+          "idle_inhibitor"
+        ];
+
+        "hyprland/window" = {
+          max-length = 200;
+          separate-outputs = false;
+        };
 
         "wlr/workspaces" = {
+          sort-by-number = true;
           on-click = "activate";
+          disable-scroll = false;
+          on-scroll-up = "hyprctl dispatch workspace e+1";
+          on-scroll-down = "hyprctl dispatch workspace e-1";
+          format = "{icon} {name} {icon}";
+          format-icons = {
+            urgent = "";
+            focused = "";
+            default = "";
+          };
+        };
+
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "󰒳";
+            deactivated = "󰒲";
+          };
         };
 
       };
 
       primary = {
-        mode = "dock";
+        # mode = "dock";
         layer = "top";
         height = 40;
         margin = "6";
@@ -66,10 +105,13 @@ in
           "custom/player"
         ];
         modules-center = [
+          "disk"
           "cpu"
           "custom/gpu"
           "memory"
           "clock"
+          "backlight"
+          "temperature"
           "pulseaudio"
           "custom/gammastep"
         ];
@@ -82,17 +124,24 @@ in
           "custom/hostname"
         ];
 
+        disk = {
+            interval = 30;
+            format = "󰋊  {percentage_free}%";
+            path = "/";
+        };
+
         clock = {
           format = "{:%d/%m %H:%M}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
-          on-click = calendar;
         };
+
         cpu = {
           format = "   {usage}%";
           on-click = systemMonitor;
         };
+
         "custom/gpu" = {
           interval = 5;
           return-type = "json";
@@ -103,11 +152,13 @@ in
           format = "󰒋  {}%";
           on-click = systemMonitor;
         };
+
         memory = {
           format = "󰍛  {}%";
           interval = 5;
           on-click = systemMonitor;
         };
+
         pulseaudio = {
           format = "{icon}  {volume}%";
           format-muted = "   0%";
@@ -119,13 +170,7 @@ in
           };
           on-click = pavucontrol;
         };
-        idle_inhibitor = {
-          format = "{icon}";
-          format-icons = {
-            activated = "󰒳";
-            deactivated = "󰒲";
-          };
-        };
+
         battery = {
           bat = "BAT0";
           interval = 10;
@@ -134,9 +179,21 @@ in
           format-charging = "󰂄 {capacity}%";
           onclick = "";
         };
-        "sway/window" = {
-          max-length = 20;
+
+        temperature = {
+          critical-threshold = 70;
+          format-critical = "{temperatureC}°C ⚠️ ";
+          format = "{temperatureC}°C {icon}";
+          format-icons = ["" "" ""];
         };
+
+        backlight = {
+          format = "{percent}% {icon}";
+          format-icons = ["" "" "" "" "" "" "" "" ""];
+          on-scroll-up = "light -T 1.1";
+          on-scroll-down = "light -T 0.9";
+        };
+
         network = {
           interval = 3;
           format-wifi = "   {essid}";
@@ -149,27 +206,20 @@ in
             Down: {bandwidthDownBits}'';
           on-click = "";
         };
+
         "custom/menu" = {
           return-type = "json";
           exec = jsonOutput "menu" {
             text = "";
             tooltip = ''$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)'';
           };
-          on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
         };
+
         "custom/hostname" = {
           exec = "echo $USER@$(hostname)";
           on-click = terminal;
         };
-        "custom/gamemode" = {
-          exec-if = "${gamemoded} --status | grep 'is active' -q";
-          interval = 2;
-          return-type = "json";
-          exec = jsonOutput "gamemode" {
-            tooltip = "Gamemode is active";
-          };
-          format = " ";
-        };
+
         "custom/gammastep" = {
           interval = 5;
           return-type = "json";
@@ -200,6 +250,7 @@ in
           };
           on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
         };
+        
         "custom/currentplayer" = {
           interval = 2;
           return-type = "json";
@@ -232,6 +283,7 @@ in
           on-click = "${playerctld} shift";
           on-click-right = "${playerctld} unshift";
         };
+
         "custom/player" = {
           exec-if = "${playerctl} status";
           exec = ''${playerctl} metadata --format '{"text": "{{artist}} - {{title}}", "alt": "{{status}}", "tooltip": "{{title}} ({{artist}} - {{album}})"}' '';
@@ -249,14 +301,12 @@ in
       };
 
     };
-    # Cheatsheet:
-    # x -> all sides
-    # x y -> vertical, horizontal
-    # x y z -> top, horizontal, bottom
-    # w x y z -> top, right, bottom, left
-    style = let inherit (config.colorscheme) colors; in /* css */ ''
+
+    # ToDo: use variable to set font to increase modularity
+    style = let inherit (config.colorscheme) colors; in ''
+
       * {
-        font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
+        font-family: "Fira Sans";
         font-size: 12pt;
         padding: 0 8px;
       }
@@ -276,6 +326,7 @@ in
         border: 2px solid #${colors.base0C};
         border-radius: 10px;
       }
+      
       window#waybar.bottom {
         opacity: 0.90;
         background-color: #${colors.base00};
@@ -285,6 +336,8 @@ in
 
       window#waybar {
         color: #${colors.base05};
+        background: #${colors.base08};
+        padding: 20px;
       }
 
       #workspaces button {
@@ -292,10 +345,12 @@ in
         color: #${colors.base05};
         margin: 4px;
       }
+
       #workspaces button.hidden {
         background-color: #${colors.base00};
         color: #${colors.base04};
       }
+
       #workspaces button.focused,
       #workspaces button.active {
         background-color: #${colors.base0A};
@@ -323,6 +378,7 @@ in
         margin-bottom: 0;
         border-radius: 10px;
       }
+
       #custom-hostname {
         background-color: #${colors.base0C};
         color: #${colors.base00};
@@ -333,6 +389,7 @@ in
         margin-bottom: 0;
         border-radius: 10px;
       }
+
       #tray {
         color: #${colors.base05};
       }

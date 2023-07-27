@@ -6,11 +6,12 @@
 
     ../common/global
 
-    ../common/optional/wayland/hyprland
     # Shell
     ../common/optional/zsh
     # Versioning
     ../common/optional/git
+    # Window Manager - uses the Wayland compositor
+    ../common/optional/wayland/hyprland
     ../common/optional/kitty
   ];
 

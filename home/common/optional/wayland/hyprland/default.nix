@@ -10,6 +10,7 @@ in
     inputs.hyprland.homeManagerModules.default
     ../../kitty
     ../rofi
+    ../waybar
   ];
 
   # load native (not nixified) configuration file
