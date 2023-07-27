@@ -45,14 +45,9 @@
         tree -L 3 -d "$currentDir";
       }
 
-      # direnv hook
-      eval "$(direnv hook zsh)"
-      # Starship hook
-      eval "$(starship init zsh)"
-
-      # this is where lvim binary is stored
-      export PATH="$PATH:$HOME/.local/bin"
-
+      # enter vim "normal mode" with 'jk' key combo
+      bindkey -v
+      bindkey 'jk' vi-cmd-mode
     '';
     envExtra = ''
       ENV_EXTRA_LAST_LOADED="$(date)"
@@ -72,7 +67,10 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "vi-mode" "z" ];
+      plugins = [
+        "vi-mode"
+        "z"
+      ];
       theme = "robbyrussell";
     };
 
