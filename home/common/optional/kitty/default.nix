@@ -20,7 +20,11 @@ in
       "kitty_mod+l" = "next_window";
       "kitty_mod+h" = "previous_window";
     };
-
+    font = {
+      # ToDo: use variable to set font to increase modularity
+      name = "FiraCode Nerd Font";
+      size = 12;
+    };
     settings = {
       scrollback_lines = 4242;
       scrollback_pager_history_size = 2048;
