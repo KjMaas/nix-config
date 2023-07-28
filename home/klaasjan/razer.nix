@@ -13,6 +13,8 @@
     # Window Manager - uses the Wayland compositor
     ../common/optional/wayland/hyprland
     ../common/optional/kitty
+    # Development Environment
+    ../common/optional/nvim
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
