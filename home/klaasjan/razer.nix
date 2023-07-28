@@ -15,6 +15,8 @@
     ../common/optional/kitty
     # Development Environment
     ../common/optional/nvim
+    # File Explorers
+    ../common/optional/nnn
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
