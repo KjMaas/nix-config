@@ -67,10 +67,9 @@ in
       cargo
     ];
 
+    # source not nixified neovim configuration
     extraConfig = 
       ''
-
-      -- source not nixified neovim configuration
       luafile ${builtins.toString /home/klaasjan/.config/nvim/init_lua.lua}
       '';
 
