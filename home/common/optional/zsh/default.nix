@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+
+  imports = [
+    ../starship
+  ];
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
