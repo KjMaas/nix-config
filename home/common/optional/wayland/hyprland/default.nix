@@ -47,6 +47,8 @@ in
     grim          # Grab images from a Wayland compositor
     slurp         # Select a region in a Wayland compositor
     swappy        # A Wayland native snapshot editing tool
+    # Color Picker
+    hyprpicker    # A wlroots-compatible Wayland color picker that does not suck
   ];
 
   services.clipman = {
