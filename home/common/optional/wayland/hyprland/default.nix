@@ -11,6 +11,8 @@ in
     ../../kitty
     ../rofi
     ../waybar
+    # Notifications
+    ../mako
   ];
 
   # load native (not nixified) configuration file
