@@ -1,7 +1,18 @@
 # https://nixos.wiki/wiki/Nvidia
 
-{ config, ... }:
+{ pkgs, config, ... }:
 
+let
+
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    exec "$@"
+  '';
+
+in
 {
   # Make sure opengl is enabled
   hardware.opengl = {
@@ -24,10 +35,33 @@
 
     # Enable the nvidia settings menu
     nvidiaSettings = true;
+
+    prime = {
+      offload ={
+        enable = true;
+        enableOffloadCmd = true;
+      };
+
+      # to determine the BusIds:
+      # nix-shell -p lshw --run "lshw -c display"
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:4:0:0";
+
+      # In sync mode the Nvidia card is turned on constantly,
+      # having impact on laptop battery and health 
+      sync.enable = false;
+    };
+
   };
 
   boot.extraModulePackages = [ 
     config.boot.kernelPackages.nvidia_x11
+  ];
+
+  environment.systemPackages = with pkgs; [
+    # graphics
+    nvidia-offload
+    linuxPackages.nvidia_x11
   ];
 
 }
