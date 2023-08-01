@@ -25,6 +25,7 @@ in
     ../common/global
 
     ../common/optional/pipewire.nix
+    # ../common/optional/hyprland.nix
 
     ../common/users/klaasjan
   ];
