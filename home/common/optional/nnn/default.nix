@@ -86,7 +86,6 @@ in
         exec = "nnn";
         type = "Application";
         icon = toString ./dotfiles/nnn/logo-64x64.png;
-        # icon = "nnn-64x64"; # broken (icon should be located in /usr/share/pixmaps/ ...?)
         terminal = true;
         categories = ["System" "FileTools" "FileManager" "ConsoleOnly"];
         mimeType = ["inode/directory"];
