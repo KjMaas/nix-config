@@ -31,6 +31,9 @@
   home.packages = with pkgs; [
     # Display and screen sharing
     wdisplays                 # A graphical application for configuring displays in Wayland compositors
+    # Multimedia
+    obs-studio                # Free and open source software for video recording and live streaming
+    obs-studio-plugins.wlrobs # An obs-studio plugin that allows you to screen capture on wlroots based wayland compositors
   ];
 
   # Let Home Manager install and manage itself.
