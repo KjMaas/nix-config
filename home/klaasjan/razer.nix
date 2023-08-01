@@ -28,6 +28,11 @@
 
   };
 
+  home.packages = with pkgs; [
+    # Display and screen sharing
+    wdisplays                 # A graphical application for configuring displays in Wayland compositors
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
