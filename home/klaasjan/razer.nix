@@ -1,5 +1,12 @@
 { pkgs, inputs, ... }:
 
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+
+in
 {
   imports = [
     inputs.nix-colors.homeManagerModules.default
@@ -31,6 +38,8 @@
   home.packages = with pkgs; [
     # Display and screen sharing
     wdisplays                 # A graphical application for configuring displays in Wayland compositors
+    # 3D stuff
+    (unstable.blender.override {cudaSupport=true;}) # Da-best!
     # Multimedia
     obs-studio                # Free and open source software for video recording and live streaming
     obs-studio-plugins.wlrobs # An obs-studio plugin that allows you to screen capture on wlroots based wayland compositors
