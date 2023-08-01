@@ -34,6 +34,10 @@
     # Multimedia
     obs-studio                # Free and open source software for video recording and live streaming
     obs-studio-plugins.wlrobs # An obs-studio plugin that allows you to screen capture on wlroots based wayland compositors
+    # Cloud
+    rclone			  # Command line program to sync files and directories to and from major cloud storage
+    rclone-browser	  # Graphical Frontend to Rclone written in Qt
+    keepassxc         # Offline password manager with many features.
   ];
 
   # Let Home Manager install and manage itself.
