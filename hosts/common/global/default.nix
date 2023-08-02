@@ -10,7 +10,7 @@
 
   nixpkgs = {
     config = {
-      allowUnfree = true;
+      allowUnfree = false; # manually chose which unfree packages are installed on each host
     };
   };
 
