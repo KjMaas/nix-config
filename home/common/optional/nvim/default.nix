@@ -25,6 +25,10 @@ in
     vimAlias = true;
 
     extraPackages = with pkgs; [
+      # required for the telescope plugin
+      ripgrep       # A utility that combines the usability of The Silver Searcher with the raw speed of grep
+
+      # other
       neovim-remote # A tool that helps controlling nvim processes from a terminal
 
       # Bash
