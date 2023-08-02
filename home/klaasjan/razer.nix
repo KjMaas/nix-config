@@ -42,6 +42,8 @@ in
 
     # 3D stuff
     (unstable.blender.override {cudaSupport=true;}) # Da-best!
+    f3d # Fast and minimalist 3D viewer using VTK
+
 
     # browser
     unstable.brave  # Privacy-oriented browser for Desktop and Laptop computers
