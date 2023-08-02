@@ -40,6 +40,10 @@ in
     wdisplays                 # A graphical application for configuring displays in Wayland compositors
     # 3D stuff
     (unstable.blender.override {cudaSupport=true;}) # Da-best!
+
+    # browser
+    unstable.brave  # Privacy-oriented browser for Desktop and Laptop computers
+
     # Multimedia
     obs-studio                # Free and open source software for video recording and live streaming
     obs-studio-plugins.wlrobs # An obs-studio plugin that allows you to screen capture on wlroots based wayland compositors
