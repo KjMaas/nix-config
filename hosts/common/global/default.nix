@@ -32,8 +32,8 @@
   # Thumbnail support for images
   services.tumbler.enable = true;
 
-  environment.systemPackages = [
-    pkgs.trash-cli # Command line interface to the freedesktop.org trashcan
+  environment.systemPackages = with pkgs; [
+    trash-cli                 # Command line interface to the freedesktop.org trashcan
   ];
 
 }
