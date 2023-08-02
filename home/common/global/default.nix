@@ -17,6 +17,10 @@
     XDG_CONFIG_HOME = "$HOME/.config";
   };
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   home.file.".local/bin/stow_dotfiles.sh" = {
     text = ''
       #!/usr/bin/env bash
