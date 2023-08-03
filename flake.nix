@@ -19,6 +19,7 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
+    # blender-bin,  # availlable in the flake registry: $ nix registry list
     ...
   }@inputs: 
 
@@ -49,6 +50,8 @@
           ./hosts/razer
           home-manager.nixosModules.home-manager
           {
+            # # ToDo error: "Couldn't find current GLX or EGL context."
+            # nixpkgs.overlays = [ blender-bin.overlays.default ];
             home-manager = {
               useGlobalPkgs = true;                   # makes hm use nixos's pkgs value
               extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
