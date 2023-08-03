@@ -67,6 +67,10 @@ in
   # ToDo restart geoclue service after wpa_supplicant
   services.geoclue2.enable = true;  
 
+  # Needed to unlock swaylock
+  # https://discourse.nixos.org/t/swaylock-wont-unlock/27275
+  security.pam.services = { swaylock = { }; };
+
   };
 
   environment.systemPackages = with pkgs; [

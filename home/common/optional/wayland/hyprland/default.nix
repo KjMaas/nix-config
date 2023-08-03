@@ -13,6 +13,8 @@ in
     ../waybar
     # Notifications
     ../mako
+    # Screen Lock
+    ../swaylock
   ];
 
   # load native (not nixified) configuration file
