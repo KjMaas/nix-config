@@ -26,6 +26,7 @@ in
 
     ../common/optional/pipewire.nix
     # ../common/optional/hyprland.nix
+    ../common/optional/xdg.nix
 
     ../common/users/klaasjan
   ];
@@ -66,14 +67,6 @@ in
   # ToDo restart geoclue service after wpa_supplicant
   services.geoclue2.enable = true;  
 
-  xdg.portal = {
-    enable = true;
-    # use either wlr portal OR hyprland portal
-    # hyprland's portal (wlr fork) has more features and should be compatitle with wlr
-    wlr.enable = false;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-    ];
   };
 
   environment.systemPackages = with pkgs; [

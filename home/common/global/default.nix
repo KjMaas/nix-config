@@ -4,6 +4,7 @@
 
   imports = [
     ./fonts.nix
+    ./gtk.nix
   ];
 
   home.packages = with pkgs; [ 
