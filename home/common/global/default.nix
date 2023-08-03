@@ -15,7 +15,6 @@
   # Home Manager's configuration files
   home.sessionVariables = {
     HOME_MANAGER_CONFIG_DIR = "$HOME/Documents/nix-config/home";
-    XDG_CONFIG_HOME = "$HOME/.config";
   };
 
   home.sessionPath = [

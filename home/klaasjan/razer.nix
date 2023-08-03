@@ -33,6 +33,15 @@ in
     homeDirectory = "/home/klaasjan";
     stateVersion = "22.05";
 
+    sessionVariables = {
+      BROWSER = "brave";
+      TERMINAL = "kitty";
+      XDG_CACHE_HOME = "\${HOME}/.cache";
+      XDG_CONFIG_HOME = "\${HOME}/.config";
+      XDG_BIN_HOME = "\${HOME}/.local/bin";
+      XDG_DATA_HOME = "\${HOME}/.local/share";
+    };
+
   };
 
   home.packages = with pkgs; [
