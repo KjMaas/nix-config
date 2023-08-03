@@ -22,4 +22,8 @@
     ggraph = "git log --decorate --oneline --graph";
   };
 
+  home.packages = [
+    pkgs.tig  # Text-mode interface for git
+  ];
+
 }
