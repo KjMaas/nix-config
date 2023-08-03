@@ -40,6 +40,25 @@ in
       XDG_CONFIG_HOME = "\${HOME}/.config";
       XDG_BIN_HOME = "\${HOME}/.local/bin";
       XDG_DATA_HOME = "\${HOME}/.local/share";
+
+      # Set prefered video card (iGPU or dGPU)
+      # $ lspci | grep -E 'VGA|3D'
+      # $ ls -al /dev/dri/by-path
+      # card0 = AMD
+      # card1 = Nvidia
+      WLR_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
+
+      # GTK: Use wayland if available, fall back to x11 if not.
+      GTK_BACKEND="wayland,x11";
+
+      # QT ("cute") environment variables
+      QT_QPA_PLATFORM = "wayland-egl";
+      QT_SCALE_FACTOR = "1";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+
+      # X Desktop Group Variables (freedesktop.org)
+      XDG_SESSION_TYPE = "wayland";
     };
 
   };
