@@ -81,13 +81,21 @@ map('v', "<leader>s", ":s//g<Left><Left>", opts(""))
 map('v', "<leader><A-s>", ":%s//g<Left><Left>", opts(""))
 map('v', "<leader>S", ":%s//gc<Left><Left><Left>", opts(""))
 
--- Copy to system clippboard
-map('n', "<leader>y", '"+y', opts(""))
-map('v', "<leader>y", '"+y', opts(""))
-
--- Paste from system clippboard
-map('n', "<leader><C-v>", '"+p', opts(""))
-map('v', "<leader><C-v>", '"+p', opts(""))
+--------------------------------------------------------
+-- useful ressource about vim registers:
+-- https://blog.sanctum.geek.nz/advanced-vim-registers/
+--------------------------------------------------------
+-- Copy to system clipboard
+map('n', "<leader>y", '"+y', opts("Copy to system clipboard"))
+map('v', "<leader>y", '"+y', opts("Copy to system clipboard"))
+-- Paste from system clipboard
+map('n', "<leader><C-v>", '"+p', opts("Paste from system clipboard"))
+map('v', "<leader><C-v>", '"+p', opts("Paste from system clipboard"))
+-- Paste from cursor to end of line (overwriting the content that was already there)
+map('n', "<C-p>", 'v$h"+pg,', opts("Paste from system clipboard - overwrite"))
+map('v', "<C-p>", '$h"+pg,', opts("Paste from system clipboard - overwrite"))
+map('n', "<C-A-p>", 'v$h"_d"+pg,', opts("Paste from system clipboard - overwrite - no copy"))
+map('v', "<C-A-p>", '$h"_d"+pg,', opts("Paste from system clipboard - overwrite - no copy"))
 
 -- Open file in default application
 map('n', "<leader>xo", "<Cmd> !xdg-open %<CR><CR>", opts("open in default app"))
