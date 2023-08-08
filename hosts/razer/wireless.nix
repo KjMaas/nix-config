@@ -1,4 +1,14 @@
+{ config, ... }:
+
 {
+
+  # Wireless secrets stored and provisioned with sops
+  sops.secrets.wireless = {
+    sopsFile = ../common/secrets.yaml;
+    neededForUsers = true;
+    restartUnits = [ "wpa_supplicant.service" ];
+  };
+
   networking = {
 
       hostName = "razer";
@@ -9,34 +19,42 @@
         enable = true; # Enables wireless support via wpa_supplicant.
 
         # Declarative networks
-        environmentFile = "/run/keys/wireless";
+        environmentFile = config.sops.secrets.wireless.path;
         networks = {
-          "SFR_7100" = {
-            psk = "@PSK_SFR_2GHZ@";
-            priority = 9;
+          "@HOME_01_SSID@" = {
+            psk = "@HOME_01_PSK@";
+            priority = 20;
           };
-          "SFR_7100_5GHZ" = {
-            psk = "@PSK_SFR_5GHZ@";
-            priority = 10;
+          "@HOME_02_SSID@" = {
+            psk = "@HOME_02_PSK@";
+            priority = 19;
           };
-          "Majok" = {
-            psk = "@PSK_MAJOK@";
+          "@ROAMING_01_SSID@" = {
+            psk = "@ROAMING_01_PSK@";
             priority = 100;
           };
-          "CAMPUS-NUMERIQUE" = {
-            psk = "@PSK_CAMPUS@";
+          "@ROAMING_02_SSID@" = {
+            psk = "@ROAMING_02_PSK@";
+            priority = 99;
+          };
+          "@WORK_01_SSID@" = {
+            psk = "@WORK_01_PSK@";
             priority = 3;
           };
-          "floki_office_plus" = {
-            psk = "@PSK_FLOKI@";
+          "@WORK_02_SSID@" = {
+            psk = "@WORK_02_PSK@";
             priority = 5;
           };
-          "floki_office" = {
-            psk = "@PSK_FLOKI@";
+          "@WORK_03_SSID@" = {
+            psk = "@WORK_03_PSK@";
             priority = 4;
           };
-          "Bbox-9A77B139" = {
-            psk = "@PSK_MONICA@";
+          "@INVITE_01_SSID@" = {
+            psk = "@INVITE_01_PSK@";
+            priority = 10;
+          };
+          "@INVITE_05_SSID@" = {
+            psk = "@INVITE_05_PSK@";
             priority = 10;
           };
         };

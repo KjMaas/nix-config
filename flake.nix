@@ -11,6 +11,8 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     nix-colors.url = "github:misterio77/nix-colors";
+    
+    sops-nix.url = "github:mic92/sops-nix";
 
   };
 

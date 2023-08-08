@@ -1,0 +1,13 @@
+keys:
+  - users:
+    - &klaasjan ABE5A1D1F923D3741DB36F8377C361129B6F9F31
+  - hosts:
+    - &razer age1e93966qycw329almzdcu3quweufwpf3j0mtp0k3g7nxfmvzpha0srahnv2
+
+creation_rules:
+  - path_regex: hosts/common/secrets.yaml$
+    key_groups:
+    - pgp:
+      - *klaasjan
+      age:
+      - *razer

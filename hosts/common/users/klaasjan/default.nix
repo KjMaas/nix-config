@@ -1,10 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
+  sops.secrets.klaasjan-password = {
+    sopsFile = ../../secrets.yaml;
+    neededForUsers = true;
+  };
+
+  users.mutableUsers = false;
 
   users.users.klaasjan = {
     home = "/home/klaasjan";
-    initialPassword = "admin";
+    # initialPassword = "admin";
+    passwordFile = config.sops.secrets.klaasjan-password.path; # copy output of $ mkpasswd -m yescryp
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [
