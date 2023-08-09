@@ -71,6 +71,10 @@ in
   # https://discourse.nixos.org/t/swaylock-wont-unlock/27275
   security.pam.services = { swaylock = { }; };
 
+  # What happens when the laptop's lid is closed
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "lock";
   };
 
   environment.systemPackages = with pkgs; [
