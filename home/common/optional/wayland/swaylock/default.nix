@@ -10,6 +10,9 @@ in
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {
+      screenshots = true;
+      clock = true;
+      datestr = "%d/%m/%Y";
       effect-blur = "7x5";
       effect-vignette = "0.5:0.5";
       effect-greyscale = true;

@@ -1,10 +1,13 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 let
   inherit (config.colorscheme) colors;
 
 in
 {
+  home.packages = [
+  	pkgs.libnotify	# A library that sends desktop notifications to a notification daemon
+  ];
 
   services.mako = {
     enable = true;

@@ -15,6 +15,8 @@ in
     ../mako
     # Screen Lock
     ../swaylock
+    # Idle Daemon
+    ../swayidle
   ];
 
   # load native (not nixified) configuration file
