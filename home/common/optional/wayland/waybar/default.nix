@@ -9,11 +9,14 @@ let
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
+  nvtop = "${pkgs.nvtop}/bin/nvtop";
+  # nvidia-smi = "${pkgs.linuxPackages.nvidia_x11}/bin/nvidia-smi"; # ToFix
 
   terminal = "${pkgs.kitty}/bin/kitty";
   terminal-spawn = cmd: "${terminal} $SHELL -i -c ${cmd}";
 
   systemMonitor = terminal-spawn btop;
+  gpuMonitor = terminal-spawn nvtop;
 
   # Function to simplify making waybar outputs
   jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
@@ -107,7 +110,8 @@ in
         modules-center = [
           "disk"
           "cpu"
-          "custom/gpu"
+          "custom/igpu"
+          "custom/dgpu"
           "memory"
           "clock"
           "backlight"
@@ -138,23 +142,52 @@ in
         };
 
         cpu = {
-          format = "   {usage}%";
+          format = "󰍛   {usage}%";
           on-click = systemMonitor;
         };
 
-        "custom/gpu" = {
+        "custom/igpu" = {
           interval = 5;
           return-type = "json";
-          exec = jsonOutput "gpu" {
+          exec = jsonOutput "igpu" {
             text = "$(cat /sys/class/drm/card0/device/gpu_busy_percent)";
-            tooltip = "GPU Usage";
+            tooltip = ''
+              Integrated GPU Usage
+              -------------------------------
+            '';
           };
-          format = "󰒋  {}%";
-          on-click = systemMonitor;
+          format = "i󰒋  {}%";
+          on-click = gpuMonitor;
+        };
+
+        "custom/dgpu" = {
+          interval = 2;
+          return-type = "json";
+          # exec = "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits";
+          exec = jsonOutput "dgpu" {
+            text = "$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits)";
+            tooltip = ''
+             Dedicated GPU Usage
+             -------------------------------
+             $(nvidia-smi -q | grep 'Product Name' | sed -E "s/[[:space:]]+/ /g")
+             $(nvidia-smi -q | grep 'Driver Version' | sed -E "s/[[:space:]]+/ /g")
+             $(nvidia-smi -q | grep 'CUDA Version' | sed -E "s/[[:space:]]+/ /g")
+
+             GPU : $(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader)
+             Memory : $(nvidia-smi --query-gpu=utilization.memory --format=csv,noheader)
+
+             Temp GPU : $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader) ºC
+             Temp Mem. : $(nvidia-smi --query-gpu=temperature.memory --format=csv,noheader) ºC
+
+             Power Draw : $(nvidia-smi --query-gpu=power.draw --format=csv,noheader)
+           '';
+          };
+          format = "d󰒋  {}%";
+          on-click = gpuMonitor;
         };
 
         memory = {
-          format = "󰍛  {}%";
+          format = "  {}%";
           interval = 5;
           on-click = systemMonitor;
         };
@@ -184,7 +217,7 @@ in
           critical-threshold = 70;
           format-critical = "{temperatureC}°C ⚠️ ";
           format = "{temperatureC}°C {icon}";
-          format-icons = ["" "" ""];
+          format-icons = ["" "" ""];
         };
 
         backlight = {
@@ -198,7 +231,7 @@ in
           interval = 3;
           format-wifi = "   {essid}";
           format-ethernet = "󰈁 Connected";
-          format-disconnected = "";
+          format-disconnected = "󰈂 Disconnected";
           tooltip-format = ''
             {ifname}
             {ipaddr}/{cidr}
@@ -220,6 +253,7 @@ in
           on-click = terminal;
         };
 
+        # ToFix: gammastep widget doesn't show up
         "custom/gammastep" = {
           interval = 5;
           return-type = "json";

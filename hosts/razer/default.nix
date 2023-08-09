@@ -36,9 +36,13 @@ in
     builtins.elem (lib.getName pkg) [
       # WiFi driver
       "broadcom-sta"
+
       # NVIDIA drivers
       "nvidia-x11"
       "nvidia-settings"
+
+      # A compiler for NVIDIA GPUs, math libraries, and tools
+      "cudatoolkit"
     ];
 
   boot.loader = {

@@ -62,6 +62,8 @@ in
     # graphics
     nvidia-offload
     linuxPackages.nvidia_x11
+
+    nvtop   # A (h)top like task monitor for AMD, Intel and NVIDIA GPUs
   ];
 
 }
