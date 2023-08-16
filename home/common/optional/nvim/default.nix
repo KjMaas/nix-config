@@ -39,7 +39,7 @@ in
       luajitPackages.luarocks # A package manager for Lua
       stylua                  # An opinionated Lua code formatter
       luaformatter
-      sumneko-lua-language-server
+      lua-language-server     # A language server that offers Lua language support
 
       # HTML/CSS/JS
       nodePackages.vscode-langservers-extracted
@@ -69,6 +69,9 @@ in
 
       # Rust
       cargo
+
+      # Required to compile Treesitter parsers (can also be gcc, clang or any other c compiler)
+      zig # General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
     ];
 
     # source not nixified neovim configuration

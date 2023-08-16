@@ -41,7 +41,9 @@ vim.g.do_file_type_lua   = 1
 vim.o.undofile = true
 
 -- Disable default plugins
-vim.g.loaded_netrwPlugin = false
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- timeout for mapped sequence completion
 vim.o.timeoutlen = 500
 vim.api.nvim_create_autocmd("BufEnter", {

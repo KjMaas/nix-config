@@ -2,7 +2,7 @@ vim.env.MYVIMRC = "~/.config/nvim/init.lua"
 
 
 -- local transparent_window = true
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
 
 local modules = {
   'user.utils',

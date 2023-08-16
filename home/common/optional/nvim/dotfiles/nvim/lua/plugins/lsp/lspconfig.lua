@@ -1,5 +1,6 @@
-local status_ok, _ = pcall(require, "lspconfig")
+local status_ok, lspconfig = pcall(require, "lspconfig")
 if not status_ok then
+  notify_on_pcall_fail(lspconfig)
   return
 end
 
@@ -70,7 +71,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  -- vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
 local lsp_flags = {
@@ -78,39 +79,27 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-require('lspconfig')['sumneko_lua'].setup{
-  on_attach = on_attach,
-  flags = lsp_flags,
-  -- Server-specific settings...
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
+lspconfig.lua_ls.setup {
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+    if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+      client.config.settings = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT'
+        },
         -- Make the server aware of Neovim runtime files
-        library = {
-          vim.fn.expand('$VIMRUNTIME/lua'),
-          vim.fn.stdpath('config') .. '/lua',
-          vim.api.nvim_get_runtime_file("", true)
+        workspace = {
+          library = { vim.env.VIMRUNTIME }
+          -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+          -- library = vim.api.nvim_get_runtime_file("", true)
         }
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
+      })
+
+      client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+    end
+    return true
+  end
 }
 
 require('lspconfig')['remark_ls'].setup{
@@ -123,10 +112,10 @@ require('lspconfig')['remark_ls'].setup{
 --   flags = lsp_flags,
 -- }
 
--- require'lspconfig'.nixd.setup {
---   on_attach = on_attach,
---   flags = lsp_flags,
--- }
+require'lspconfig'.nixd.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
 
 require('lspconfig').nil_ls.setup {
   on_attach = on_attach,

@@ -6,18 +6,18 @@ if not catppuccin_status_ok then
 	return
 end
 
-local color_palette = require('user.colors_base16')
+-- local color_palette = require('user.colors_base16')
 
 catppuccin.setup({
 	transparent_background = true,
 	term_colors = true,
 	compile = {
-		enabled = false,
+		enabled = true,
 		path = vim.fn.stdpath("cache") .. "/catppuccin",
 	},
 	dim_inactive = {
 		enabled = false,
-        shade = "dark",
+        shade = "light",
 		percentage = 0.25,
 	},
 	styles = {
@@ -44,7 +44,7 @@ catppuccin.setup({
 		dashboard = false,
 		fern = false,
 		fidget = false,
-		gitgutter = false,
+		gitgutter = true,
 		gitsigns = true,
 		hop = false,
 		leap = false,
@@ -90,9 +90,9 @@ catppuccin.setup({
 		},
 	},
 
-	color_overrides = { 
-      all = color_palette,
-    },
+	-- color_overrides = {
+ --      all = color_palette,
+ --    },
 
 	highlight_overrides = {},
 

@@ -1,35 +1,40 @@
 -- NVIM tree
+-- all options are well documented in `:help nvim-tree.OPTION_NAME`
 
-
--- Configurations for nvim-tree
--- following options are the default
--- each of these are documented in `:help nvim-tree.OPTION_NAME`
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
+  notify_on_pcall_fail(nvim_tree)
   return
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
 
-local tree_cb = nvim_tree_config.nvim_tree_callback
+local function my_on_attach(bufnr)
+  local api = require "nvim-tree.api"
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', '?',     api.tree.toggle_help,           opts('Help'))
+  vim.keymap.set('n', '<C-u>', api.tree.change_root_to_parent, opts('Up'))
+  vim.keymap.set('n', 'L',     api.tree.change_root_to_node,   opts('CD'))
+  vim.keymap.set('n', 'l',     api.node.open.edit,             opts('Open'))
+  vim.keymap.set('n', 'h',     api.node.navigate.parent_close, opts('Close Directory'))
+
+end
 
 nvim_tree.setup {
+  on_attach = my_on_attach,
 
   disable_netrw = true,
   hijack_netrw = true,
-  open_on_setup = true,
-  open_on_setup_file = false,
   auto_reload_on_write = true,
   root_dirs = {"git"},
-  ignore_ft_on_setup = {
-    "startify",
-    "dashboard",
-    "alpha",
-  },
 
   open_on_tab = false,
   hijack_cursor = true,
@@ -76,19 +81,6 @@ nvim_tree.setup {
     width = 30,
     hide_root_folder = false,
     side = "left",
-    mappings = {
-      custom_only = false,
-      list = {
-        { key = { "l", "<CR>", "<2-LeftMousse>" }, cb = tree_cb "edit" },
-        { key = "L", cb = tree_cb "cd" },
-        { key = "<C-s>", cb = tree_cb "split" },
-        { key = "<C-v>", cb = tree_cb "vsplit" },
-        { key = "<C-t>", cb = tree_cb "tabnew" },
-        { key = "<C-p>", cb = tree_cb "preview" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "R", cb = tree_cb "refresh" },
-      },
-    },
     number = false,
     relativenumber = false,
   },
@@ -126,14 +118,14 @@ nvim_tree.setup {
     }
   },
 
-  -- Enable/Disable logs in ($XDG_CACHE_HOME|$HOME/.config)nvim/nvim-tree.log
-  log = {
-    enable = false,
-    truncate = true,
-    types = {
-      git = true,
-      profile = true,
-    },
-  },
+  -- -- Enable/Disable logs in ($XDG_CACHE_HOME|$HOME/.config)nvim/nvim-tree.log
+  -- log = {
+  --   enable = false,
+  --   truncate = true,
+  --   types = {
+  --     git = true,
+  --     profile = true,
+  --   },
+  -- },
 
 }
