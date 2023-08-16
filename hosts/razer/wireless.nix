@@ -57,6 +57,10 @@
             psk = "@INVITE_05_PSK@";
             priority = 10;
           };
+          "@INVITE_06_SSID@" = {
+            psk = "@INVITE_06_PSK@";
+            priority = 10;
+          };
         };
 
         # Imperative networks (manually selectable)
