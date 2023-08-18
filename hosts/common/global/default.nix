@@ -37,7 +37,7 @@
   services.tumbler.enable = true;
 
   environment.systemPackages = with pkgs; [
-    trash-cli                 # Command line interface to the freedesktop.org trashcan
+    trash-cli # Command line interface to the freedesktop.org trashcan
     powertop  # Analyze power consumption on Intel-based laptops
   ];
 
