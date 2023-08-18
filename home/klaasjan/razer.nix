@@ -24,6 +24,8 @@ in
     ../common/optional/nvim
     # File Explorers
     ../common/optional/nnn
+    # Image viewer
+    ../common/optional/vimiv
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
