@@ -38,6 +38,10 @@
 
   environment.systemPackages = with pkgs; [
     trash-cli                 # Command line interface to the freedesktop.org trashcan
+    powertop  # Analyze power consumption on Intel-based laptops
   ];
+
+  # Regulate power consumption 
+  powerManagement.powertop.enable = true;
 
 }
