@@ -51,12 +51,6 @@ in
       # GTK: Use wayland if available, fall back to x11 if not.
       GTK_BACKEND="wayland,x11";
 
-      # QT ("cute") environment variables
-      QT_QPA_PLATFORM = "wayland-egl";
-      QT_SCALE_FACTOR = "1";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-
       # X Desktop Group Variables (freedesktop.org)
       XDG_SESSION_TYPE = "wayland";
     };
