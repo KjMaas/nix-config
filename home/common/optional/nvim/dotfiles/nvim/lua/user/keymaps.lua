@@ -97,8 +97,8 @@ map('v', "<C-p>", '$h"+pg,', opts("Paste from system clipboard - overwrite"))
 map('n', "<C-A-p>", 'v$h"_d"+pg,', opts("Paste from system clipboard - overwrite - no copy"))
 map('v', "<C-A-p>", '$h"_d"+pg,', opts("Paste from system clipboard - overwrite - no copy"))
 
--- Open file in default application
-map('n', "<leader>xo", "<Cmd> !xdg-open %<CR><CR>", opts("open in default app"))
+-- Open file path below cursor in default application (requires mimeo)
+map('n', "<leader>xo", 'yiW:!mimeo <c-r>" &<CR><CR>', opts("open in default app"))
 
 -- -- Local list
 -- map('n', "<leader>lo", ":lopen<CR>", opts(""))

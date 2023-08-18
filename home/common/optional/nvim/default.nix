@@ -25,6 +25,10 @@ in
     vimAlias = true;
 
     extraPackages = with pkgs; [
+      # Open file in external app
+      # ToFix: package already installed if [...]/common/global/mime.nix is sourced
+      mimeo         # Open files by MIME-type or file name using regular expressions
+
       # required for the telescope plugin
       ripgrep       # A utility that combines the usability of The Silver Searcher with the raw speed of grep
 
@@ -82,18 +86,26 @@ in
 
   };
 
+  # Configure which file types are opened with NeoVim by default
   xdg.desktopEntries.nvim = {
     name = "NeoVim";
-    genericName = "Text Editor";
+    genericName = "Awesome Text Editor";
     comment = "Edit text files";
     exec = "nvim %F";
     icon = "nvim";
     mimeType = [
-      "text/english"
-      "text/plain"
-      "text/x-makefile"
-      "text/x-tex"
+      "application/json"
+      "application/javascript"
+      "application/toml"
       "application/x-shellscript"
+      "text/css"
+      "text/english"
+      "text/markdown"
+      "text/plain"
+      "text/x-log"
+      "text/x-makefile"
+      "text/x-python3"
+      "text/x-tex"
     ];
     terminal = true;
     type = "Application";
