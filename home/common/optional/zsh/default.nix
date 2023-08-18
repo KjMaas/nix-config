@@ -18,6 +18,7 @@
     history = {
       expireDuplicatesFirst = true;
       extended = true;
+      ignoreDups = true;
       ignorePatterns = [ "l *" "ls *" ];
       ignoreSpace = true;
     };
