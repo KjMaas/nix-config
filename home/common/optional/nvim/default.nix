@@ -82,4 +82,22 @@ in
 
   };
 
+  xdg.desktopEntries.nvim = {
+    name = "NeoVim";
+    genericName = "Text Editor";
+    comment = "Edit text files";
+    exec = "nvim %F";
+    icon = "nvim";
+    mimeType = [
+      "text/english"
+      "text/plain"
+      "text/x-makefile"
+      "text/x-tex"
+      "application/x-shellscript"
+    ];
+    terminal = true;
+    type = "Application";
+    categories = [ "Utility" "TextEditor" ];
+  };
+
 }

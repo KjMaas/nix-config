@@ -5,6 +5,7 @@
   imports = [
     ./fonts.nix
     ./gtk.nix
+    ./mime.nix
     ./qt.nix
   ];
 
