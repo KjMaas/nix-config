@@ -6,6 +6,7 @@
     ./locale.nix
     ./nix.nix
     ./openssh.nix
+    ./opengl.nix
     ./security.nix
     ./sops.nix
   ];

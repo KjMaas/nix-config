@@ -19,7 +19,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ./nvidia.nix
+    ./nvidia/default.nix
     ./wireless.nix
 
     ../common/global
