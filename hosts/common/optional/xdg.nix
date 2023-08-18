@@ -35,14 +35,14 @@
 
     # set of tools (listed below) that allows applications
     # to easily integrate with the desktop environment:
-    # dg-mime
-    # dg-email
-    # dg-desktop-icon
-    # dg-settings
-    # dg-icon-resource
-    # dg-desktop-menu
-    # dg-screensaver
-    # dg-open
+    # xdg-mime
+    # xdg-email
+    # xdg-desktop-icon
+    # xdg-settings
+    # xdg-icon-resource
+    # xdg-desktop-menu
+    # xdg-screensaver
+    # xdg-open
     xdg-utils 
 
   ];

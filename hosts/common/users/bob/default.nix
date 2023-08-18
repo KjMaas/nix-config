@@ -11,7 +11,6 @@
   users.users.bob = {
     home = "/home/bob";
     initialPassword = "admin";
-    passwordFile = config.sops.secrets.bob-password.path;
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [
