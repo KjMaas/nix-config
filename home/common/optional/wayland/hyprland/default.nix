@@ -53,6 +53,8 @@ in
     swappy        # A Wayland native snapshot editing tool
     # Color Picker
     hyprpicker    # A wlroots-compatible Wayland color picker that does not suck
+    # Wallpaper setter
+    swww # Efficient animated wallpaper daemon for wayland, controlled at runtime
   ];
 
   services.clipman = {
