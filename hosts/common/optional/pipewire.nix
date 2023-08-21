@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
 
   # Remove sound.enable or turn it off if you had it set previously,
@@ -18,5 +20,9 @@
     pulse.enable = true;
     jack.enable = false;
   };
+
+  environment.systemPackages = with pkgs; [
+    helvum  # A GTK patchbay for pipewire
+  ];
 
 }
