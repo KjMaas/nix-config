@@ -72,7 +72,7 @@ in
 
 
     # browser
-    unstable.brave  # Privacy-oriented browser for Desktop and Laptop computers
+    brave  # Privacy-oriented browser for Desktop and Laptop computers
 
     # Multimedia
     obs-studio                # Free and open source software for video recording and live streaming

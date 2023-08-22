@@ -50,8 +50,8 @@
     nvtop   # A (h)top like task monitor for AMD, Intel and NVIDIA GPUs
   ];
 
-  # environement.sessionVariables = {
-  #   NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
   #   MOZ_ENABLE_WAYLAND = "1";
   #   SDL_VIDEODRIVER = "wayland";
   #   _JAVA_AWT_WM_NONREPARENTING = "1";
@@ -61,6 +61,6 @@
   #   LIBVA_DRIVER_NAME = "nvidia";
   #   WLR_RENDERER = "vulkan";
   #   __NV_PRIME_RENDER_OFFLOAD="1";
-  # };
+  };
 
 }
