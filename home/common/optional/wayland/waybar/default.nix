@@ -1,6 +1,10 @@
 { inputs, config, pkgs, ... }:
 
 let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+  };
+
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
   systemctl = "${pkgs.systemd}/bin/systemctl";
@@ -47,7 +51,8 @@ in
 
   programs.waybar = {
     enable = true;
-    package = inputs.hyprland.packages."x86_64-linux".waybar-hyprland;
+    # [22/08/2023]ToCheck: switch to stable nixpkgs once hyprland/window module is merged
+    package = unstable.waybar;
 
     settings = {
 
@@ -61,7 +66,7 @@ in
           "hyprland/window"
         ];
         modules-center = [
-          "wlr/workspaces"
+          "hyprland/workspaces"
         ];
         modules-right = [
           "idle_inhibitor"
@@ -72,7 +77,7 @@ in
           separate-outputs = false;
         };
 
-        "wlr/workspaces" = {
+        "hyprland/workspaces" = {
           sort-by-number = true;
           on-click = "activate";
           disable-scroll = false;

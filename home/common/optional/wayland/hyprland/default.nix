@@ -22,11 +22,8 @@ in
   # load native (not nixified) configuration file
   wayland.windowManager.hyprland = {
     enable = true;
-    xwayland = {
-      enable = true;
-      hidpi = true;
-    };
-    nvidiaPatches = true;
+    xwayland.enable = true;
+    enableNvidiaPatches = true;
     extraConfig = ''
 
       # source "out of store" configuration for hyprland.
@@ -38,6 +35,7 @@ in
 
   # generate the script to stow hyprland's configuration files
   home.file."stow_dotfiles/stow_hyprland.sh" = {
+    enable = true;
     text = stow_script;
     executable = true;
   };
