@@ -25,9 +25,10 @@ in
     vimAlias = true;
 
     extraPackages = with pkgs; [
-      # Open file in external app
+      # External apps needed to process text inputs from neovim
       # ToFix: package already installed if [...]/common/global/mime.nix is sourced
       mimeo         # Open files by MIME-type or file name using regular expressions
+      jq            # A lightweight and flexible command-line JSON processor
 
       # required for the telescope plugin
       ripgrep       # A utility that combines the usability of The Silver Searcher with the raw speed of grep

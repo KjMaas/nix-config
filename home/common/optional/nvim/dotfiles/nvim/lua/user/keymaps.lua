@@ -100,6 +100,13 @@ map('v', "<C-A-p>", '$h"_d"+pg,', opts("Paste from system clipboard - overwrite 
 -- Open file path below cursor in default application (requires mimeo)
 map('n', "<leader>xo", 'yiW:!mimeo <c-r>" &<CR><CR>', opts("open in default app"))
 
+-- ToDo: prevent command being executed if content is not json
+-- Prettify/Minify json (requires jq)
+map('n', "<leader>j", ":%!jq . <CR>", opts("Prettify json (entire file)"))
+map('n', "<leader>J", ":%!jq -c . <CR>", opts("Minify json (entire file)"))
+map('v', "<leader>j", ":'<,'>!jq . <CR>", opts("Prettify json (visual selection)"))
+map('v', "<leader>J", ":'<,'>!jq -c . <CR>", opts("Minify json (visual selection)"))
+
 -- -- Local list
 -- map('n', "<leader>lo", ":lopen<CR>", opts(""))
 -- map('n', "<leader>lc", ":lclose<CR>", opts(""))
