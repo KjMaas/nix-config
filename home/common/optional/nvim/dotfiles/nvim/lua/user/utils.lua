@@ -5,7 +5,7 @@ local M = {}
 function M.opts(desc)
   return {
     noremap = true,
-    silent = true,
+    silent = false,
     desc = desc,
   }
 end
