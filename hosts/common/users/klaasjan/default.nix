@@ -18,6 +18,7 @@
       "wheel"     # sudo
       "network"   # members of this group are able to set up networks through wpa_cli or wpa_gui
       "video"     # needed for display modification, including brightness control
+      "libvirtd"  # used for libvirt/KVM virtualization
     ];
   };
 

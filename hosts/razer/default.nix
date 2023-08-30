@@ -12,6 +12,15 @@ let
           };
         }
       );
+      nixops-virtd = super.nixops-virtd.overridePythonAttrs (
+        _: {
+          src = pkgs.fetchgit {
+            url = "https://github.com/deepfire/nixops-libvirtd";
+            rev = "71964407008f8ce0549138544bda4c91298d7e44";
+            sha256 = "sha256-HxJu8/hOPI5aCddTpna0mf+emESYN3ZxpTkitfKcfVQ=";
+          };
+        }
+      );
     });
   };
 
@@ -26,6 +35,7 @@ in
 
     ../common/optional/pipewire.nix
     ../common/optional/xdg.nix
+    ../common/optional/virtualisation/libvirt-kvm.nix
 
     ../common/users/klaasjan
   ];
