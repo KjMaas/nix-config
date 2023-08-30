@@ -7,9 +7,14 @@ let
 in
 {
   imports = [
+    # The actual Hyprland module
     inputs.hyprland.homeManagerModules.default
+
+    # Default Terminal
     ../../kitty
+    # Quick-Menu
     ../rofi
+    # Everything-Bar
     ../waybar
     # Notifications
     ../mako
@@ -43,16 +48,20 @@ in
   home.packages = with pkgs; [ 
     # hardware control
     pamixer       # Pulseaudio command line mixer
+
     # clipboard
     wl-clipboard  # Command-line copy/paste utilities for Wayland
+
     # screenshots
     grim          # Grab images from a Wayland compositor
     slurp         # Select a region in a Wayland compositor
     swappy        # A Wayland native snapshot editing tool
+
     # Color Picker
     hyprpicker    # A wlroots-compatible Wayland color picker that does not suck
+
     # Wallpaper setter
-    swww # Efficient animated wallpaper daemon for wayland, controlled at runtime
+    swww          # Efficient animated wallpaper daemon for wayland, controlled at runtime
   ];
 
   services.clipman = {
