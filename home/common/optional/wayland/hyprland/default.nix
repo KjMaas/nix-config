@@ -62,6 +62,9 @@ in
 
     # Wallpaper setter
     swww          # Efficient animated wallpaper daemon for wayland, controlled at runtime
+
+    # Forward graphics through ssh
+    waypipe       # A network proxy for Wayland clients (applications)
   ];
 
   services.clipman = {
