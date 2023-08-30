@@ -44,4 +44,11 @@
   # Regulate power consumption 
   powerManagement.powertop.enable = true;
 
+  # make NeoVim the default editor when root
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+  };
+
 }
