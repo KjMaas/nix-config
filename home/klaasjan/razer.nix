@@ -24,8 +24,9 @@ in
     ../common/optional/nvim
     # File Explorers
     ../common/optional/nnn
-    # Image viewer
-    ../common/optional/vimiv
+    # Applications
+    ../common/optional/vimiv      # Image viewer
+    ../common/optional/zathura    # PDF viewer
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
