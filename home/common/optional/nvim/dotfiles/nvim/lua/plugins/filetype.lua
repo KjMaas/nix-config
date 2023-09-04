@@ -8,7 +8,7 @@ end
 ft.setup({
     overrides = {
         extensions = {
-            mdx = "jsx",
+            mdx = "mdx",
         },
         literal = {
             -- Set the filetype of files named "MyBackupFile" to lua

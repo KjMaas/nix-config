@@ -6,6 +6,9 @@ if not status_ok then
 end
 
 
+-- use markdown syntax highlighting for .mdx files
+vim.treesitter.language.register("markdown", "mdx")
+
 ts.setup {
   context_commentstring = {
     enable = true,
