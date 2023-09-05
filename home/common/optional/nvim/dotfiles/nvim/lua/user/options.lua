@@ -13,7 +13,7 @@ vim.wo.cursorline        = true
 
 -- Behaviour
 vim.opt.list             = false
-vim.opt.listchars        = { space = '_', tab = '>~', eol = '↵' }
+vim.opt.listchars        = { space = '_', tab = '>--', eol = '↵' }
 vim.o.hlsearch           = true
 vim.o.ignorecase         = true    -- Ignore case when using lowercase in search
 vim.o.smartcase          = true    -- But don't ignore it when using upper case
@@ -106,11 +106,30 @@ if not status_ok then
   return
 end
 
+
+vim.g.tab_experience = false
+function _G.toggle_tab_experience()
+  vim.o.tabstop            = 4
+
+  if vim.g.tab_experience then
+    vim.o.expandtab          = false
+    vim.o.softtabstop        = 4
+    vim.o.shiftwidth         = 4
+  else
+    vim.o.expandtab          = true
+    vim.o.softtabstop        = 2
+    vim.o.shiftwidth         = 2
+  end
+  vim.g.tab_experience = not vim.g.tab_experience
+end
+
+
 local mappings = {
 
   o = {
     name = "Toggle Option",
     l = { "<cmd>set list!<cr>", "Toggle eol, tab and space chars ON/OFF" },
+    t = { "<cmd>lua toggle_tab_experience()<CR>", "Toggle tabulations / convert to spaces" },
   },
 }
 
