@@ -11,3 +11,10 @@ creation_rules:
       - *klaasjan
       age:
       - *razer
+
+  - path_regex: home/common/optional/rclone/drives.yaml$
+    key_groups:
+    - pgp:
+      - *klaasjan
+      age:
+      - *razer
