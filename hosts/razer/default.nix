@@ -87,7 +87,7 @@ in
   # What happens when the laptop's lid is closed
   services.logind = {
     lidSwitch = "suspend";
-    lidSwitchExternalPower = "lock";
+    lidSwitchExternalPower = "suspend";
   };
 
   environment.systemPackages = with pkgs; [
