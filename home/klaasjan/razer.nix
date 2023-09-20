@@ -69,9 +69,7 @@ in
     wdisplays                 # A graphical application for configuring displays in Wayland compositors
 
     # 3D stuff
-    # blender_3_6 # binary with cuda - ToFix: "Couldn't find current GLX or EGL context."
-    #             # https://discourse.nixos.org/t/using-a-flake-overlay-with-home-manager/19068/3
-    (unstable.blender.override {cudaSupport=true;}) # Da-best!
+    blender_3_6 # ToDo: create a custom Desktop entry that launches Blender with `nvidia-offload`
     f3d # Fast and minimalist 3D viewer using VTK
 
 
