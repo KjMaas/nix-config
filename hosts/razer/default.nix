@@ -34,6 +34,7 @@ in
     ../common/global
 
     ../common/optional/pipewire.nix
+    ../common/optional/thunar.nix     # Graphical File Manager
     ../common/optional/xdg.nix
     ../common/optional/virtualisation/libvirt-kvm.nix
 

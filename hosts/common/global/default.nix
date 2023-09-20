@@ -23,19 +23,6 @@
   # backlight
   programs.light.enable = true;
 
-  # Graphical File Manager
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-    ];
-  };
-  # Mount, trash, and other functionalities
-  services.gvfs.enable = true;
-  # Thumbnail support for images
-  services.tumbler.enable = true;
-
   environment.systemPackages = with pkgs; [
     trash-cli # Command line interface to the freedesktop.org trashcan
     powertop  # Analyze power consumption on Intel-based laptops
