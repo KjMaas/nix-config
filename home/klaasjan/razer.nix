@@ -27,6 +27,7 @@ in
     # Cloud storage
     ../common/optional/rclone
     # Applications
+    ../common/optional/etcher     # Flash OS on SD and USB
     ../common/optional/vimiv      # Image viewer
     ../common/optional/zathura    # PDF viewer
   ];

@@ -55,6 +55,10 @@ in
       "cudatoolkit"
     ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-12.2.3" # Cross platform desktop application shell (needed for Balena Etcher)
+  ];
+
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
@@ -77,6 +81,23 @@ in
   };
 
   security.rtkit.enable = true;
+
+  security.polkit.enable = true;
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
 
   # ToDo restart geoclue service after wpa_supplicant
   services.geoclue2.enable = true;  
