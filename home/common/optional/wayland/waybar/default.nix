@@ -14,10 +14,13 @@ let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
   nvtop = "${pkgs.nvtop}/bin/nvtop";
+  df = "${pkgs.coreutils-full}/bin/df";
   # nvidia-smi = "${pkgs.linuxPackages.nvidia_x11}/bin/nvidia-smi"; # ToFix
 
   terminal = "${pkgs.kitty}/bin/kitty";
   terminal-spawn = cmd: "${terminal} $SHELL -i -c ${cmd}";
+
+  diskUsage_gui = "${pkgs.baobab}/bin/baobab";
 
   systemMonitor = terminal-spawn btop;
   gpuMonitor = terminal-spawn nvtop;
@@ -113,7 +116,7 @@ in
           "custom/player"
         ];
         modules-center = [
-          "disk"
+          "custom/disk"
           "cpu"
           "custom/igpu"
           "custom/dgpu"
@@ -133,10 +136,19 @@ in
           "custom/hostname"
         ];
 
-        disk = {
-            interval = 30;
-            format = "󰋊  {percentage_free}%";
-            path = "/";
+        "custom/disk" = {
+          interval = 1;
+          return-type = "json";
+          exec = jsonOutput "disk" {
+            text = "$(${df} --output=pcent -h / | tail -n +2)";
+            tooltip = ''
+             Disk Usage
+             -------------------------------
+             $(${df} -h --output=target,size,avail,used,pcent,source,fstype)
+            '';
+          };
+          format = "󰋊  {}";
+          on-click = diskUsage_gui;
         };
 
         clock = {
