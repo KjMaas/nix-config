@@ -1,6 +1,8 @@
 { inputs, config, pkgs, ... }:
 
 let
+  inherit (config.colorscheme) colors;
+
   unstable = import inputs.nixpkgs-unstable {
     system = pkgs.system;
   };
@@ -152,10 +154,32 @@ in
         };
 
         clock = {
+          timezones = ["Europe/Amsterdam" "America/Cayenne"];
           format = "{:%d/%m %H:%M}";
+          format-alt = "{:%A, %B %d, %Y (%R)}";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            on-click-right = "mode";
+            format = {
+              months = "<span color='#${colors.base0C}'><b>{}</b></span>";
+              days = "<span color='#${colors.base05}'><b>{}</b></span>";
+              weeks = "<span color='#${colors.base07}'><b>W{}</b></span>";
+              weekdays = "<span color='#${colors.base09}'><b>{}</b></span>";
+              today = "<span color='#${colors.base03}' background='#${colors.base04}'><b><u>{}</u></b></span>";
+            };
+          };
+          actions = {
+            on-click-right = "mode";
+            on-double-click-right = "tz_down";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
         };
 
         cpu = {
@@ -354,7 +378,7 @@ in
     };
 
     # ToDo: use variable to set font to increase modularity
-    style = let inherit (config.colorscheme) colors; in ''
+    style = ''
 
       * {
         font-family: "Fira Sans";
