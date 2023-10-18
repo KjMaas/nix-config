@@ -21,6 +21,14 @@
     poppler                   # A PDF rendering library
     webp-pixbuf-loader        # WebP GDK Pixbuf Loader library
     haskellPackages.freetype2 # Haskell bindings for FreeType 2 library
+    
+    # Dealing with archive files
+    gnome.file-roller         # Archive manager for the GNOME desktop environment
+    unzip                     # An extraction utility for archives compressed in .zip format
   ];
+
+  xdg.mime.defaultApplications = {
+    "application/zip" = [ "org.gnome.FileRoller.desktop" ];
+  };
 
 }

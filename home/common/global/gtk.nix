@@ -27,12 +27,14 @@
     gtk3.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme=1
+        gtk-overlay-scrolling = false
       '';
     };
 
     gtk4.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme=1
+        gtk-overlay-scrolling = false
       '';
     };
 
