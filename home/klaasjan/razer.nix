@@ -24,6 +24,8 @@ in
     ../common/optional/nvim
     # File Explorers
     ../common/optional/nnn
+    # Office suite
+    ../common/optional/libreoffice
     # Cloud storage
     ../common/optional/rclone
     # Applications
