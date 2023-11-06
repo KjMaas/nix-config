@@ -13,6 +13,8 @@ in
 
     ../common/global
 
+    # Desktop
+    ../common/optional/gnome
     # Shell
     ../common/optional/zsh
     # Versioning
