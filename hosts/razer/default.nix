@@ -129,6 +129,11 @@ in
     lshw            # Provide detailed information on the hardware configuration of the machine
     nmap            # Utility for network discovery and security auditing
 
+    # INFO: if you get the following error on wayland: "Gtk-WARNING **: 15:25:24.921: cannot open display: :0", run:
+    # $sudo -EH gparted
+    # more info: https://unix.stackexchange.com/a/423287
+    gparted         # Graphical disk partitioning tool
+
   ];
 
   environment.variables = {
