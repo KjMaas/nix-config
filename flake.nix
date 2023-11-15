@@ -23,6 +23,7 @@
     
     sops-nix.url = "github:mic92/sops-nix";
 
+    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
   };
 
   outputs = {
