@@ -1,8 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, inputs,... }:
 
 let
   customLib = import ./../../../../customLib.nix;
   stow_script = customLib.stow_dotfiles_script "common/optional/nvim";
+
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
 
 in
 {
@@ -77,6 +82,13 @@ in
 
       # Required to compile Treesitter parsers (can also be gcc, clang or any other c compiler)
       zig # General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
+
+      # AI assistant
+      # ToCheck: has been merged with stable?
+      unstable.codeium # Codeium language server
+      # manual setup is required for Codeium:
+      # $ln -s "$(which codeium_language_server)" "/home/klaasjan/.local/share/.codeium/bin/3dee3c5d9fe70aff1993c1a94c1c2bb3c2de5df9/language_server_linux_x64"
+
     ];
 
     # source not nixified neovim configuration

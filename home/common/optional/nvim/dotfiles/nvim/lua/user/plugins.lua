@@ -76,6 +76,13 @@ return packer.startup(function(use)
     config = function() require('plugins.cmp') end,
   })
 
+  -- AI assistant
+  use {
+    -- ToDo: check 'Exafunction/codeium.nvim',
+    'Exafunction/codeium.vim',
+    config = function() require('plugins.codeium') end,
+  }
+
   -- Snippets
   use "rafamadriz/friendly-snippets"
   use {

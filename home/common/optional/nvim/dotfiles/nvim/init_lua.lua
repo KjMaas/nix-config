@@ -26,6 +26,7 @@ local modules = {
   'plugins.dap',
   'plugins.cmp',
   'plugins.luasnip',
+  'plugins.codeium',
 
   'plugins.nnn',
   'plugins.nvimtree',
