@@ -29,6 +29,12 @@
     # Modesetting is needed for most wayland compositors
     modesetting.enable = true;
 
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    powerManagement.enable = true;
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = true;
+
     # Use the open source version of the kernel module
     # Only available on driver 515.43.04+
     open = true;
