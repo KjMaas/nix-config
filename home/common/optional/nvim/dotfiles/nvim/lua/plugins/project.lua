@@ -31,6 +31,7 @@ project.setup {
     "package.json",
     ".marksman.toml",
     ".root",
+    "pyproject.toml",
   },
 
   -- Table of lsp clients to ignore by name
