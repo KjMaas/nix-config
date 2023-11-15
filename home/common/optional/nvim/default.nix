@@ -65,8 +65,8 @@ in
 
       # Nix
       nil
-      # nixd
-      # rnix-lsp
+      # ToCheck: has been merged with stable?
+      unstable.nixd
       deadnix
       statix
 
