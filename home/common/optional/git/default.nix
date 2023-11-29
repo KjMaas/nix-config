@@ -9,6 +9,9 @@
     userEmail = "klaasjan.maas@outlook.com";
     extraConfig = {
       init.defaultBranch = "main";
+      pull.rebase = "true";
+      fetch.prune = "true";
+      diff.colorMoved = "zebra";
     };
     ignores = [ ".direnv" "result" ];
   };
