@@ -28,7 +28,6 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    enableNvidiaPatches = true;
     extraConfig = ''
 
       # source "out of store" configuration for hyprland.
@@ -61,7 +60,8 @@ in
     hyprpicker    # A wlroots-compatible Wayland color picker that does not suck
 
     # Wallpaper setter
-    swww          # Efficient animated wallpaper daemon for wayland, controlled at runtime
+    # swww          # Efficient animated wallpaper daemon for wayland, controlled at runtime
+    hyprpaper     # A blazing fast wayland wallpaper utility
 
     # Forward graphics through ssh
     waypipe       # A network proxy for Wayland clients (applications)
