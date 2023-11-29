@@ -6,6 +6,7 @@
     ./bluetooth.nix
     ./locale.nix
     ./nix.nix
+    ./nix-ld.nix
     ./opengl.nix
     ./openssh.nix
     ./security.nix
