@@ -70,7 +70,7 @@ in
   home.packages = with pkgs; [
 
     # Display and screen sharing
-    wdisplays                 # A graphical application for configuring displays in Wayland compositors
+    wdisplays   # A graphical application for configuring displays in Wayland compositors
 
     # 3D stuff
     blender_3_6 # ToDo: create a custom Desktop entry that launches Blender with `nvidia-offload`
