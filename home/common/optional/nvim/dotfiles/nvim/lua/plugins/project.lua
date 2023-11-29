@@ -23,6 +23,7 @@ project.setup {
   patterns = {
     "lua",
     ".git",
+    ".gitignore",
     "_darcs",
     ".hg",
     ".bzr",
@@ -32,6 +33,9 @@ project.setup {
     ".marksman.toml",
     ".root",
     "pyproject.toml",
+    "flake.nix",
+    "flake.lock",
+    ".envrc",
   },
 
   -- Table of lsp clients to ignore by name
