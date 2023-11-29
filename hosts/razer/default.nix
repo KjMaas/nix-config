@@ -36,6 +36,7 @@ in
     ../common/optional/pipewire.nix
     ../common/optional/printing.nix
     ../common/optional/thunar.nix     # Graphical File Manager
+    ../common/optional/virtualisation/docker.nix
     ../common/optional/virtualisation/libvirt-kvm.nix
     ../common/optional/xdg.nix
 
