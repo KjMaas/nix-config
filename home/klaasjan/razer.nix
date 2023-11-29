@@ -24,6 +24,7 @@ in
     ../common/optional/kitty
     # Development Environment
     ../common/optional/nvim
+    ../common/optional/vscode
     # File Explorers
     ../common/optional/nnn
     # Office suite
