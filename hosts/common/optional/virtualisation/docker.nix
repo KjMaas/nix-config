@@ -13,7 +13,8 @@
 
 
   environment.systemPackages = with pkgs; [
-    docker-compose  
+    docker-compose  # Docker CLI plugin to define and run multi-container applications with Docker 
+    kubernetes      # Production-Grade Container Scheduling and Management
   ];
 
 
