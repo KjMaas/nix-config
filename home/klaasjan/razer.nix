@@ -74,7 +74,7 @@ in
     wdisplays   # A graphical application for configuring displays in Wayland compositors
 
     # 3D stuff
-    blender_3_6 # ToDo: create a custom Desktop entry that launches Blender with `nvidia-offload`
+    blender_4_0
     f3d # Fast and minimalist 3D viewer using VTK
 
 
