@@ -58,10 +58,10 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1"; # fixes "no-cursor" problem on dual screen setups
   #   MOZ_ENABLE_WAYLAND = "1";
   #   SDL_VIDEODRIVER = "wayland";
   #   _JAVA_AWT_WM_NONREPARENTING = "1";
-  #   WLR_NO_HARDWARE_CURSORS = "1"; # fixes "no-cursor" problem
   #   GBM_BACKEND = "nvidia-drm";
   #   __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   #   LIBVA_DRIVER_NAME = "nvidia";
