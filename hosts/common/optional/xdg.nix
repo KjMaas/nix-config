@@ -29,6 +29,15 @@
       xdg-desktop-portal-hyprland
     ];
 
+    config = {
+      common = {
+        default = [
+          "gtk"
+        ];
+      };
+    };
+
+
   };
 
   environment.systemPackages = with pkgs; [

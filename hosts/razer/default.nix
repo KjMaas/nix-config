@@ -33,6 +33,7 @@ in
 
     ../common/global
 
+    # ../common/optional/nixops.nix
     ../common/optional/pipewire.nix
     ../common/optional/printing.nix
     ../common/optional/thunar.nix     # Graphical File Manager
@@ -58,7 +59,7 @@ in
     ];
 
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-12.2.3" # Cross platform desktop application shell (needed for Balena Etcher)
+    "electron-19.1.9" # Cross platform desktop application shell (needed for Balena Etcher)
   ];
 
   boot.loader = {

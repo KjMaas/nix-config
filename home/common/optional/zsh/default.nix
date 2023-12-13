@@ -12,7 +12,7 @@
     enableCompletion = true;
     defaultKeymap = "viins";
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     cdpath = ["/tmp" "~/Documents"];
 
     history = {

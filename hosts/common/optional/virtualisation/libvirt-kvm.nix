@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     virt-manager  # Desktop user interface for managing virtual machines
     virt-top      # A top-like utility for showing stats of virtualized domains
+    opentofu      # Tool for building, changing, and versioning infrastructure
   ];
 
 

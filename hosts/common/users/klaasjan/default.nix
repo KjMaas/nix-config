@@ -11,7 +11,7 @@
   users.users.klaasjan = {
     home = "/home/klaasjan";
     # initialPassword = "admin";
-    passwordFile = config.sops.secrets.klaasjan-password.path; # copy output of $ mkpasswd -m yescryp
+    hashedPasswordFile = config.sops.secrets.klaasjan-password.path; # copy output of $ mkpasswd -m yescryp
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [
