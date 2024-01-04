@@ -181,6 +181,10 @@ return packer.startup(function(use)
   })
   use("JoosepAlviste/nvim-ts-context-commentstring") -- fancier commenting. It can figure out if something is, like, JSX. Works with Treesitter
   use("moll/vim-bbye") -- allows you to close bufferrs without closing windows or messing up layout
+  use {
+    'mhartington/formatter.nvim',
+    config = function() require('plugins.formatter') end
+  }
 
   -- use 'tpope/vim-commentary'
   -- use 'tpope/vim-unimpaired'

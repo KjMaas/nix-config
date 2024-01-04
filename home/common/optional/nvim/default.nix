@@ -53,6 +53,7 @@ in
 
       # HTML/CSS/JS
       nodePackages.vscode-langservers-extracted
+      prettierd # Prettier, as a daemon, for improved formatting speed
 
       # JavaScript
       nodePackages.typescript-language-server

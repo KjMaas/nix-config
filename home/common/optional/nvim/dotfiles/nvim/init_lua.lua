@@ -26,6 +26,7 @@ local modules = {
   'plugins.dap',
   'plugins.cmp',
   'plugins.luasnip',
+  'plugins.formatter',
   'plugins.codeium',
 
   'plugins.nnn',

@@ -9,25 +9,24 @@ end
 -- use markdown syntax highlighting for .mdx files
 vim.treesitter.language.register("markdown", "mdx")
 
-ts.setup {
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
+require('ts_context_commentstring').setup {
+  enable = true,
+  enable_autocmd = false,
 
-    config = {
-      javascript = {
-        __default = '// %s',
-        statement_block = '{/* %s */}',
-        jsx_element = '{/* %s */}',
-        jsx_fragment = '{/* %s */}',
-        jsx_attribute = '// %s',
-        comment = '// %s',
-        ERROR = '{/* %s */}',
-      }
+  config = {
+    javascript = {
+      __default = '// %s',
+      statement_block = '{/* %s */}',
+      jsx_element = '{/* %s */}',
+      jsx_fragment = '{/* %s */}',
+      jsx_attribute = '// %s',
+      comment = '// %s',
+      ERROR = '{/* %s */}',
     }
+  }
+}
 
-  },
-
+ts.setup {
   playground = {
     enable = true,
     disable = {},
