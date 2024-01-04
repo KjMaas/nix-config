@@ -102,15 +102,10 @@ lspconfig.lua_ls.setup {
   end
 }
 
-require('lspconfig')['remark_ls'].setup{
+require('lspconfig')['marksman'].setup{
   on_attach = on_attach,
   flags = lsp_flags,
 }
-
--- require('lspconfig')['marksman'].setup{
---   on_attach = on_attach,
---   flags = lsp_flags,
--- }
 
 require'lspconfig'.nixd.setup {
   on_attach = on_attach,
@@ -138,11 +133,6 @@ require('lspconfig')['pyright'].setup{
 }
 
 require('lspconfig')['tsserver'].setup{
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-
-require('lspconfig')['tailwindcss'].setup{
   on_attach = on_attach,
   flags = lsp_flags,
 }

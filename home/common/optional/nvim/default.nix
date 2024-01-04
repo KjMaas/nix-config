@@ -62,7 +62,7 @@ in
       cmake-language-server
 
       # Markdown
-      nodePackages.markdownlint-cli
+      marksman  # Language Server for Markdown
 
       # Nix
       nil
