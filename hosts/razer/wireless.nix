@@ -39,7 +39,7 @@
           };
           "@WORK_01_SSID@" = {
             psk = "@WORK_01_PSK@";
-            priority = 3;
+            priority = 5;
           };
           "@WORK_02_SSID@" = {
             psk = "@WORK_02_PSK@";
@@ -47,7 +47,7 @@
           };
           "@WORK_03_SSID@" = {
             psk = "@WORK_03_PSK@";
-            priority = 4;
+            priority = 5;
           };
           "@INVITE_01_SSID@" = {
             psk = "@INVITE_01_PSK@";
