@@ -214,11 +214,6 @@ return packer.startup(function(use)
     config = function() require("plugins.registers") end,
   }
 
-  -- better filetype management
-  use {
-    "nathom/filetype.nvim",
-    config = function() require("plugins.filetype") end,
-  }
   -- -- Startify./../
   -- use({
   --   'mhinz/vim-startify',

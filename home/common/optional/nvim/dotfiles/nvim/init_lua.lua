@@ -9,6 +9,7 @@ local modules = {
   'user.options',
   'user.plugins',
   'user.keymaps',
+  'user.filetypes',
 
   'plugins.barbar',
   'plugins.comment',
@@ -18,7 +19,6 @@ local modules = {
   'plugins.lualine',
   'plugins.project',
 
-  'plugins.filetype',
   'plugins.treesitter',
   'plugins.markdown-preview',
 
