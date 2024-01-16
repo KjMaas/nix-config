@@ -25,6 +25,10 @@ formatter.setup({
 	filetype = {
 		css = { use_prettierd },
 		html = { use_prettierd },
+		typescript = { use_prettierd },
+		typescriptreact = { use_prettierd },
+		javascript = { use_prettierd },
+		javascriptreact = { use_prettierd },
 
 		-- Formatter configurations for filetype "lua" go here
 		-- and will be executed in order
