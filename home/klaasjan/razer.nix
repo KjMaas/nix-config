@@ -33,6 +33,7 @@ in
     ../common/optional/rclone
     # Applications
     ../common/optional/etcher     # Flash OS on SD and USB
+    ../common/optional/obsstudio  # video recording and live streaming
     ../common/optional/vimiv      # Image viewer
     ../common/optional/zathura    # PDF viewer
   ];
@@ -82,8 +83,6 @@ in
     brave  # Privacy-oriented browser for Desktop and Laptop computers
 
     # Multimedia
-    obs-studio                # Free and open source software for video recording and live streaming
-    obs-studio-plugins.wlrobs # An obs-studio plugin that allows you to screen capture on wlroots based wayland compositors
     # Cloud
     keepassxc       # Offline password manager with many features.
   ];

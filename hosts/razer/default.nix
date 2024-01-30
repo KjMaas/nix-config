@@ -34,6 +34,7 @@ in
     ../common/global
 
     # ../common/optional/nixops.nix
+    ../common/optional/obsstudio.nix
     ../common/optional/pipewire.nix
     ../common/optional/printing.nix
     ../common/optional/thunar.nix     # Graphical File Manager
