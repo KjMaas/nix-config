@@ -80,7 +80,11 @@ in
 
 
     # browser
-    brave  # Privacy-oriented browser for Desktop and Laptop computers
+    brave           # Privacy-oriented browser for Desktop and Laptop computers
+    chromium        # An open source web browser from Google
+    epiphany        # WebKit based web browser for GNOME
+    firefox         # A web browser built from Firefox source tree
+    microsoft-edge  # The web browser from Microsoft
 
     # Multimedia
     # Cloud

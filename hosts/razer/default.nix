@@ -57,6 +57,9 @@ in
 
       # A compiler for NVIDIA GPUs, math libraries, and tools
       "cudatoolkit"
+
+      # needed to install Edge
+      "microsoft-edge-stable"
     ];
 
   nixpkgs.config.permittedInsecurePackages = [
