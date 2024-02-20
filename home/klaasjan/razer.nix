@@ -80,12 +80,51 @@ in
 
 
     # browser
-    brave  # Privacy-oriented browser for Desktop and Laptop computers
+    brave           # Privacy-oriented browser for Desktop and Laptop computers
+    chromium        # An open source web browser from Google
+    epiphany        # WebKit based web browser for GNOME
+    firefox         # A web browser built from Firefox source tree
+    microsoft-edge  # The web browser from Microsoft
 
     # Multimedia
+    audacity                  # Sound editor with graphical UI
+    vlc                       # Cross-platform media player and streaming server
+
     # Cloud
     keepassxc       # Offline password manager with many features.
+
+    # Tools
+    glxinfo         # Test utilities for OpenGL
+    baobab          # Graphical application to analyse disk usage
+    unstable.angryipscanner  # Angry IP Scanner - fast and friendly network scanner
+    drawio          # A desktop application for creating diagrams
+    dbeaver         # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
+
+    # Utility Apps
+    poppler_utils   # A PDF rendering library
+    imagemagick     # A software suite to create, edit, compose, or convert bitmap images
+    pdfsam-basic    # Multi-platform software designed to extract pages, split, merge, mix and rotate PDF files
+    ffmpeg          # A complete, cross-platform solution to record, convert and stream audio and video
+    davinci-resolve # Professional video editing, color, effects and audio post-processing
+
+    # Social media
+    unstable.signal-desktop  # Private, simple, and secure messenger
+
+    # Gaming
+    yuzu-mainline   # The mainline branch of an experimental Nintendo Switch emulator written in C++
+    mupen64plus     # A Nintendo 64 Emulator
+
   ];
+
+  services.flameshot = {
+    enable = true;
+    settings = {
+      # General = {
+      #   disabledTrayIcon = true;
+      #   showStartupLaunchMessage = false;
+      # };
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
