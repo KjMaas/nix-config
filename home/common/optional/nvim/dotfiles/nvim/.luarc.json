@@ -4,5 +4,10 @@
         "/nix/store/5gi551i7y5clpaqh8pgcj2xiwjb378g7-neovim-unwrapped-0.9.1/share/nvim/runtime/lua",
         "/home/klaasjan/Documents/nix-config/home/common/optional/nvim/dotfiles/nvim/lua",
         "${3rd}/luv/library"
+    ],
+    "diagnostics.globals": [
+        "iii",
+        "kk",
+        "lua"
     ]
 }

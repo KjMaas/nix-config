@@ -10,7 +10,6 @@ function M.opts(desc)
   }
 end
 
-
 -- function M.enable_transparent_mode()
 --       local hl_groups = {
 --         "Normal",
@@ -27,6 +26,4 @@ end
 --       end
 -- end
 
-
 return M
-
