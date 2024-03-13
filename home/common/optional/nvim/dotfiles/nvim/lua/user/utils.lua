@@ -3,13 +3,12 @@
 local M = {}
 
 function M.opts(desc)
-  return {
-    noremap = true,
-    silent = false,
-    desc = desc,
-  }
+	return {
+		noremap = true,
+		silent = false,
+		desc = desc,
+	}
 end
-
 
 -- function M.enable_transparent_mode()
 --       local hl_groups = {
@@ -27,6 +26,4 @@ end
 --       end
 -- end
 
-
 return M
-

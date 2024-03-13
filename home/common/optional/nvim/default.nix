@@ -38,6 +38,9 @@ in
       # required for the telescope plugin
       ripgrep       # A utility that combines the usability of The Silver Searcher with the raw speed of grep
 
+      # git
+      lazygit       # Simple terminal UI for git commands
+
       # other
       neovim-remote # A tool that helps controlling nvim processes from a terminal
 
@@ -47,6 +50,7 @@ in
 
       # lua
       luajitPackages.luarocks # A package manager for Lua
+      luajitPackages.luacheck # A static analyzer and a linter for Lua
       stylua                  # An opinionated Lua code formatter
       luaformatter
       lua-language-server     # A language server that offers Lua language support
@@ -65,18 +69,19 @@ in
       marksman  # Language Server for Markdown
 
       # Nix
-      nil
-      # ToCheck: has been merged with stable?
-      unstable.nixd
-      deadnix
-      statix
+      # nil
+      nixd
+      # deadnix
+      # statix
 
       # python
-      python3Packages.isort
+      unstable.ruff  # An extremely fast Python linter
+      ruff-lsp  # A Language Server Protocol implementation for Ruff
       nodePackages.pyright
       black
-      python3Packages.flake8
-      mypy
+      isort
+      # python3Packages.flake8
+      # mypy
 
       # Rust
       cargo

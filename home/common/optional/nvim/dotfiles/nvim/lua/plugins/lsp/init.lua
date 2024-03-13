@@ -1,10 +1,10 @@
 -- import LSP config, our installer and our handlers
 
 local modules = {
-  'neodev',
+  -- 'neodev',
   'mason',
   'mason-lspconfig',
-  'lspconfig',
+  -- 'lspconfig',
   'null-ls',
 }
 

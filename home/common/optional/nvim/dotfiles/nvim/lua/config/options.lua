@@ -1,3 +1,5 @@
+-- stylua: ignore start
+
 -- Visual
 vim.o.conceallevel       = 0       -- Don't hide quotes in markdown
 vim.o.cmdheight          = 1
@@ -32,20 +34,20 @@ vim.o.mouse              = 'a'
 -- Vim specific
 vim.o.hidden             = true    -- Do not save when switching buffers
 vim.o.fileencoding       = "utf-8"
-vim.o.spelllang          = "en_us,fr" -- https://ftp.nluug.nl/pub/vim/runtime/spell/
+vim.o.spelllang          = "en_us,fr,nl" -- https://ftp.nluug.nl/pub/vim/runtime/spell/
 vim.o.completeopt        = "menuone,noinsert,noselect"
 vim.o.wildmode           = "longest,full"  -- Display auto-complete in Command Mode
 vim.o.updatetime         = 300     -- Delay until write to Swap and HoldCommand event
 vim.g.do_file_type_lua   = 1
 -- Undo files
-vim.o.undofile = true
+vim.o.undofile           = true
 
 -- Disable default plugins
-vim.g.loaded_netrw = 1
+vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- timeout for mapped sequence completion
-vim.o.timeoutlen = 500
+vim.o.timeoutlen         = 500
 vim.api.nvim_create_autocmd("BufEnter", {
   -- pattern = "*",
   callback = function ()
@@ -66,80 +68,4 @@ vim.api.nvim_create_autocmd("BufLeave", {
 -- Set clipboard to use system clipboard
 vim.o.clipboard = "unnamedplus"
 
-
--- vim.api.nvim_open_win(
---   0,
---   false,
---   config = {
---     relative='win',
---     width=12,
---     height=3,
---     -- bufpos={100,10}
---   }
--- )
-
-
--- -- Python providers
--- -- local pynvim_env        = "/.local/bin/pyenv/versions/pynvim/"
--- -- vim.g.python3_host_prog = os.getenv("HOME")..pynvim_env.."/bin/python"
--- -- vim.g.black_virtualenv  = os.getenv("HOME")..pynvim_env
-
--- -- Disable unused providers
--- -- vim.g.loaded_perl_provider = 0
--- -- vim.g.loaded_ruby_provider = 0
-
--- -- Disable inline error messages
--- -- vim.diagnostic.config {
--- --   virtual_text = false,
--- --   underline = false,
--- --   signs = true,          -- Keep gutter signs
--- -- }
---
-
-
-
-
--- -- Register mappings with which-key
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-  print("there's an issue with which-key")
-  return
-end
-
-
-vim.g.tab_experience = false
-function _G.toggle_tab_experience()
-  vim.o.tabstop            = 4
-
-  if vim.g.tab_experience then
-    vim.o.expandtab          = false
-    vim.o.softtabstop        = 4
-    vim.o.shiftwidth         = 4
-  else
-    vim.o.expandtab          = true
-    vim.o.softtabstop        = 2
-    vim.o.shiftwidth         = 2
-  end
-  vim.g.tab_experience = not vim.g.tab_experience
-end
-
-
-local mappings = {
-
-  o = {
-    name = "Toggle Option",
-    l = { "<cmd>set list!<cr>", "Toggle eol, tab and space chars ON/OFF" },
-    t = { "<cmd>lua toggle_tab_experience()<CR>", "Toggle tabulations / convert to spaces" },
-  },
-}
-
-local opts = {
-  mode = "n",
-  prefix = "<leader>",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = true,
-}
-
-which_key.register(mappings, opts)
+-- stylua: ignore end
