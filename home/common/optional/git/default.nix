@@ -16,6 +16,10 @@
     ignores = [ ".direnv" "result" ];
   };
 
+  programs.lazygit = {
+    enable = true;
+  };
+
   home.shellAliases = {
     gs = "git status";
     ga = "git add --verbose";
