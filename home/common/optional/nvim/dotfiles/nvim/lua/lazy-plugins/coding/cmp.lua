@@ -13,12 +13,13 @@ return {
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-calc",
       "SirVer/ultisnips",
-      "quangnguyen30192/cmp-nvim-ultisnips",
+      "saadparwaiz1/cmp_luasnip",
       "f3fora/cmp-spell",
     },
     config = function()
       -- Set up nvim-cmp.
       local cmp = require("cmp")
+      local luasnip = require("luasnip")
 
       local mappings = {
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -34,9 +35,7 @@ return {
       cmp.setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
-          expand = function(args)
-            vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-          end,
+          expand = function(args) luasnip.lsp_expand(args.body) end,
         },
         window = {
           completion = cmp.config.window.bordered(),
@@ -50,7 +49,7 @@ return {
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp", keyword_length = 1 },
-          { name = "ultisnips", keyword_length = 2 },
+          { name = "luasnip", keyword_length = 2 },
           { name = "async_path", keyword_length = 1 },
           { name = "buffer", keyword_length = 5 },
           { name = "spell", keyword_length = 5 },
