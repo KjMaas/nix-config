@@ -8,6 +8,7 @@ return {
     dependencies = {
       "neovim/nvim-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-buffer",
       "FelipeLema/cmp-async-path",
       "hrsh7th/cmp-cmdline",
@@ -49,6 +50,7 @@ return {
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp", keyword_length = 1 },
+          { name = "nvim_lsp_signature_help", keyword_length = 1 },
           { name = "luasnip", keyword_length = 2 },
           { name = "async_path", keyword_length = 1 },
           { name = "buffer", keyword_length = 5 },
