@@ -5,7 +5,7 @@ return {
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-      { "kyazdani42/nvim-web-devicons", opt = true },
+      { "nvim-tree/nvim-web-devicons", opt = true },
     },
 
     config = function(_, opts)

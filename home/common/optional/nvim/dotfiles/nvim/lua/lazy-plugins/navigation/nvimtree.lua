@@ -4,7 +4,7 @@ return {
     lazy = false,
 
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
     },
 
     config = function(_, opts)
