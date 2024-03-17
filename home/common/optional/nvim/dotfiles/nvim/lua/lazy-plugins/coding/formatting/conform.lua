@@ -19,7 +19,15 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "ruff", "isort", "black" },
-      javascript = { { "prettierd", "prettier" } },
+
+      -- frontend web dev
+      css = { "prettierd" },
+      html = { "prettierd" },
+      javascript = { "prettierd" },
+      typescript = { "prettierd" },
+      javascriptreact = { "prettierd" },
+      typescriptreact = { "prettierd" },
+      vue = { "prettierd" },
     },
   },
 
