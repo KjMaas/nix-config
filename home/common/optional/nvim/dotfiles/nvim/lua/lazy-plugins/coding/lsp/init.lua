@@ -1,15 +1,25 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = "folke/neodev.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
+      local lspconfig = require("lspconfig")
       local handlers = require("lazy-plugins.coding.lsp.handlers")
       handlers.setup()
 
-      require("lspconfig").lua_ls.setup({
-        on_attach = handlers.on_attach,
-        capabilities = handlers.capabilities,
-      })
+      local servers = require("config.languages.defaults").servers
+      for _, server in pairs(servers) do
+        local opts = {
+          on_attach = handlers.on_attach,
+          capabilities = handlers.capabilities,
+        }
+        local require_ok, settings = pcall(require, "config.languages." .. server)
+        if require_ok then opts = vim.tbl_deep_extend("force", settings, opts) end
+        if server == "lua_ls" then require("neodev").setup({}) end
+
+        lspconfig[server].setup(opts)
+      end
     end,
 
     init = function()
@@ -54,8 +64,6 @@ return {
       which_key.register(mappings, opts)
     end,
   },
-
-  require("lazy-plugins.coding.lsp.python"),
 
   -- TODO: find another plugin to check spelling
   require("lazy-plugins.coding.lsp.null-ls"),
