@@ -105,7 +105,8 @@ in
     imagemagick     # A software suite to create, edit, compose, or convert bitmap images
     pdfsam-basic    # Multi-platform software designed to extract pages, split, merge, mix and rotate PDF files
     ffmpeg          # A complete, cross-platform solution to record, convert and stream audio and video
-    davinci-resolve # Professional video editing, color, effects and audio post-processing
+    mpv             # General-purpose media player, fork of MPlayer and mplayer2
+    play-with-mpv   # Chrome extension and python server that allows you to play videos in webpages with MPV instead
 
     # Social media
     unstable.signal-desktop  # Private, simple, and secure messenger
