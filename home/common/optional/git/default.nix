@@ -8,8 +8,13 @@
     userName = "Klaasjan Maas";
     userEmail = "klaasjan.maas@outlook.com";
     extraConfig = {
+      branch = {
+        autoSetupRemote = "true";
+        autoSetupMerge = "simple";
+      };
       init.defaultBranch = "main";
       pull.rebase = "true";
+      push.default = "simple";
       fetch.prune = "true";
       diff.colorMoved = "zebra";
     };
