@@ -19,7 +19,7 @@
   ];
 
 
-  # users.users.klaasjan.extraGroups = [ "docker" ];
+  users.users.klaasjan.extraGroups = [ "docker" ];
 
 }
 
