@@ -27,6 +27,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
     
     sops-nix.url = "github:mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     blender-bin.url = "github:edolstra/nix-warez?dir=blender";
   };
