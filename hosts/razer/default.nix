@@ -28,6 +28,7 @@
       "broadcom-sta"
 
       # NVIDIA drivers
+      "nvidia"
       "nvidia-x11"
       "nvidia-settings"
 
