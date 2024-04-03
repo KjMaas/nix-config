@@ -4,9 +4,11 @@
   nixConfig = {
     extra-substituters = [
       "https://hyprland.cachix.org"
+      "https://devenv.cachix.org"
     ];
     extra-trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
   };
 
@@ -16,6 +18,9 @@
 
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    devenv.url = "github:cachix/devenv/main";
+    devenv.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -31,6 +36,7 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
+    devenv,
     blender-bin,  # availlable in the flake registry: $ nix registry list
     ...
   }@inputs: 
@@ -62,7 +68,10 @@
           ./hosts/razer
           home-manager.nixosModules.home-manager
           {
-            nixpkgs.overlays = [ blender-bin.overlays.default ];
+            nixpkgs.overlays = [ 
+              blender-bin.overlays.default
+              devenv.overlays.default
+            ];
             home-manager = {
               useGlobalPkgs = true;                   # makes hm use nixos's pkgs value
               extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules

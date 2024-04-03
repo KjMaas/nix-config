@@ -115,6 +115,9 @@ in
     yuzu-mainline   # The mainline branch of an experimental Nintendo Switch emulator written in C++
     mupen64plus     # A Nintendo 64 Emulator
 
+    # Development
+    devenv          # Fast, Declarative, Reproducible, and Composable Developer Environments
+
   ];
 
   services.flameshot = {
