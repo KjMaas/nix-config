@@ -110,6 +110,14 @@
 
   services.flatpak.enable = true;
 
+  services.dolibarr = {
+    enable = false;
+    nginx = null;
+    domain = "127.0.0.1";
+    # preInstalled = true;
+    # initialDbPasswordFile = "/run/keys/dolibarr-db-ini-password";
+  };
+
   environment.variables = {
     EDITOR = "nvim";
   };
