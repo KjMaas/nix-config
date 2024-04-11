@@ -19,6 +19,7 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "ruff", "isort", "black" },
+      nix = { "nixfmt" },
 
       -- frontend web dev
       css = { "prettierd" },

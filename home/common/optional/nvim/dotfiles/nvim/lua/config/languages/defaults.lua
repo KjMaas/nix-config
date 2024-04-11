@@ -16,6 +16,9 @@ M.servers = {
   -- CLI
   "bashls",
 
+  -- Nix
+  "nixd",
+
   -- Python
   "pyright",
   "ruff_lsp",
