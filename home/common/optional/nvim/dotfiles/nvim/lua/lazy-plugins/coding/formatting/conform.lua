@@ -20,6 +20,8 @@ return {
       lua = { "stylua" },
       python = { "ruff", "isort", "black" },
       nix = { "nixfmt" },
+      markdown = { "prettierd" },
+      sh = { "shfmt", "shellcheck" },
 
       -- frontend web dev
       css = { "prettierd" },
