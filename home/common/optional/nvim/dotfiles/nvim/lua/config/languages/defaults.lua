@@ -9,7 +9,7 @@ M.servers = {
   "eslint",
   "html",
   "jsonls",
-  "tailwindcss",
+  -- "tailwindcss", -- INFO: lsp server uses way to much CPU ressources
   "tsserver",
   "volar",
 
