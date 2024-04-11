@@ -1,10 +1,12 @@
 return {
   {
-    enabled = false,
-
+    enabled = true,
     "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    ft = "markdown",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+    -- build = "cd app && npm install",
+
     config = function()
       -- local status_ok, _ = pcall(require, "markdown-preview")
       -- if not status_ok then
@@ -83,7 +85,7 @@ return {
         hide_yaml_meta = 0,
         sequence_diagrams = {},
         flowchart_diagrams = {},
-        content_editable = true,
+        content_editable = false,
         disable_filename = 0,
         toc = {},
       }
