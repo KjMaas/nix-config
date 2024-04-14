@@ -68,6 +68,9 @@ in
 
     # Forward graphics through ssh
     waypipe       # A network proxy for Wayland clients (applications)
+
+    # Cursor-theme
+    inputs.rose-pine-hyprcursor.packages.x86_64-linux.default
   ];
 
   services.clipman = {
