@@ -16,7 +16,11 @@ require("lazy").setup({
     { import = "lazy-plugins" },
   },
 
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = {
+    enabled = true, -- automatically check for plugin updates
+    notify = true,
+    frequency = 60 * 60 * 24 * 7,
+  },
 
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
