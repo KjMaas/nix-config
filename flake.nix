@@ -24,6 +24,11 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-colors.url = "github:misterio77/nix-colors";
     
     sops-nix.url = "github:mic92/sops-nix";
@@ -41,6 +46,7 @@
     blender-bin,  # availlable in the flake registry: $ nix registry list
     ...
   }@inputs: 
+    hyprlock,
 
   let
     inherit (self) outputs;
@@ -78,6 +84,7 @@
               extraSpecialArgs = { inherit inputs; }; # allows access to flake inputs in hm modules
               users = {
                 klaasjan.imports = [ ./home/klaasjan/razer.nix ];
+                hyprlock.overlays.default
               };
             };
           }

@@ -59,6 +59,9 @@ in
     # Color Picker
     hyprpicker    # A wlroots-compatible Wayland color picker that does not suck
 
+    # Screen locker
+    hyprlock      # Hyprland's GPU-accelerated screen locking utility
+
     # Wallpaper setter
     # swww          # Efficient animated wallpaper daemon for wayland, controlled at runtime
     hyprpaper     # A blazing fast wayland wallpaper utility

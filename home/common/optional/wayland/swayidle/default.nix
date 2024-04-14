@@ -2,6 +2,7 @@
 
 let
   notify = "${pkgs.libnotify}/bin/notify-send";
+  # TODO: transition to hyprlock
   swaylock = "${config.programs.swaylock.package}/bin/swaylock";
   pgrep = "${pkgs.procps}/bin/pgrep";
   hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
