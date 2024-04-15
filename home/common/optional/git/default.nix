@@ -6,7 +6,7 @@
     enable = true;
     package = pkgs.gitFull;
     userName = "Klaasjan Maas";
-    userEmail = "klaasjan.maas@outlook.com";
+    userEmail = "klaasjan@majok.dev";
     extraConfig = {
       branch = {
         autoSetupRemote = "true";
