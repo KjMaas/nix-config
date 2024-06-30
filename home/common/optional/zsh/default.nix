@@ -11,7 +11,7 @@
     enable = true;
     enableCompletion = true;
     defaultKeymap = "viins";
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     cdpath = ["/tmp" "~/Documents"];
 

@@ -53,7 +53,7 @@
   environment.systemPackages = with pkgs; [
     linuxPackages.nvidia_x11
 
-    nvtop   # A (h)top like task monitor for AMD, Intel and NVIDIA GPUs
+    nvtopPackages.full   # A (h)top like task monitor for AMD, Intel and NVIDIA GPUs
   ];
 
   environment.sessionVariables = {

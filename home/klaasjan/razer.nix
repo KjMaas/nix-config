@@ -32,7 +32,7 @@ in
     # Cloud storage
     ../common/optional/rclone
     # Applications
-    ../common/optional/etcher     # Flash OS on SD and USB
+    # ../common/optional/etcher     # Flash OS on SD and USB --- Etcher has been deprecated for security reasons (Electron-related)
     ../common/optional/obsstudio  # video recording and live streaming
     ../common/optional/vimiv      # Image viewer
     ../common/optional/zathura    # PDF viewer
@@ -98,7 +98,7 @@ in
     baobab          # Graphical application to analyse disk usage
     unstable.angryipscanner  # Angry IP Scanner - fast and friendly network scanner
     drawio          # A desktop application for creating diagrams
-    dbeaver         # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
+    dbeaver-bin     # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
 
     # Utility Apps
     poppler_utils   # A PDF rendering library
@@ -106,13 +106,11 @@ in
     pdfsam-basic    # Multi-platform software designed to extract pages, split, merge, mix and rotate PDF files
     ffmpeg          # A complete, cross-platform solution to record, convert and stream audio and video
     mpv             # General-purpose media player, fork of MPlayer and mplayer2
-    play-with-mpv   # Chrome extension and python server that allows you to play videos in webpages with MPV instead
 
     # Social media
     unstable.signal-desktop  # Private, simple, and secure messenger
 
     # Gaming
-    yuzu-mainline   # The mainline branch of an experimental Nintendo Switch emulator written in C++
     mupen64plus     # A Nintendo 64 Emulator
 
     # Development

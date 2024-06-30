@@ -15,7 +15,7 @@ let
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
-  nvtop = "${pkgs.nvtop}/bin/nvtop";
+  nvtop = "${pkgs.nvtopPackages.full}/bin/nvtop";
   df = "${pkgs.coreutils-full}/bin/df";
   # nvidia-smi = "${pkgs.linuxPackages.nvidia_x11}/bin/nvidia-smi"; # ToFix
 

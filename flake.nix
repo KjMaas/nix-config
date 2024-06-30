@@ -11,11 +11,11 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -51,16 +51,8 @@
     blender-bin.url = "github:edolstra/nix-warez?dir=blender";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    home-manager,
-    devenv,
-    blender-bin,
-    hyprlock,
-    hyprpicker,
-    ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, devenv, blender-bin
+    , hyprlock, hyprpicker, ... }@inputs:
 
     let
       inherit (self) outputs;

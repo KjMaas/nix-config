@@ -68,8 +68,8 @@ in
       marksman  # Language Server for Markdown
 
       # Nix
-      nixfmt    # An opinionated formatter for Nix
-      nixd      # Nix language server
+      nixfmt-classic  # An opinionated formatter for Nix
+      nixd            # Nix language server
 
       # python
       unstable.ruff  # An extremely fast Python linter

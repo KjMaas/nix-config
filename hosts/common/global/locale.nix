@@ -10,9 +10,12 @@
     useXkbConfig = true;
   };
 
-  services.xserver = {
-    # Configure keymap
-    layout = "eu";
+  services = {
+    xserver = {
+      # Configure keymap
+      xkb.layout = "eu";
+    };
+
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };
