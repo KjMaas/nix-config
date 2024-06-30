@@ -1,16 +1,16 @@
 { config, ... }:
 
 let
-  inherit (config.colorscheme) colors;
+  inherit (config.colorscheme) palette;
 
-  bright = "#${colors.base0A}";
-  warning = "#${colors.base08}";
-  warning2 = "#${colors.base09}";
-  success = "#${colors.base0B}";
-  base = "#${colors.base0C}";
-  base2 = "#${colors.base0D}";
-  subtle = "#${colors.base0E}";
-  highlight = "#${colors.base07}";
+  bright = "#${palette.base0A}";
+  warning = "#${palette.base08}";
+  warning2 = "#${palette.base09}";
+  success = "#${palette.base0B}";
+  base = "#${palette.base0C}";
+  base2 = "#${palette.base0D}";
+  subtle = "#${palette.base0E}";
+  highlight = "#${palette.base07}";
 
 in
 {

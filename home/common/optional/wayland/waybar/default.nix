@@ -1,7 +1,7 @@
 { inputs, config, pkgs, ... }:
 
 let
-  inherit (config.colorscheme) colors;
+  inherit (config.colorscheme) palette;
 
   unstable = import inputs.nixpkgs-unstable {
     system = pkgs.system;
@@ -167,11 +167,11 @@ in
             on-scroll = 1;
             on-click-right = "mode";
             format = {
-              months = "<span color='#${colors.base0C}'><b>{}</b></span>";
-              days = "<span color='#${colors.base05}'><b>{}</b></span>";
-              weeks = "<span color='#${colors.base07}'><b>W{}</b></span>";
-              weekdays = "<span color='#${colors.base09}'><b>{}</b></span>";
-              today = "<span color='#${colors.base03}' background='#${colors.base04}'><b><u>{}</u></b></span>";
+              months = "<span color='#${palette.base0C}'><b>{}</b></span>";
+              days = "<span color='#${palette.base05}'><b>{}</b></span>";
+              weeks = "<span color='#${palette.base07}'><b>W{}</b></span>";
+              weekdays = "<span color='#${palette.base09}'><b>{}</b></span>";
+              today = "<span color='#${palette.base03}' background='#${palette.base04}'><b><u>{}</u></b></span>";
             };
           };
           actions = {
@@ -397,44 +397,44 @@ in
       window#waybar.top {
         opacity: 0.95;
         padding: 0;
-        background-color: #${colors.base00};
-        border: 2px solid #${colors.base0C};
+        background-color: #${palette.base00};
+        border: 2px solid #${palette.base0C};
         border-radius: 10px;
       }
       
       window#waybar.bottom {
         opacity: 0.90;
-        background-color: #${colors.base00};
-        border: 2px solid #${colors.base0C};
+        background-color: #${palette.base00};
+        border: 2px solid #${palette.base0C};
         border-radius: 10px;
       }
 
       window#waybar {
-        color: #${colors.base05};
-        background: #${colors.base08};
+        color: #${palette.base05};
+        background: #${palette.base08};
         padding: 20px;
       }
 
       #workspaces button {
-        background-color: #${colors.base01};
-        color: #${colors.base05};
+        background-color: #${palette.base01};
+        color: #${palette.base05};
         margin: 4px;
       }
 
       #workspaces button.hidden {
-        background-color: #${colors.base00};
-        color: #${colors.base04};
+        background-color: #${palette.base00};
+        color: #${palette.base04};
       }
 
       #workspaces button.focused,
       #workspaces button.active {
-        background-color: #${colors.base0A};
-        color: #${colors.base00};
+        background-color: #${palette.base0A};
+        color: #${palette.base00};
       }
 
       #clock {
-        background-color: #${colors.base0C};
-        color: #${colors.base00};
+        background-color: #${palette.base0C};
+        color: #${palette.base00};
         padding-left: 15px;
         padding-right: 15px;
         margin-top: 0;
@@ -443,8 +443,8 @@ in
       }
 
       #custom-menu {
-        background-color: #${colors.base0C};
-        color: #${colors.base00};
+        background-color: #${palette.base0C};
+        color: #${palette.base00};
         padding-left: 15px;
         padding-right: 22px;
         margin-left: 0;
@@ -455,8 +455,8 @@ in
       }
 
       #custom-hostname {
-        background-color: #${colors.base0C};
-        color: #${colors.base00};
+        background-color: #${palette.base0C};
+        color: #${palette.base00};
         padding-left: 15px;
         padding-right: 18px;
         margin-right: 0;
@@ -466,7 +466,7 @@ in
       }
 
       #tray {
-        color: #${colors.base05};
+        color: #${palette.base05};
       }
     '';
   };

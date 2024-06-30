@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 let
-  inherit (config.colorscheme) colors;
+  inherit (config.colorscheme) palette;
 
 in
 {
@@ -15,10 +15,10 @@ in
     anchor = "bottom-right";
     layer = "top";
 
-    backgroundColor = "#${colors.base01}";
-    borderColor = "#${colors.base0D}";
-    progressColor = "over #${colors.base09}";
-    textColor = "#${colors.base0C}";
+    backgroundColor = "#${palette.base01}";
+    borderColor = "#${palette.base0D}";
+    progressColor = "over #${palette.base09}";
+    textColor = "#${palette.base0C}";
     borderRadius = 5;
     borderSize = 3;
     defaultTimeout = 10;
@@ -40,14 +40,14 @@ in
       text-alignment=center
 
       [urgency=low]
-      background-color=#${colors.base03}
-      text-color=#${colors.base0B}
-      border-color=#${colors.base0A}
+      background-color=#${palette.base03}
+      text-color=#${palette.base0B}
+      border-color=#${palette.base0A}
 
       [urgency=high]
-      background-color=#${colors.base0A}
-      text-color=#${colors.base09}
-      border-color=#${colors.base08}
+      background-color=#${palette.base0A}
+      text-color=#${palette.base09}
+      border-color=#${palette.base08}
     '';
   };
 
