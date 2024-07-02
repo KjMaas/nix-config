@@ -21,7 +21,6 @@
 
     devenv = {
       url = "github:cachix/devenv/main";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     hyprland.url = "github:hyprwm/Hyprland/v0.39.1";
