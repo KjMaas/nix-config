@@ -96,6 +96,7 @@ in
     # Tools
     glxinfo         # Test utilities for OpenGL
     baobab          # Graphical application to analyse disk usage
+    arp-scan        # ARP scanning and fingerprinting tool
     unstable.angryipscanner  # Angry IP Scanner - fast and friendly network scanner
     drawio          # A desktop application for creating diagrams
     dbeaver-bin     # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
