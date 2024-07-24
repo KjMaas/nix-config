@@ -5,7 +5,14 @@ let
   customLib = import ./../../../../../customLib.nix;
   stow_script = customLib.stow_dotfiles_script "common/optional/wayland/rofi";
 
-  rofi = with pkgs; rofi-wayland.override { 
+  # TODO: switch back to mainline nixpkgs once ABI version missmatch is solved for rofi-wayland vs plugins
+  # https://github.com/NixOS/nixpkgs/issues/298539
+  # oldPkgs = import (builtins.fetchTarball {
+  #   url = "https://github.com/NixOS/nixpkgs/releases/tag/23.11";
+  # }) { };
+  pkgs2311 = import (builtins.fetchTarball { url = "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11.tar.gz"; }) {};
+
+  rofi = with pkgs2311; rofi-wayland.override { 
     plugins = [ 
       rofi-calc   # Do live calculations in rofi!
       rofi-emoji  # An emoji selector plugin for Rofi
