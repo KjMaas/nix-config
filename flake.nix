@@ -19,9 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    devenv = {
-      url = "github:cachix/devenv/main";
-    };
+    devenv = { url = "github:cachix/devenv/main"; };
 
     rose-pine-hyprcursor = {
       url = "github:ndom91/rose-pine-hyprcursor";
@@ -63,10 +61,8 @@
             ./hosts/razer
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = [
-                blender-bin.overlays.default
-                devenv.overlays.default
-              ];
+              nixpkgs.overlays =
+                [ blender-bin.overlays.default devenv.overlays.default ];
               home-manager = {
                 useGlobalPkgs = true; # makes hm use nixos's pkgs value
                 extraSpecialArgs = {

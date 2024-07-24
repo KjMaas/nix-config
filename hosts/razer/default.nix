@@ -1,6 +1,5 @@
 { pkgs, lib, ... }:
 
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -14,7 +13,7 @@
     ../common/optional/obsstudio.nix
     ../common/optional/pipewire.nix
     ../common/optional/printing.nix
-    ../common/optional/thunar.nix     # Graphical File Manager
+    ../common/optional/thunar.nix # Graphical File Manager
     ../common/optional/virtualisation/docker.nix
     ../common/optional/virtualisation/libvirt-kvm.nix
     ../common/optional/xdg.nix
@@ -62,10 +61,6 @@
       "microsoft-edge-stable"
     ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-19.1.9" # Cross platform desktop application shell (needed for Balena Etcher)
-  ];
-
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
@@ -98,7 +93,8 @@
       after = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        ExecStart =
+          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
@@ -110,7 +106,7 @@
   programs.light.enable = true;
 
   # ToDo restart geoclue service after wpa_supplicant
-  services.geoclue2.enable = true;  
+  services.geoclue2.enable = true;
 
   # Needed to unlock swaylock
   # https://discourse.nixos.org/t/swaylock-wont-unlock/27275
@@ -122,14 +118,15 @@
     lidSwitchExternalPower = "suspend";
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs;
+    [
 
-    # INFO: if you get the following error on wayland: "Gtk-WARNING **: 15:25:24.921: cannot open display: :0", run:
-    # $sudo -EH gparted
-    # more info: https://unix.stackexchange.com/a/423287
-    gparted         # Graphical disk partitioning tool
+      # INFO: if you get the following error on wayland: "Gtk-WARNING **: 15:25:24.921: cannot open display: :0", run:
+      # $sudo -EH gparted
+      # more info: https://unix.stackexchange.com/a/423287
+      gparted # Graphical disk partitioning tool
 
-  ];
+    ];
 
   services.flatpak.enable = true;
 
@@ -141,10 +138,8 @@
     # initialDbPasswordFile = "/run/keys/dolibarr-db-ini-password";
   };
 
-  environment.variables = {
-    EDITOR = "nvim";
-  };
-  
+  environment.variables = { EDITOR = "nvim"; };
+
   system.stateVersion = "22.05";
 
 }

@@ -10,21 +10,21 @@ let
   # oldPkgs = import (builtins.fetchTarball {
   #   url = "https://github.com/NixOS/nixpkgs/releases/tag/23.11";
   # }) { };
-  pkgs2311 = import (builtins.fetchTarball { url = "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11.tar.gz"; }) {};
+  pkgs2311 = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.11.tar.gz";
+  }) { };
 
-  rofi = with pkgs2311; rofi-wayland.override { 
-    plugins = [ 
-      rofi-calc   # Do live calculations in rofi!
-      rofi-emoji  # An emoji selector plugin for Rofi
-    ]; 
-  };
+  rofi = with pkgs2311;
+    rofi-wayland.override {
+      plugins = [
+        rofi-calc # Do live calculations in rofi!
+        rofi-emoji # An emoji selector plugin for Rofi
+      ];
+    };
 
-in
-{
+in {
 
-  home.packages = [ 
-    rofi
-  ];
+  home.packages = [ rofi ];
 
   # generate the script to stow rofi's configuration files
   home.file."stow_dotfiles/stow_rofi.sh" = {
