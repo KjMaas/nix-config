@@ -10,6 +10,7 @@
     ../common/global
 
     # ../common/optional/nixops.nix
+    ../common/optional/hyprland.nix
     ../common/optional/obsstudio.nix
     ../common/optional/pipewire.nix
     ../common/optional/printing.nix

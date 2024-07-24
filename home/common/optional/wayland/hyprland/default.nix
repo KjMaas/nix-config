@@ -8,7 +8,6 @@ in
 {
   imports = [
     # The actual Hyprland module
-    inputs.hyprland.homeManagerModules.default
 
     # Default Terminal
     ../../kitty
@@ -28,6 +27,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    systemd.variables = ["--all"];
     extraConfig = ''
 
       # source "out of store" configuration for hyprland.
@@ -42,6 +42,15 @@ in
     enable = true;
     text = stow_script;
     executable = true;
+  };
+
+  # INFO: solves the "681629 segmentation fault (core dumped)" error for hyprpicker:
+  # https://github.com/hyprwm/hyprpicker/issues/51
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.gnome.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 16;
   };
 
   home.packages = with pkgs; [ 

@@ -23,18 +23,6 @@
       url = "github:cachix/devenv/main";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.39.1";
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     rose-pine-hyprcursor = {
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,7 +39,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, devenv, blender-bin
-    , hyprlock, hyprpicker, ... }@inputs:
+    , ... }@inputs:
 
     let
       inherit (self) outputs;
@@ -78,8 +66,6 @@
               nixpkgs.overlays = [
                 blender-bin.overlays.default
                 devenv.overlays.default
-                hyprlock.overlays.default
-                hyprpicker.overlays.default
               ];
               home-manager = {
                 useGlobalPkgs = true; # makes hm use nixos's pkgs value
