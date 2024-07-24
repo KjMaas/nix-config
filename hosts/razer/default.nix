@@ -27,6 +27,9 @@
       # WiFi driver
       "broadcom-sta"
 
+      # Social media
+      "discord"
+
       # NVIDIA drivers
       "nvidia"
       "nvidia-x11"

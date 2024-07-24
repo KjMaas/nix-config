@@ -108,6 +108,7 @@ in
     mpv             # General-purpose media player, fork of MPlayer and mplayer2
 
     # Social media
+    discord                  # All-in-one cross-platform voice and text chat for gamers
     unstable.signal-desktop  # Private, simple, and secure messenger
 
     # Gaming
