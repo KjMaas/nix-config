@@ -47,7 +47,7 @@ vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- timeout for mapped sequence completion
-vim.o.timeoutlen         = 20
+vim.o.timeoutlen         = 500
 
 -- Set clipboard to use system clipboard
 vim.o.clipboard = "unnamedplus"

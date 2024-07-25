@@ -1,6 +1,5 @@
 return {
   -- text edition
-  "tpope/vim-surround",
   "tpope/vim-speeddating",
   "tpope/vim-repeat",
 

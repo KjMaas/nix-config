@@ -52,9 +52,9 @@
         tree -L 3 -d "$currentDir";
       }
 
-      # enter vim "normal mode" with 'jk' key combo
+      # enter vim "normal mode" with 'JK' key combo
       bindkey -v
-      bindkey 'jk' vi-cmd-mode
+      bindkey 'JK' vi-cmd-mode
     '';
     envExtra = ''
       ENV_EXTRA_LAST_LOADED="$(date)"

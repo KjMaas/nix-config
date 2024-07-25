@@ -18,8 +18,8 @@ map(
 )
 
 -- jk kj to normal mode
-map("i", "jk", "<Esc>", opts("return to normal mode"))
-map("i", "kj", "<Esc>", opts("return to normal mode"))
+map("i", "JK", "<Esc>", opts("return to normal mode"))
+map("i", "KJ", "<Esc>", opts("return to normal mode"))
 -- new line in insert mode without triggering a linebreak at current position
 map("i", "<c-cr>", "<Esc>o", opts("new line without line break"))
 -- scroll through wrapped lines
@@ -36,7 +36,7 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv", opts("move line up"))
 -- Terminal window navigation
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
-  map("t", "jk", [[<C-\><C-n>]], opts)
+  map("t", "<C-S-J><C-S-K>", [[<C-\><C-n>]], opts)
   map("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
   map("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
   map("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
