@@ -35,33 +35,14 @@ return {
         end
       end
 
-      -- Register mappings with which-key
-      local status_ok, which_key = pcall(require, "which-key")
-      if not status_ok then
-        print("there's an issue with which-key - LSP")
-        return
-      end
-
-      local mappings = {
-        l = {
-          name = "LSP",
-          D = {
-            "<cmd>call v:lua.toggle_diagnostics_virtual_text()<CR>",
-            "toggle in-line diagnostics",
-          },
+      require("which-key").add({
+        { "<leader>l", group = "LSP", nowait = true, remap = false },
+        {
+          "<leader>lD",
+          "<cmd>call v:lua.toggle_diagnostics_virtual_text()<CR>",
+          desc = "toggle in-line diagnostics",
         },
-      }
-
-      local opts = {
-        mode = "n",
-        prefix = "<leader>",
-        buffer = nil,
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
-
-      which_key.register(mappings, opts)
+      })
     end,
   },
 

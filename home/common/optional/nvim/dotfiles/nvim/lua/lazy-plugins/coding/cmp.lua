@@ -110,16 +110,19 @@ return {
         print("cmp enabled")
       end, {})
 
-      require("which-key").register({
-        ["<C-l>"] = { "<cmd>CmpEnable<cr>", "Turn Autocomplete ON" },
-        ["<C-h>"] = { "<cmd>CmpDisable<cr>", "Turn Autocomplete OFF" },
-      }, {
-        mode = "i",
-        prefix = "",
-        buffer = nil,
-        silent = true,
-        noremap = true,
-        nowait = false,
+      require("which-key").add({
+        {
+          "<C-h>",
+          "<cmd>CmpDisable<cr>",
+          desc = "Turn Autocomplete OFF",
+          mode = "i",
+        },
+        {
+          "<C-l>",
+          "<cmd>CmpEnable<cr>",
+          desc = "Turn Autocomplete ON",
+          mode = "i",
+        },
       })
     end,
   },

@@ -62,53 +62,82 @@ return {
         },
       })
 
-      -- Register mappings with which-key
-      local status_ok, which_key = pcall(require, "which-key")
-      if not status_ok then
-        print("there's an issue with which-key - Gitsigns")
-        return
-      end
-
-      local mappings = {
-
-        g = {
-          name = "Git",
-          L = { "<cmd>Git blame<cr>", "Blame File" },
-          C = { "<cmd>Git commit<cr>", "Commit" },
-          D = { "<cmd>Gvdiffsplit<cr>", "Diff" },
-          d = { "<cmd>lua require 'gitsigns'.toggle_deleted()<cr>", "Toggle Deleted Hunk" },
-          b = {
-            "<cmd>lua require 'gitsigns'.toggle_current_line_blame()<cr>",
-            "Toggle Current Line Blame",
-          },
-          l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame Line" },
-          j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-          k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Previous Hunk" },
-          p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-          r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-          R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-          s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-          u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
-          h = { "<cmd>lua require 'gitsigns'.toggle_signs()<cr>", "Toggle Signs" },
+      require("which-key").add({
+        {
+          "<leader>fB",
+          "<cmd>Telescope git_branches<cr>",
+          desc = "Checkout Branch",
         },
-        f = {
-          name = "Telescope",
-          O = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-          B = { "<cmd>Telescope git_branches<cr>", "Checkout Branch" },
-          c = { "<cmd>Telescope git_commits<cr>", "Checkout Commit" },
+        {
+          "<leader>fO",
+          "<cmd>Telescope git_status<cr>",
+          desc = "Open changed file",
         },
-      }
-
-      local opts = {
-        mode = "n",
-        prefix = "<leader>",
-        buffer = nil,
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
-
-      which_key.register(mappings, opts)
+        {
+          "<leader>fC",
+          "<cmd>Telescope git_commits<cr>",
+          desc = "Checkout Commit",
+        },
+        { "<leader>g", group = "Git", nowait = true, remap = false },
+        { "<leader>gC", "<cmd>Git commit<cr>", desc = "Commit" },
+        { "<leader>gD", "<cmd>Gvdiffsplit<cr>", desc = "Diff" },
+        { "<leader>gL", "<cmd>Git blame<cr>", desc = "Blame File" },
+        {
+          "<leader>gR",
+          "<cmd>lua require 'gitsigns'.reset_buffer()<cr>",
+          desc = "Reset Buffer",
+        },
+        {
+          "<leader>gb",
+          "<cmd>lua require 'gitsigns'.toggle_current_line_blame()<cr>",
+          desc = "Toggle Current Line Blame",
+        },
+        {
+          "<leader>gd",
+          "<cmd>lua require 'gitsigns'.toggle_deleted()<cr>",
+          desc = "Toggle Deleted Hunk",
+        },
+        {
+          "<leader>gh",
+          "<cmd>lua require 'gitsigns'.toggle_signs()<cr>",
+          desc = "Toggle Signs",
+        },
+        {
+          "<leader>gj",
+          "<cmd>lua require 'gitsigns'.next_hunk()<cr>",
+          desc = "Next Hunk",
+        },
+        {
+          "<leader>gk",
+          "<cmd>lua require 'gitsigns'.prev_hunk()<cr>",
+          desc = "Previous Hunk",
+        },
+        {
+          "<leader>gl",
+          "<cmd>lua require 'gitsigns'.blame_line()<cr>",
+          desc = "Blame Line",
+        },
+        {
+          "<leader>gp",
+          "<cmd>lua require 'gitsigns'.preview_hunk()<cr>",
+          desc = "Preview Hunk",
+        },
+        {
+          "<leader>gr",
+          "<cmd>lua require 'gitsigns'.reset_hunk()<cr>",
+          desc = "Reset Hunk",
+        },
+        {
+          "<leader>gs",
+          "<cmd>lua require 'gitsigns'.stage_hunk()<cr>",
+          desc = "Stage Hunk",
+        },
+        {
+          "<leader>gu",
+          "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+          desc = "Undo Stage Hunk",
+        },
+      })
     end,
   },
 }

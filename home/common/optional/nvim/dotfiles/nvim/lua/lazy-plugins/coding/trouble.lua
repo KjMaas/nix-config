@@ -58,34 +58,33 @@ return {
   },
 
   config = function(_, opts)
-    -- Register mappings with which-key
-    local status_ok, which_key = pcall(require, "which-key")
-    if not status_ok then
-      print("there's an issue with which-key - Trouble")
-      return
-    end
-
-    local mappings = {
-
-      x = {
-        name = "Trouble",
-        x = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
-        X = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics" },
-        R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
-        L = { "<cmd>TroubleToggle loclist<cr>", "Location List" },
-        Q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix List" },
+    require("which-key").add({
+      { "<leader>x", group = "Trouble", nowait = true, remap = false },
+      {
+        "<leader>xL",
+        "<cmd>TroubleToggle loclist<cr>",
+        desc = "Location List",
       },
-    }
-
-    local opts = {
-      mode = "n",
-      prefix = "<leader>",
-      buffer = nil,
-      silent = true,
-      noremap = true,
-      nowait = true,
-    }
-
-    which_key.register(mappings, opts)
+      {
+        "<leader>xQ",
+        "<cmd>TroubleToggle quickfix<cr>",
+        desc = "Quickfix List",
+      },
+      {
+        "<leader>xR",
+        "<cmd>TroubleToggle lsp_references<cr>",
+        desc = "References",
+      },
+      {
+        "<leader>xX",
+        "<cmd>TroubleToggle workspace_diagnostics<cr>",
+        desc = "Workspace Diagnostics",
+      },
+      {
+        "<leader>xx",
+        "<cmd>TroubleToggle document_diagnostics<cr>",
+        desc = "Document Diagnostics",
+      },
+    })
   end,
 }

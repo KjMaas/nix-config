@@ -46,31 +46,25 @@ return {
       })
 
       -- Register mappings with which-key
-      local status_ok, which_key = pcall(require, "which-key")
+      local status_ok, wk = pcall(require, "which-key")
       if not status_ok then
         print("there's an issue with which-key - Null-ls")
         return
       end
 
-      local mappings = {
-
-        n = {
-          name = "Null-ls",
-          i = { "<cmd>NullLsInfo<CR>", "Null-ls info" },
-          s = { "<cmd>ToggleSpell<CR>", "Toggle Spelling ON/OFF" },
+      require("which-key").add({
+        { "<leader>n", group = "Null-ls", nowait = true, remap = false },
+        {
+          "<leader>ni",
+          "<cmd>NullLsInfo<CR>",
+          desc = "Null-ls info",
         },
-      }
-
-      local opts = {
-        mode = "n",
-        prefix = "<leader>",
-        buffer = nil,
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
-
-      which_key.register(mappings, opts)
+        {
+          "<leader>ns",
+          "<cmd>ToggleSpell<CR>",
+          desc = "Toggle Spelling ON/OFF",
+        },
+      })
     end,
   },
 }

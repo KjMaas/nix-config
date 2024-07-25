@@ -81,40 +81,44 @@ return {
         },
       })
 
-      -- Register mappings with which-key
-      local status_ok, which_key = pcall(require, "which-key")
-      if not status_ok then
-        print("there's an issue with which-key")
-        return
-      end
-
-      local mappings = {
-
-        t = {
-          name = "Toggleterm",
-
-          h = { "<cmd>ToggleTerm direction=horizontal<CR>", "Horizontal Terminal" },
-          v = { "<cmd>ToggleTerm direction=vertical<CR>", "Vertical Terminal" },
-          f = { "<cmd>ToggleTerm direction=float<CR>", "Floating Terminal" },
-
-          a = { "<cmd>ToggleTermToggleAll<CR>", "Toggle All" },
-
-          s = { "<cmd>ToggleTermSendCurrentLine<CR>", "Send Current Line" },
-          S = { "<cmd>ToggleTermSendVisualLines<CR>", "Send Visual Lines" },
-          V = { "<cmd>ToggleTermSendVisualSelection<CR>", "Send Visual Selection" },
+      require("which-key").add({
+        { "<leader>t", group = "Toggleterm", nowait = true, remap = false },
+        {
+          "<leader>tS",
+          "<cmd>ToggleTermSendVisualLines<CR>",
+          desc = "Send Visual Lines",
         },
-      }
-
-      local opts = {
-        mode = "n",
-        prefix = "<leader>",
-        buffer = nil,
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
-
-      which_key.register(mappings, opts)
+        {
+          "<leader>tV",
+          "<cmd>ToggleTermSendVisualSelection<CR>",
+          desc = "Send Visual Selection",
+        },
+        {
+          "<leader>ta",
+          "<cmd>ToggleTermToggleAll<CR>",
+          desc = "Toggle All",
+        },
+        {
+          "<leader>tf",
+          "<cmd>ToggleTerm direction=float<CR>",
+          desc = "Floating Terminal",
+        },
+        {
+          "<leader>th",
+          "<cmd>ToggleTerm direction=horizontal<CR>",
+          desc = "Horizontal Terminal",
+        },
+        {
+          "<leader>ts",
+          "<cmd>ToggleTermSendCurrentLine<CR>",
+          desc = "Send Current Line",
+        },
+        {
+          "<leader>tv",
+          "<cmd>ToggleTerm direction=vertical<CR>",
+          desc = "Vertical Terminal",
+        },
+      })
     end,
   },
 }

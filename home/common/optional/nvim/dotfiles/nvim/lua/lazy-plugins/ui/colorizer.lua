@@ -38,34 +38,29 @@ return {
         },
       })
 
-      -- Register mappings with which-key
-      local status_ok, which_key = pcall(require, "which-key")
-      if not status_ok then
-        print("there's an issue with which-key")
-        return
-      end
-
-      local mappings = {
-
-        c = {
-          name = "Colorizer",
-          a = { "<cmd>ColorizerAttachToBuffer<cr>", "Attach to Buffer" },
-          d = { "<cmd>ColorizerDetachFromBuffer<cr>", "Detach from Buffer" },
-          r = { "<cmd>ColorizerReloadAllBuffers<cr>", "Reload Configuration" },
-          c = { "<cmd>ColorizerToggle<cr>", "Toggle Color ON/OFF" },
+      require("which-key").add({
+        { "<leader>c", group = "Colorizer", nowait = true, remap = false },
+        {
+          "<leader>ca",
+          "<cmd>ColorizerAttachToBuffer<cr>",
+          desc = "Attach to Buffer",
         },
-      }
-
-      local opts = {
-        mode = "n",
-        prefix = "<leader>",
-        buffer = nil,
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
-
-      which_key.register(mappings, opts)
+        {
+          "<leader>cc",
+          "<cmd>ColorizerToggle<cr>",
+          desc = "Toggle Color ON/OFF",
+        },
+        {
+          "<leader>cd",
+          "<cmd>ColorizerDetachFromBuffer<cr>",
+          desc = "Detach from Buffer",
+        },
+        {
+          "<leader>cr",
+          "<cmd>ColorizerReloadAllBuffers<cr>",
+          desc = "Reload Configuration",
+        },
+      })
     end,
   },
 }

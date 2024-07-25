@@ -119,35 +119,54 @@ return {
         return
       end
 
-      local mappings = {
-
-        f = {
-          name = "Find",
-          f = { "<cmd>Telescope find_files<cr>", "Files" },
-          -- s = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-          c = { "<cmd>Telescope commands<cr>", "Commands" },
-          h = { "<cmd>Telescope help_tags<cr>", "Help" },
-          r = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
-          k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-          s = { "<cmd>Telescope live_grep<cr>", "Text" },
-          b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-
-          p = { "<cmd>Telescope projects<cr>", "Projects" },
-
-          n = { "<cmd>Telescope notify<cr>", "Notifications" },
+      require("which-key").add({
+        { "<leader>f", group = "Find", nowait = true, remap = false },
+        {
+          "<leader>fb",
+          "<cmd>Telescope buffers<cr>",
+          desc = "Buffers",
         },
-      }
-
-      local opts = {
-        mode = "n",
-        prefix = "<leader>",
-        buffer = nil,
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
-
-      which_key.register(mappings, opts)
+        {
+          "<leader>fc",
+          "<cmd>Telescope commands<cr>",
+          desc = "Commands",
+        },
+        {
+          "<leader>ff",
+          "<cmd>Telescope find_files<cr>",
+          desc = "Files",
+        },
+        {
+          "<leader>fh",
+          "<cmd>Telescope help_tags<cr>",
+          desc = "Help",
+        },
+        {
+          "<leader>fk",
+          "<cmd>Telescope keymaps<cr>",
+          desc = "Keymaps",
+        },
+        {
+          "<leader>fn",
+          "<cmd>Telescope notify<cr>",
+          desc = "Notifications",
+        },
+        {
+          "<leader>fp",
+          "<cmd>Telescope projects<cr>",
+          desc = "Projects",
+        },
+        {
+          "<leader>fr",
+          "<cmd>Telescope oldfiles<cr>",
+          desc = "Recent Files",
+        },
+        {
+          "<leader>fs",
+          "<cmd>Telescope live_grep<cr>",
+          desc = "Text",
+        },
+      })
     end,
   },
 }
