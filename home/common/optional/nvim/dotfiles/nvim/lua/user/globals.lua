@@ -1,10 +1,3 @@
--- -- Register mappings with which-key
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-  print("there's an issue with which-key - Options")
-  return
-end
-
 vim.g.tab_experience = false
 function _G.toggle_tab_experience()
   vim.o.tabstop = 4
@@ -21,22 +14,16 @@ function _G.toggle_tab_experience()
   vim.g.tab_experience = not vim.g.tab_experience
 end
 
-local mappings = {
-
-  o = {
-    name = "Toggle Option",
-    l = { "<cmd>set list!<cr>", "Toggle eol, tab and space chars ON/OFF" },
-    t = { "<cmd>lua toggle_tab_experience()<CR>", "Toggle tabulations / convert to spaces" },
+require("which-key").add({
+  { "<leader>o", group = "Toggle Options", nowait = true, remap = false },
+  {
+    "<leader>ol",
+    "<cmd>set list!<cr>",
+    desc = "Toggle eol, tab and space chars ON/OFF",
   },
-}
-
-local opts = {
-  mode = "n",
-  prefix = "<leader>",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = true,
-}
-
-which_key.register(mappings, opts)
+  {
+    "<leader>ot",
+    "<cmd>lua toggle_tab_experience()<CR>",
+    desc = "Toggle tabulations / convert to spaces",
+  },
+})
