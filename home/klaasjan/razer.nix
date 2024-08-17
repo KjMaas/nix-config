@@ -100,6 +100,7 @@ in
     unstable.angryipscanner  # Angry IP Scanner - fast and friendly network scanner
     drawio          # A desktop application for creating diagrams
     dbeaver-bin     # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
+    pgadmin4-desktopmode  # Administration and development platform for PostgreSQL. Desktop Mode
 
     # Utility Apps
     poppler_utils   # A PDF rendering library
