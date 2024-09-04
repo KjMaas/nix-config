@@ -11,12 +11,20 @@
   hardware.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
-
   services.pipewire = {
     enable = true;
     audio.enable = true;
 
-    wireplumber.enable = true;
+    wireplumber = {
+      enable = true;
+      extraConfig = {
+        # see:
+        # https://www.reddit.com/r/linux/comments/1em8biv/psa_pipewire_has_been_halving_your_battery_life/
+        "10-disable-camera" = {
+          "wireplumber.profiles" = { main."monitor.libcamera" = "disabled"; };
+        };
+      };
+    };
 
     alsa = {
       enable = true;
@@ -27,8 +35,9 @@
     jack.enable = false;
   };
 
-  environment.systemPackages = with pkgs; [
-    helvum  # A GTK patchbay for pipewire
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      helvum # A GTK patchbay for pipewire
+    ];
 
 }
