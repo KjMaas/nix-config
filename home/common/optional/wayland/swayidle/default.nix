@@ -12,11 +12,16 @@ let
 
   # Makes two timeouts: one for when the screen is not locked (lockTime+timeout) and one for when it is.
   afterLockTimeout = { timeout, command, resumeCommand ? null }: [
-    { timeout = lockTime + timeout; inherit command resumeCommand; }
-    { command = "${isLocked} && ${command}"; inherit resumeCommand timeout; }
+    {
+      timeout = lockTime + timeout;
+      inherit command resumeCommand;
+    }
+    {
+      command = "${isLocked} && ${command}";
+      inherit resumeCommand timeout;
+    }
   ];
-in
-{
+in {
   services.swayidle = {
     enable = true;
     systemdTarget = "graphical-session.target";
@@ -32,7 +37,8 @@ in
       }
       {
         event = "lock";
-        command = "${notify} -t 5000 -u normal 'lock' && ${swaylock} --daemonize";
+        command =
+          "${notify} -t 5000 -u normal 'lock' && ${swaylock} --daemonize";
       }
       {
         event = "unlock";
