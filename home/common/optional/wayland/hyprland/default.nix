@@ -86,4 +86,8 @@ in
     enable = true; # A simple clipboard manager for Wayland
   };
 
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+  };
 }
