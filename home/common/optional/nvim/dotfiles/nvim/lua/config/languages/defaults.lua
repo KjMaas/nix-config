@@ -10,7 +10,7 @@ M.servers = {
   "html",
   "jsonls",
   -- "tailwindcss", -- INFO: lsp server uses way to much CPU ressources
-  "tsserver",
+  "ts_ls",
   "volar",
 
   -- CLI

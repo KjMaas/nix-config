@@ -1,6 +1,6 @@
 return {
   settings = {
-    tsserver = {
+    ts_ls = {
       formatting = false,
     },
   },
