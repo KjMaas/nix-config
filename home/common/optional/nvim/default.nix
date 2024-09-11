@@ -1,4 +1,4 @@
-{ pkgs, inputs,... }:
+{ pkgs, inputs, ... }:
 
 let
   customLib = import ./../../../../customLib.nix;
@@ -31,15 +31,15 @@ in
 
     extraPackages = with pkgs; [
       # External apps needed to process text inputs from neovim
-      # ToFix: package already installed if [...]/common/global/mime.nix is sourced
-      mimeo         # Open files by MIME-type or file name using regular expressions
-      jq            # A lightweight and flexible command-line JSON processor
+      # FIX: package already installed if [...]/common/global/mime.nix is sourced
+      mimeo # Open files by MIME-type or file name using regular expressions
+      jq # A lightweight and flexible command-line JSON processor
 
       # required for the telescope plugin
-      ripgrep       # A utility that combines the usability of The Silver Searcher with the raw speed of grep
+      ripgrep # A utility that combines the usability of The Silver Searcher with the raw speed of grep
 
       # git
-      lazygit       # Simple terminal UI for git commands
+      lazygit # Simple terminal UI for git commands
 
       # other
       neovim-remote # A tool that helps controlling nvim processes from a terminal
@@ -51,29 +51,29 @@ in
       # lua
       luajitPackages.luarocks # A package manager for Lua
       luajitPackages.luacheck # A static analyzer and a linter for Lua
-      stylua                  # An opinionated Lua code formatter
-      lua-language-server     # A language server that offers Lua language support
+      stylua # An opinionated Lua code formatter
+      lua-language-server # A language server that offers Lua language support
 
       # Frontend
       nodePackages.typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
-      nodePackages.volar                      # Vue Language Server
-      tailwindcss-language-server             # Intelligent Tailwind CSS tooling for Visual Studio Code
-      vscode-langservers-extracted            # HTML/CSS/JSON/ESLint language servers extracted from vscode
-      prettierd                               # Prettier, as a daemon, for improved formatting speed
+      nodePackages.volar # Vue Language Server
+      tailwindcss-language-server # Intelligent Tailwind CSS tooling for Visual Studio Code
+      vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
+      prettierd # Prettier, as a daemon, for improved formatting speed
 
       # Make
       cmake-language-server
 
       # Markdown
-      marksman  # Language Server for Markdown
+      marksman # Language Server for Markdown
 
       # Nix
-      nixfmt-classic  # An opinionated formatter for Nix
-      nixd            # Nix language server
+      nixfmt-classic # An opinionated formatter for Nix
+      nixd # Nix language server
 
       # python
-      unstable.ruff  # An extremely fast Python linter
-      ruff-lsp  # A Language Server Protocol implementation for Ruff
+      ruff # An extremely fast Python linter
+      ruff-lsp # A Language Server Protocol implementation for Ruff
       nodePackages.pyright
       black
       isort
@@ -93,10 +93,9 @@ in
     ];
 
     # source not nixified neovim configuration
-    extraConfig = 
-      ''
+    extraConfig = ''
       luafile ${builtins.toString /home/klaasjan/.config/nvim/init_lua.lua}
-      '';
+    '';
 
   };
 
@@ -123,7 +122,10 @@ in
     ];
     terminal = true;
     type = "Application";
-    categories = [ "Utility" "TextEditor" ];
+    categories = [
+      "Utility"
+      "TextEditor"
+    ];
   };
 
 }

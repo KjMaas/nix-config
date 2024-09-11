@@ -1,4 +1,4 @@
-{ pkgs, inputs,  ... }:
+{ pkgs, inputs, ... }:
 
 let
   customLib = import ./../../../../../customLib.nix;
@@ -27,7 +27,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd.variables = ["--all"];
+    systemd.variables = [ "--all" ];
     extraConfig = ''
 
       # source "out of store" configuration for hyprland.
@@ -53,30 +53,30 @@ in
     size = 16;
   };
 
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     # hardware control
-    pamixer       # Pulseaudio command line mixer
+    pamixer # Pulseaudio command line mixer
 
     # clipboard
-    wl-clipboard  # Command-line copy/paste utilities for Wayland
+    wl-clipboard # Command-line copy/paste utilities for Wayland
 
     # screenshots
-    grim          # Grab images from a Wayland compositor
-    slurp         # Select a region in a Wayland compositor
-    swappy        # A Wayland native snapshot editing tool
+    grim # Grab images from a Wayland compositor
+    slurp # Select a region in a Wayland compositor
+    swappy # A Wayland native snapshot editing tool
 
     # Color Picker
-    hyprpicker    # A wlroots-compatible Wayland color picker that does not suck
+    hyprpicker # A wlroots-compatible Wayland color picker that does not suck
 
     # Screen locker
-    hyprlock      # Hyprland's GPU-accelerated screen locking utility
+    hyprlock # Hyprland's GPU-accelerated screen locking utility
 
     # Wallpaper setter
     # swww          # Efficient animated wallpaper daemon for wayland, controlled at runtime
-    hyprpaper     # A blazing fast wayland wallpaper utility
+    hyprpaper # A blazing fast wayland wallpaper utility
 
     # Forward graphics through ssh
-    waypipe       # A network proxy for Wayland clients (applications)
+    waypipe # A network proxy for Wayland clients (applications)
 
     # Cursor-theme
     inputs.rose-pine-hyprcursor.packages.x86_64-linux.default
