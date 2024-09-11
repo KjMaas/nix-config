@@ -68,7 +68,7 @@ in
       marksman # Language Server for Markdown
 
       # Nix
-      nixfmt-classic # An opinionated formatter for Nix
+      nixfmt-rfc-style # Official formatter for Nix code
       nixd # Nix language server
 
       # python
