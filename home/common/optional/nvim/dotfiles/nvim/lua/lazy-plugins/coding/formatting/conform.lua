@@ -1,5 +1,6 @@
 return {
   "stevearc/conform.nvim",
+  version = "7.1.0", -- TODO: use latest version when the system runs neovim 10+
   event = { "BufWritePre" },
   cmd = { "ConformInfo" },
   keys = {
