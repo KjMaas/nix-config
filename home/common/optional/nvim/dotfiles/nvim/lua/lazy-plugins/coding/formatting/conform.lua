@@ -19,7 +19,7 @@ return {
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "ruff", "isort", "black" },
+      python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       nix = { "nixfmt" },
       markdown = { "prettierd" },
       sh = { "shfmt", "shellcheck" },

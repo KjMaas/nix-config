@@ -72,11 +72,8 @@ in
       nixd # Nix language server
 
       # python
-      ruff # An extremely fast Python linter
       ruff-lsp # A Language Server Protocol implementation for Ruff
-      nodePackages.pyright
-      black
-      isort
+      pyright # Type checker for the Python language
 
       # Rust
       cargo
