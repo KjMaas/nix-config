@@ -22,7 +22,8 @@
   ];
 
   # Unfree Packages
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       # WiFi driver
       "broadcom-sta"
@@ -96,8 +97,7 @@
       after = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart =
-          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
@@ -113,7 +113,9 @@
 
   # Needed to unlock swaylock
   # https://discourse.nixos.org/t/swaylock-wont-unlock/27275
-  security.pam.services = { swaylock = { }; };
+  security.pam.services = {
+    swaylock = { };
+  };
 
   # What happens when the laptop's lid is closed
   services.logind = {
@@ -121,15 +123,14 @@
     lidSwitchExternalPower = "suspend";
   };
 
-  environment.systemPackages = with pkgs;
-    [
+  environment.systemPackages = with pkgs; [
 
-      # INFO: if you get the following error on wayland: "Gtk-WARNING **: 15:25:24.921: cannot open display: :0", run:
-      # $sudo -EH gparted
-      # more info: https://unix.stackexchange.com/a/423287
-      gparted # Graphical disk partitioning tool
+    # INFO: if you get the following error on wayland: "Gtk-WARNING **: 15:25:24.921: cannot open display: :0", run:
+    # $sudo -EH gparted
+    # more info: https://unix.stackexchange.com/a/423287
+    gparted # Graphical disk partitioning tool
 
-    ];
+  ];
 
   services.flatpak.enable = true;
 
@@ -141,7 +142,9 @@
     # initialDbPasswordFile = "/run/keys/dolibarr-db-ini-password";
   };
 
-  environment.variables = { EDITOR = "nvim"; };
+  environment.variables = {
+    EDITOR = "nvim";
+  };
 
   system.stateVersion = "22.05";
 

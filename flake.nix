@@ -2,8 +2,10 @@
   description = "Machine Configurations";
 
   nixConfig = {
-    extra-substituters =
-      [ "https://hyprland.cachix.org" "https://devenv.cachix.org" ];
+    extra-substituters = [
+      "https://hyprland.cachix.org"
+      "https://devenv.cachix.org"
+    ];
     extra-trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
@@ -19,7 +21,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    devenv = { url = "github:cachix/devenv/main"; };
+    devenv = {
+      url = "github:cachix/devenv/main";
+    };
 
     rose-pine-hyprcursor = {
       url = "github:ndom91/rose-pine-hyprcursor";
@@ -36,39 +40,61 @@
     blender-bin.url = "github:edolstra/nix-warez?dir=blender";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, devenv, blender-bin
-    , ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      devenv,
+      blender-bin,
+      ...
+    }@inputs:
 
     let
       inherit (self) outputs;
       lib = nixpkgs.lib;
 
-      forAllSystems = nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
 
-    in {
+    in
+    {
 
       # Devshell for bootstrapping
-      devShells = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./shell.nix { inherit pkgs; });
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./shell.nix { inherit pkgs; }
+      );
 
       nixosConfigurations = {
         # Main Laptop
         razer = lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = {
+            inherit inputs outputs;
+          };
           modules = [
             ./hosts/razer
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays =
-                [ blender-bin.overlays.default devenv.overlays.default ];
+              nixpkgs.overlays = [
+                blender-bin.overlays.default
+                devenv.overlays.default
+              ];
               home-manager = {
                 useGlobalPkgs = true; # makes hm use nixos's pkgs value
                 extraSpecialArgs = {
                   inherit inputs;
                 }; # allows access to flake inputs in hm modules
-                users = { klaasjan.imports = [ ./home/klaasjan/razer.nix ]; };
+                users = {
+                  klaasjan.imports = [ ./home/klaasjan/razer.nix ];
+                };
               };
             }
           ];

@@ -21,7 +21,9 @@
         # see:
         # https://www.reddit.com/r/linux/comments/1em8biv/psa_pipewire_has_been_halving_your_battery_life/
         "10-disable-camera" = {
-          "wireplumber.profiles" = { main."monitor.libcamera" = "disabled"; };
+          "wireplumber.profiles" = {
+            main."monitor.libcamera" = "disabled";
+          };
         };
       };
     };
@@ -35,9 +37,8 @@
     jack.enable = false;
   };
 
-  environment.systemPackages = with pkgs;
-    [
-      helvum # A GTK patchbay for pipewire
-    ];
+  environment.systemPackages = with pkgs; [
+    helvum # A GTK patchbay for pipewire
+  ];
 
 }

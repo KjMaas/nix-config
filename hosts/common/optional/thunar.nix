@@ -17,14 +17,14 @@
 
   # extend support tumbler's thumbnails
   environment.systemPackages = with pkgs; [
-    ffmpegthumbnailer         # A lightweight video thumbnailer
-    poppler                   # A PDF rendering library
-    webp-pixbuf-loader        # WebP GDK Pixbuf Loader library
+    ffmpegthumbnailer # A lightweight video thumbnailer
+    poppler # A PDF rendering library
+    webp-pixbuf-loader # WebP GDK Pixbuf Loader library
     haskellPackages.freetype2 # Haskell bindings for FreeType 2 library
-    
+
     # Dealing with archive files
-    gnome.file-roller         # Archive manager for the GNOME desktop environment
-    unzip                     # An extraction utility for archives compressed in .zip format
+    gnome.file-roller # Archive manager for the GNOME desktop environment
+    unzip # An extraction utility for archives compressed in .zip format
   ];
 
   xdg.mime.defaultApplications = {

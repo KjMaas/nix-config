@@ -1,4 +1,4 @@
-{ inputs, ...}:
+{ inputs, ... }:
 
 {
   nix = {
@@ -6,9 +6,16 @@
 
     settings = {
 
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "repl-flake"
+      ];
 
-      trusted-users = [ "root" "klaasjan" ];
+      trusted-users = [
+        "root"
+        "klaasjan"
+      ];
 
       # Replace identical files in the store by hard links
       auto-optimise-store = true;
@@ -27,4 +34,3 @@
 
   };
 }
-

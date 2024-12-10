@@ -33,9 +33,9 @@ in
     ../common/optional/rclone
     # Applications
     # ../common/optional/etcher     # Flash OS on SD and USB --- Etcher has been deprecated for security reasons (Electron-related)
-    ../common/optional/obsstudio  # video recording and live streaming
-    ../common/optional/vimiv      # Image viewer
-    ../common/optional/zathura    # PDF viewer
+    ../common/optional/obsstudio # video recording and live streaming
+    ../common/optional/vimiv # Image viewer
+    ../common/optional/zathura # PDF viewer
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
@@ -61,7 +61,7 @@ in
       WLR_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
 
       # GTK: Use wayland if available, fall back to x11 if not.
-      GTK_BACKEND="wayland,x11";
+      GTK_BACKEND = "wayland,x11";
 
       # X Desktop Group Variables (freedesktop.org)
       XDG_SESSION_TYPE = "wayland";
@@ -72,52 +72,51 @@ in
   home.packages = with pkgs; [
 
     # Display and screen sharing
-    wdisplays   # A graphical application for configuring displays in Wayland compositors
+    wdisplays # A graphical application for configuring displays in Wayland compositors
 
     # 3D stuff
     blender_4_1
     f3d # Fast and minimalist 3D viewer using VTK
 
-
     # browser
-    brave           # Privacy-oriented browser for Desktop and Laptop computers
-    chromium        # An open source web browser from Google
-    epiphany        # WebKit based web browser for GNOME
-    firefox         # A web browser built from Firefox source tree
-    microsoft-edge  # The web browser from Microsoft
+    brave # Privacy-oriented browser for Desktop and Laptop computers
+    chromium # An open source web browser from Google
+    epiphany # WebKit based web browser for GNOME
+    firefox # A web browser built from Firefox source tree
+    microsoft-edge # The web browser from Microsoft
 
     # Multimedia
-    audacity                  # Sound editor with graphical UI
-    vlc                       # Cross-platform media player and streaming server
+    audacity # Sound editor with graphical UI
+    vlc # Cross-platform media player and streaming server
 
     # Cloud
-    keepassxc       # Offline password manager with many features.
+    keepassxc # Offline password manager with many features.
 
     # Tools
-    glxinfo         # Test utilities for OpenGL
-    baobab          # Graphical application to analyse disk usage
-    arp-scan        # ARP scanning and fingerprinting tool
-    unstable.angryipscanner  # Angry IP Scanner - fast and friendly network scanner
-    drawio          # A desktop application for creating diagrams
-    dbeaver-bin     # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
-    pgadmin4-desktopmode  # Administration and development platform for PostgreSQL. Desktop Mode
+    glxinfo # Test utilities for OpenGL
+    baobab # Graphical application to analyse disk usage
+    arp-scan # ARP scanning and fingerprinting tool
+    unstable.angryipscanner # Angry IP Scanner - fast and friendly network scanner
+    drawio # A desktop application for creating diagrams
+    dbeaver-bin # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
+    pgadmin4-desktopmode # Administration and development platform for PostgreSQL. Desktop Mode
 
     # Utility Apps
-    poppler_utils   # A PDF rendering library
-    imagemagick     # A software suite to create, edit, compose, or convert bitmap images
-    pdfsam-basic    # Multi-platform software designed to extract pages, split, merge, mix and rotate PDF files
-    ffmpeg          # A complete, cross-platform solution to record, convert and stream audio and video
-    mpv             # General-purpose media player, fork of MPlayer and mplayer2
+    poppler_utils # A PDF rendering library
+    imagemagick # A software suite to create, edit, compose, or convert bitmap images
+    pdfsam-basic # Multi-platform software designed to extract pages, split, merge, mix and rotate PDF files
+    ffmpeg # A complete, cross-platform solution to record, convert and stream audio and video
+    mpv # General-purpose media player, fork of MPlayer and mplayer2
 
     # Social media
-    discord                  # All-in-one cross-platform voice and text chat for gamers
-    unstable.signal-desktop  # Private, simple, and secure messenger
+    discord # All-in-one cross-platform voice and text chat for gamers
+    unstable.signal-desktop # Private, simple, and secure messenger
 
     # Gaming
-    mupen64plus     # A Nintendo 64 Emulator
+    mupen64plus # A Nintendo 64 Emulator
 
     # Development
-    devenv          # Fast, Declarative, Reproducible, and Composable Developer Environments
+    devenv # Fast, Declarative, Reproducible, and Composable Developer Environments
 
   ];
 
@@ -153,4 +152,3 @@ in
 # base0D #81A1C1;
 # base0E #B48EAD;
 # base0F #5E81AC;
-

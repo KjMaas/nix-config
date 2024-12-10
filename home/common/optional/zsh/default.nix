@@ -13,7 +13,10 @@
     defaultKeymap = "viins";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    cdpath = ["/tmp" "~/Documents"];
+    cdpath = [
+      "/tmp"
+      "~/Documents"
+    ];
 
     history = {
       expireDuplicatesFirst = true;
