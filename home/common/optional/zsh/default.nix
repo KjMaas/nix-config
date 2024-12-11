@@ -22,7 +22,14 @@
       expireDuplicatesFirst = true;
       extended = true;
       ignoreDups = true;
-      ignorePatterns = [ "l *" "ls *" ];
+      ignorePatterns = [
+        "l *"
+        "ls *"
+        "*password*"
+        "*pwd*"
+        "*secret*"
+        "*key*"
+      ];
       ignoreSpace = true;
     };
 
