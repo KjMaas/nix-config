@@ -60,9 +60,6 @@
       "libnvjitlink"
       "libcusparse"
       "libnpp"
-
-      # needed to install Edge
-      "microsoft-edge-stable"
     ];
 
   boot.loader = {
