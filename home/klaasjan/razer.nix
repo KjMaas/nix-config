@@ -116,6 +116,7 @@ in
 
     # Development
     devenv # Fast, Declarative, Reproducible, and Composable Developer Environments
+    insomnia # The open-source, cross-platform API client for GraphQL, REST, WebSockets, SSE and gRPC. With Cloud, Local and Git storage.
 
   ];
 
