@@ -17,15 +17,14 @@
   ];
 
   # Make sure opengl is enabled
-  hardware.opengl = {
+  hardware.graphics = {
     enable = lib.mkDefault true;
-    driSupport = lib.mkDefault true;
-    driSupport32Bit = lib.mkDefault true;
+    enable32Bit = lib.mkDefault true;
   };
 
   # Tell Xorg to use the nvidia driver
   services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.extraPackages = with pkgs; [
     vaapiVdpau # VDPAU driver for the VAAPI library: https://nixos.wiki/wiki/Accelerated_Video_Playback
   ];
 

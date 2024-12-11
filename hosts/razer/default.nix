@@ -60,6 +60,9 @@
       "libnvjitlink"
       "libcusparse"
       "libnpp"
+
+      # other tools
+      "drawio"
     ];
 
   boot.loader = {

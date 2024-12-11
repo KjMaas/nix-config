@@ -56,7 +56,6 @@ in
 
       # Frontend
       nodePackages.typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
-      nodePackages.volar # Vue Language Server
       tailwindcss-language-server # Intelligent Tailwind CSS tooling for Visual Studio Code
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
       prettierd # Prettier, as a daemon, for improved formatting speed

@@ -11,7 +11,7 @@ M.servers = {
   "jsonls",
   -- "tailwindcss", -- INFO: lsp server uses way to much CPU ressources
   "ts_ls",
-  "volar",
+  "volar", -- INFO: volar LSP no longer availlable in nixpkgs 24.11
 
   -- CLI
   "bashls",
