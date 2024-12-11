@@ -29,7 +29,7 @@ in
   home.packages = with pkgs; [
     set-terminal
     dconf2nix # Convert dconf files to Nix, as expected by Home Manager
-    gnome.dconf-editor # GSettings editor for GNOME
+    dconf-editor # GSettings editor for GNOME
     glib # C library of programming buildings blocks
     gsettings-desktop-schemas # Collection of GSettings schemas for settings shared by various components of a desktop
   ];
