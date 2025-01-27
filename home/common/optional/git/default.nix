@@ -18,10 +18,18 @@
       fetch.prune = "true";
       diff.colorMoved = "zebra";
     };
-    ignores = [ ".direnv" "result" ];
+    ignores = [
+      ".direnv"
+      "result"
+    ];
   };
 
-  programs.lazygit = { enable = true; };
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git.paging.externalDiffCommand = "difft --color=always";
+    };
+  };
 
   home.shellAliases = {
     gs = "git status";
@@ -34,6 +42,7 @@
 
   home.packages = [
     pkgs.tig # Text-mode interface for git
+    pkgs.difftastic # Syntax-aware diff
   ];
 
 }
