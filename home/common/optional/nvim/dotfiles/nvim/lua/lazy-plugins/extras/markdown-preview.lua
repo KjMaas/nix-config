@@ -120,25 +120,30 @@ return {
         return
       end
 
-      local mappings = {
-        m = {
-          name = "Markdown-preview",
-          p = { "<cmd>MarkdownPreview<CR>", "Start Preview" },
-          s = { "<cmd>MarkdownPreviewStop<CR>", "Stop Preview" },
-          t = { "<cmd>MarkdownPreviewToggle<CR>", "Toggle Preview" },
+      which_key.add({
+        { "<leader>m", group = "Markdown-preview", nowait = true, remap = false },
+        {
+          "<leader>mp",
+          "<cmd>MarkdownPreview<CR>",
+          desc = "Start Preview",
+          nowait = true,
+          remap = false,
         },
-      }
-
-      local opts = {
-        mode = "n",
-        prefix = "<leader>",
-        buffer = nil,
-        silent = true,
-        noremap = true,
-        nowait = true,
-      }
-
-      which_key.register(mappings, opts)
+        {
+          "<leader>ms",
+          "<cmd>MarkdownPreviewStop<CR>",
+          desc = "Stop Preview",
+          nowait = true,
+          remap = false,
+        },
+        {
+          "<leader>mt",
+          "<cmd>MarkdownPreviewToggle<CR>",
+          desc = "Toggle Preview",
+          nowait = true,
+          remap = false,
+        },
+      })
     end,
   },
 }
