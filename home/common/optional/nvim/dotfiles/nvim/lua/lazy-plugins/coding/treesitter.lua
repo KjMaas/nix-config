@@ -64,6 +64,7 @@ return {
           -- "cpp",
           -- "cuda",
           "html",
+          "http",
           "javascript",
           "json",
           -- "julia",
