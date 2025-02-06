@@ -21,7 +21,7 @@ M.servers = {
 
   -- Python
   "pyright",
-  "ruff_lsp",
+  "ruff",
 }
 
 return M

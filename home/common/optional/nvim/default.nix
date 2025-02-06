@@ -71,7 +71,7 @@ in
       nixd # Nix language server
 
       # python
-      ruff-lsp # A Language Server Protocol implementation for Ruff
+      ruff # Extremely fast Python linter and code formatter
       pyright # Type checker for the Python language
 
       # Rust
