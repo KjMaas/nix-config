@@ -77,8 +77,8 @@ in
       # Rust
       cargo
 
-      # Required to compile Treesitter parsers (can also be gcc, clang or any other c compiler)
-      zig # General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
+      # Required to compile Treesitter parsers (gcc >= 14 required for Neorg)
+      gcc14 # GNU Compiler Collection, version 14.2.0 (wrapper script)
 
       # AI assistant
       # ToCheck: has been merged with stable?
