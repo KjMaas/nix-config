@@ -55,6 +55,7 @@ in
       lua-language-server # A language server that offers Lua language support
 
       # Frontend
+      djlint # HTML Template Linter and Formatter. Django - Jinja - Nunjucks - Handlebars - GoLang
       nodePackages.typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
       tailwindcss-language-server # Intelligent Tailwind CSS tooling for Visual Studio Code
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode

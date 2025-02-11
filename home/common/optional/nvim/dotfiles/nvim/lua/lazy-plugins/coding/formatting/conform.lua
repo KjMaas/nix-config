@@ -27,6 +27,7 @@ return {
       -- frontend web dev
       css = { "prettierd" },
       html = { "prettierd" },
+      htmldjango = { "djlint", "--reformat", "--format-css", "--format-js" },
       javascript = { "prettierd" },
       typescript = { "prettierd" },
       javascriptreact = { "prettierd" },
