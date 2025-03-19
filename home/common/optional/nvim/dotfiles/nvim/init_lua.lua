@@ -11,6 +11,7 @@ require("config.lazy")
 
 -- Load user globals (can use plugins)
 require("user.globals")
+require("user.filetypes")
 
 -- Load colorscheme
 local presets = require("config.presets")
