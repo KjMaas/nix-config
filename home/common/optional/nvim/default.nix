@@ -76,7 +76,8 @@ in
       pyright # Type checker for the Python language
 
       # Rust
-      cargo
+      cargo # Downloads your Rust project's dependencies and builds your project
+      rustfmt # Tool for formatting Rust code according to style guidelines
 
       # Required to compile Treesitter parsers (gcc >= 14 required for Neorg)
       gcc14 # GNU Compiler Collection, version 14.2.0 (wrapper script)

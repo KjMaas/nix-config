@@ -33,6 +33,9 @@ return {
       javascriptreact = { "prettierd" },
       typescriptreact = { "prettierd" },
       vue = { "prettierd" },
+
+      -- rust
+      rust = { "rustfmt" },
     },
   },
 
