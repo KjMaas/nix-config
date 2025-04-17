@@ -32,6 +32,11 @@ in
 
     # git
     lazygit # Simple terminal UI for git commands
+
+    # Nix
+    nixfmt-rfc-style # Official formatter for Nix code
+    nixd # Nix language server
+
   ];
 
 }

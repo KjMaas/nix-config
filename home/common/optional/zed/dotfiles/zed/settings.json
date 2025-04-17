@@ -96,7 +96,18 @@
     "toml": true,
     "vue": true
   },
-  "languages": {},
+
+  "languages": {
+    "Nix": {
+      "language_servers": ["nixd", "!nil"],
+      "formatter": {
+        "external": {
+          "command": "nixfmt",
+          "arguments": ["--quiet", "--"]
+        }
+      }
+    }
+  },
   "lsp": {
     "nix": {
       "binary": {
@@ -109,6 +120,7 @@
       }
     }
   },
+
   "node": {
     "npm_path": "/nix/store/wfxq6w9bkp5dcfr8yb6789b0w7128gnb-nodejs-20.18.1/bin/npm",
     "path": "/nix/store/wfxq6w9bkp5dcfr8yb6789b0w7128gnb-nodejs-20.18.1/bin/node"
