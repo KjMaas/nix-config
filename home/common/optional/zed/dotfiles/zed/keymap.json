@@ -111,23 +111,22 @@
       "alt-k": "editor::MoveLineUp"
     }
   },
+  // Git
   {
-    "context": "Pane || Dock || (Editor && vim_mode == normal)",
+    "context": "(Pane || Dock || Editor) && vim_mode == normal",
     "bindings": {
       // Lazygit integration
       "space g g": [
         "task::Spawn",
-        {
-          "task_name": "lazygit",
-          "reveal_target": "center"
-        }
+        { "task_name": "lazygit", "reveal_target": "center" }
       ],
       // Git-gutter like integration
       "space g j": "editor::GoToHunk",
       "space g k": "editor::GoToPreviousHunk",
-      "space g t": "git::ToggleStaged",
-      "space g s": "editor::ToggleSelectedDiffHunks",
-      "space g r": "git::Restore"
+      "space g s": "git::ToggleStaged",
+      "space g d": "editor::ToggleSelectedDiffHunks",
+      "space g r": "git::Restore",
+      "space g c": "git::Commit"
     }
   },
   // Global bindings

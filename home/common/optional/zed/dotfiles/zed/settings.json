@@ -138,7 +138,7 @@
     "inline_blame": {
       "enabled": true
     },
-    "hunk_style": "unstaged_hollow"
+    "hunk_style": "staged_hollow"
   },
 
   // Vim Mode Settings
