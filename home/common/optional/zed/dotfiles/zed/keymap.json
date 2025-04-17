@@ -110,7 +110,8 @@
   {
     "bindings": {
       "ctrl-j": "menu::SelectNext",
-      "ctrl-k": "menu::SelectPrevious"
+      "ctrl-k": "menu::SelectPrevious",
+      "ctrl-alt-d k": "debug::OpenKeyContextView"
     }
   }
 ]
