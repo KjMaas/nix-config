@@ -4,8 +4,7 @@
     "context": "(Pane || Dock || Editor) && vim_mode == normal",
     "bindings": {
       // File Navigation
-      "space f f": "file_finder::Toggle",
-      "space e": "project_panel::ToggleFocus"
+      "space f f": "file_finder::Toggle"
     }
   },
   {
@@ -21,7 +20,11 @@
       "ctrl-shift-h": "workspace::SwapPaneLeft",
       "ctrl-shift-l": "workspace::SwapPaneRight",
       "ctrl-shift-k": "workspace::SwapPaneUp",
-      "ctrl-shift-j": "workspace::SwapPaneDown"
+      "ctrl-shift-j": "workspace::SwapPaneDown",
+      // Dock Focus
+      "alt-e": "workspace::ToggleLeftDock", // explorer
+      "alt-a": "workspace::ToggleRightDock", // assistant
+      "alt-t": "workspace::ToggleBottomDock" // terminal
     }
   },
   // Pane Management (select and move tabs around)
