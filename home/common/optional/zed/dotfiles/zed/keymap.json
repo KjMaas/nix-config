@@ -1,7 +1,7 @@
 [
   // Workspace Management
   {
-    "context": "(Workspace || Editor) > !Picker",
+    "context": "Workspace || Editor",
     "bindings": {
       // File Navigation
       "space f f": "file_finder::Toggle",
@@ -18,7 +18,7 @@
       "ctrl-shift-j": "workspace::SwapPaneDown"
     }
   },
-  // Pane Management
+  // Pane Management (select and move tabs around)
   {
     "context": "Pane",
     "bindings": {
@@ -40,20 +40,17 @@
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-n": [
-        "terminal::SendKeystroke",
-        "ctrl-n"
-      ]
+      "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"]
     }
   },
   // Vim Mode Bindings
   {
     "context": "vim_mode == insert",
     "bindings": {
-      "shift j k": [
-        "workspace::SendKeystrokes",
-        "escape"
-      ]
+      // Escape with 'jk'
+      "shift j k": ["workspace::SendKeystrokes", "escape"],
+      // Completions
+      "ctrl-l": "editor::ShowCompletions"
     }
   },
   {
@@ -64,41 +61,18 @@
       "ctrl-k": "editor::ContextMenuPrevious"
     }
   },
-  // {
-  //   "context": "VimControl && !menu",
-  //   "bindings": {
-  //     // navigate and select individual words in camelCase or snake_case
-  //     // NOTE: these bindings have been commented out since they break commonly used bindings such as 'ciw' or 'diw'
-  //     "w": "vim::NextSubwordStart",
-  //     "b": "vim::PreviousSubwordStart",
-  //     "e": "vim::NextSubwordEnd",
-  //     "g e": "vim::PreviousSubwordEnd"
-  //   }
-  // },
   {
     "context": "vim_mode == normal && !menu",
     "bindings": {
-      "shift-y": [
-        "workspace::SendKeystrokes",
-        "y $"
-      ],
-      "j": [
-        "workspace::SendKeystrokes",
-        "g j"
-      ],
-      "k": [
-        "workspace::SendKeystrokes",
-        "g k"
-      ]
+      "shift-y": ["workspace::SendKeystrokes", "y $"],
+      "j": ["workspace::SendKeystrokes", "g j"],
+      "k": ["workspace::SendKeystrokes", "g k"]
     }
   },
   {
     "context": "vim_mode == visual",
     "bindings": {
-      "shift-s": [
-        "vim::PushAddSurrounds",
-        {}
-      ]
+      "shift-s": ["vim::PushAddSurrounds", {}]
     }
   },
   {
