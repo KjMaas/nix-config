@@ -37,6 +37,9 @@ in
     nixfmt-rfc-style # Official formatter for Nix code
     nixd # Nix language server
 
+    # Rust
+    rust-analyzer # Modular compiler frontend for the Rust language
+    rustfmt # Tool for formatting Rust code according to style guidelines
   ];
 
 }
