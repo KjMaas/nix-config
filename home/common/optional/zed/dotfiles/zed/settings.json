@@ -56,7 +56,7 @@
     "show_file_status": true
   },
   "scrollbar": {
-    "show": "auto",
+    "show": "never",
     "cursors": true,
     "git_diff": true,
     "search_results": true,
