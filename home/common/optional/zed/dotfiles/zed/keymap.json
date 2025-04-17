@@ -1,10 +1,16 @@
 [
   // Workspace Management
   {
-    "context": "Workspace || Editor",
+    "context": "(Pane || Dock || Editor) && vim_mode == normal",
     "bindings": {
       // File Navigation
       "space f f": "file_finder::Toggle",
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace || Editor",
+    "bindings": {
       // Pane Navigation
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
@@ -50,15 +56,12 @@
       // Escape with 'jk'
       "shift j k": ["workspace::SendKeystrokes", "escape"],
       // Completions
-      "ctrl-l": "editor::ShowCompletions"
-    }
-  },
-  {
-    "context": "Editor && (showing_code_actions || showing_completions)",
-    "bindings": {
-      // Completions
+      "ctrl-h": "editor::OpenContextMenu",
+      "ctrl-l": "editor::ShowCompletions",
       "ctrl-j": "editor::ContextMenuNext",
-      "ctrl-k": "editor::ContextMenuPrevious"
+      "ctrl-k": "editor::ContextMenuPrevious",
+      "ctrl-shift-j": "editor::ContextMenuLast",
+      "ctrl-shift-k": "editor::ContextMenuFirst"
     }
   },
   {
