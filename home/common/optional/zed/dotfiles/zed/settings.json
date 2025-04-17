@@ -81,8 +81,11 @@
   },
   "active_pane_modifiers": {
     "magnification": 1.0,
-    "border_size": 2,
+    "border_size": 3,
     "inactive_opacity": 0.8
+  },
+  "project_panel": {
+    "default_width": 350
   },
 
   // Development Tools and Extensions
