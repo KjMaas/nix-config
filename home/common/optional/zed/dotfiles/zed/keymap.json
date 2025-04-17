@@ -1,7 +1,7 @@
 [
   // Workspace Management
   {
-    "context": "Workspace || Editor",
+    "context": "(Workspace || Editor) > !Picker",
     "bindings": {
       // File Navigation
       "space f f": "file_finder::Toggle",
@@ -56,6 +56,14 @@
       ]
     }
   },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      // Completions
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious"
+    }
+  },
   // {
   //   "context": "VimControl && !menu",
   //   "bindings": {
@@ -70,15 +78,27 @@
   {
     "context": "vim_mode == normal && !menu",
     "bindings": {
-      "shift-y": ["workspace::SendKeystrokes", "y $"],
-      "j": ["workspace::SendKeystrokes", "g j"],
-      "k": ["workspace::SendKeystrokes", "g k"]
+      "shift-y": [
+        "workspace::SendKeystrokes",
+        "y $"
+      ],
+      "j": [
+        "workspace::SendKeystrokes",
+        "g j"
+      ],
+      "k": [
+        "workspace::SendKeystrokes",
+        "g k"
+      ]
     }
   },
   {
     "context": "vim_mode == visual",
     "bindings": {
-      "shift-s": ["vim::PushAddSurrounds", {}]
+      "shift-s": [
+        "vim::PushAddSurrounds",
+        {}
+      ]
     }
   },
   {
@@ -89,6 +109,32 @@
       "shift-s": "vim::PushSneakBackward",
       "alt-j": "editor::MoveLineDown",
       "alt-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "Pane || Dock || (Editor && vim_mode == normal)",
+    "bindings": {
+      // Lazygit integration
+      "space g g": [
+        "task::Spawn",
+        {
+          "task_name": "lazygit",
+          "reveal_target": "center"
+        }
+      ],
+      // Git-gutter like integration
+      "space g j": "editor::GoToHunk",
+      "space g k": "editor::GoToPreviousHunk",
+      "space g t": "git::ToggleStaged",
+      "space g s": "editor::ToggleSelectedDiffHunks",
+      "space g r": "git::Restore"
+    }
+  },
+  // Global bindings
+  {
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious"
     }
   }
 ]
