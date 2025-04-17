@@ -38,8 +38,8 @@
       "alt-v": "pane::SplitRight",
       "alt-c": "pane::CloseActiveItem",
       "alt-shift-c": "pane::ReopenClosedItem",
-      // Panel Focus
-      "alt-t": "terminal_panel::ToggleFocus"
+      "alt-q": "pane::CloseAllItems",
+      "alt-shift-q": "pane::ReopenClosedItem"
     }
   },
   // Terminal
