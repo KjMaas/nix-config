@@ -90,8 +90,11 @@
 
   // Development Tools and Extensions
   "auto_install_extensions": {
-    "nix": true,
+    "dockerfile": true,
+    "docker compose": true,
+    "http": true,
     "lua": true,
+    "nix": true,
     "python": true,
     "ruff": true,
     "rust": true,
