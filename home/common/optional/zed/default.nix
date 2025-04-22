@@ -40,6 +40,10 @@ in
     # Rust
     rust-analyzer # Modular compiler frontend for the Rust language
     rustfmt # Tool for formatting Rust code according to style guidelines
+
+    # python
+    ruff # Extremely fast Python linter and code formatter
+    pyright # Type checker for the Python language
   ];
 
 }
