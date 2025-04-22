@@ -36,7 +36,7 @@
       "proxy": null,
       "proxy_no_verify": null
     },
-    "enabled_in_assistant": false
+    "enabled_in_assistant": true
   },
 
   // Editor UI and Display
@@ -50,7 +50,7 @@
   "hour_format": "hour24",
   "show_whitespaces": "selection",
   "wrap_guides": [80],
-  "soft_wrap": "bounded",
+  "soft_wrap": "editor_width",
   "cursor_blink": false,
 
   // Editor Panes and Navigation
