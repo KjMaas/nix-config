@@ -1,7 +1,8 @@
+local kulala_filetypes = { "http", "rest" }
 return {
   -- HTTP REST-Client Interface
   "mistweaverco/kulala.nvim",
-  ft = { "http", "rest" },
+  ft = kulala_filetypes,
   opts = {
     debug = false,
     display_mode = "float",
@@ -10,7 +11,12 @@ return {
     global_keymaps = true,
   },
   keys = {
-    { "<CR>", function() require("kulala").run() end, desc = "Run Kulala request" },
+    {
+      "<CR>",
+      function() require("kulala").run() end,
+      desc = "Run Kulala request",
+      ft = kulala_filetypes,
+    },
     { "<leader>ks", function() require("kulala").scratchpad() end, desc = "Open scratchpad" },
     { "<leader>ka", function() require("kulala").run_all() end, desc = "Run Kulala all requests" },
     { "<leader>ko", function() require("kulala").open() end, desc = "Open kulala" },
