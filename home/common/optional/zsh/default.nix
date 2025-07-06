@@ -42,11 +42,8 @@
     profileExtra = ''
       echo "profileExtra: loaded!"
     '';
-    initExtraFirst = ''
-      echo "initExtraFirst: loaded!"
-    '';
-    initExtra = ''
-      echo "initExtra: loaded!"
+    initContent = ''
+      echo "initContent: loaded!"
 
       # list directory content when using 'cd'
       function cd () {

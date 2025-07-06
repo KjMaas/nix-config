@@ -191,7 +191,7 @@ in
           interval = 5;
           return-type = "json";
           exec = jsonOutput "igpu" {
-            text = "$(cat /sys/class/drm/card0/device/gpu_busy_percent)";
+            text = "$(cat /sys/class/drm/card1/device/gpu_busy_percent)";
             tooltip = ''
               Integrated GPU Usage
               -------------------------------
@@ -381,7 +381,7 @@ in
     style = ''
 
       * {
-        font-family: "Fira Sans";
+        font-family: Fira Sans, FiraMono Nerd Font;
         font-size: 12pt;
         padding: 0 8px;
       }

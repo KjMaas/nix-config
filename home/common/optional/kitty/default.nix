@@ -19,10 +19,12 @@ in
       "kitty_mod+q" = "close_window";
       "kitty_mod+l" = "next_window";
       "kitty_mod+h" = "previous_window";
+      "kitty_mod+c" = "copy_and_clear_or_interrupt";
+      "kitty_mod+v" = "paste_from_clipboard";
     };
     font = {
       # ToDo: use variable to set font to increase modularity
-      name = "FiraCode Nerd Font";
+      name = "FiraMono Nerd Font";
       size = 12;
     };
     settings = {
