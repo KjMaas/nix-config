@@ -71,6 +71,8 @@ in
   };
 
   home.packages = with pkgs; [
+    # terminal
+    foot # Fast, lightweight and minimalistic Wayland terminal emulator
 
     # Display and screen sharing
     wdisplays # A graphical application for configuring displays in Wayland compositors
