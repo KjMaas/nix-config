@@ -46,6 +46,4 @@ return {
     end,
   },
 
-  -- TODO: find another plugin to check spelling
-  require("lazy-plugins.coding.lsp.null-ls"),
 }
