@@ -15,23 +15,31 @@ in
 
     # Desktop
     ../common/optional/gnome
+
     # Shell
     ../common/optional/zsh
+
     # Versioning
     ../common/optional/git
+
     # Window Manager - uses the Wayland compositor
     ../common/optional/wayland/hyprland
     ../common/optional/kitty
+
     # Development Environment
     ../common/optional/nvim
     ../common/optional/zed
-    ../common/optional/vscode
+    # ../common/optional/vscode
+
     # File Explorers
-    ../common/optional/nnn
+    # ../common/optional/nnn
+
     # Office suite
     ../common/optional/libreoffice
+
     # Cloud storage
     ../common/optional/rclone
+
     # Applications
     # ../common/optional/etcher     # Flash OS on SD and USB --- Etcher has been deprecated for security reasons (Electron-related)
     ../common/optional/obsstudio # video recording and live streaming
@@ -83,8 +91,8 @@ in
 
     # browser
     brave # Privacy-oriented browser for Desktop and Laptop computers
-    chromium # An open source web browser from Google
-    epiphany # WebKit based web browser for GNOME
+    # chromium # An open source web browser from Google
+    # epiphany # WebKit based web browser for GNOME
     firefox # A web browser built from Firefox source tree
 
     # Multimedia
@@ -101,7 +109,6 @@ in
     unstable.angryipscanner # Angry IP Scanner - fast and friendly network scanner
     drawio # A desktop application for creating diagrams
     dbeaver-bin # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
-    pgadmin4-desktopmode # Administration and development platform for PostgreSQL. Desktop Mode
 
     # Utility Apps
     poppler_utils # A PDF rendering library
@@ -111,11 +118,8 @@ in
     mpv # General-purpose media player, fork of MPlayer and mplayer2
 
     # Social media
-    discord # All-in-one cross-platform voice and text chat for gamers
     unstable.signal-desktop # Private, simple, and secure messenger
-
-    # Gaming
-    mupen64plus # A Nintendo 64 Emulator
+    whatsapp-for-linux # Whatsapp desktop messaging app
 
     # Development
     devenv # Fast, Declarative, Reproducible, and Composable Developer Environments
