@@ -23,6 +23,27 @@ in
     ../swayidle
   ];
 
+  xdg.portal = {
+    # Enables the X Desktop Group (misnomer since it now also supports Wayland)
+    # in the process of being renamed to freedesktop.org (fd.o)
+    enable = true;
+
+    # This will make `xdg-open` use the portal to open programs
+    # sets the right Environment Vars
+    xdgOpenUsePortal = true; # Sets NIXOS_XDG_OPEN_USE_PORTAL=1
+
+    extraPortals = with pkgs; [
+      # xdg-desktop-portal # Desktop integration portals for sandboxed apps
+      xdg-desktop-portal-gtk # Desktop integration portals for sandboxed apps
+      xdg-desktop-portal-hyprland # xdg-desktop-portal backend for Hyprland
+    ];
+
+    config = {
+      common.default = [ "gtk" ];
+    };
+
+  };
+
   # load native (not nixified) configuration file
   wayland.windowManager.hyprland = {
     enable = true;
