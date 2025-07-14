@@ -86,7 +86,7 @@ in
     wdisplays # A graphical application for configuring displays in Wayland compositors
 
     # 3D stuff
-    blender_4_1
+    blender_4_4
     f3d # Fast and minimalist 3D viewer using VTK
 
     # browser
