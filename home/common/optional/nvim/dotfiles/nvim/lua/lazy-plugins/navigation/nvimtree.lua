@@ -75,7 +75,7 @@ return {
 
         git = {
           enable = true,
-          ignore = true,
+          ignore = false, -- when true: hide the git-ignored files and folders
           timeout = 500,
         },
 
