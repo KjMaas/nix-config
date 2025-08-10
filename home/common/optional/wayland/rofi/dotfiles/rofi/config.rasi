@@ -1,7 +1,8 @@
 configuration {
     modi: [
         "drun",
-        "run"
+        "run",
+        "window"
     ];
 
     font: "mono 12";
@@ -18,17 +19,17 @@ configuration {
     /*	run-command: "{cmd}";*/
     /*	run-list-command: "";*/
     /*	run-shell-command: "{terminal} -e {cmd}";*/
-    /*	window-command: "wmctrl -i -R {window}";*/
-    /*	window-match-fields: "all";*/
+    window-command: "wmctrl -i -R {window}";
+    window-match-fields: "all";
     /*	icon-theme: ;*/
 
     /* drun-match-fields: "name,generic,exec,categories,keywords"; */
     /* drun-categories: ; */
     drun-show-actions: true;
-    /* drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]"; */
-    /* drun-url-launcher: "xdg-open"; */
+    drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+    drun-url-launcher: "xdg-open";
 
-    /* disable-history: false; */
+     disable-history: false; 
     /* ignored-prefixes: ""; */
 
     /* sort: false; */
@@ -68,11 +69,11 @@ configuration {
     /* application-fallback-icon: ; */
     /* pid: "/run/user/1000/rofi.pid"; */
 
-    display-window: "Windows ";
+    display-window: "window ";
     /*	display-windowcd: ;*/
     display-run: "$";
     /*	display-ssh: ;*/
-    display-drun: "Apps";
+    display-drun: "apps";
     /*	display-combi: ;*/
     /*	display-keys: ;*/
     /*	display-filebrowser: ;*/
@@ -167,4 +168,4 @@ configuration {
 }
 
 
-@theme "./theme/colors.rasi"
+@theme "./theme/nord.rasi"
