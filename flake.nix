@@ -3,12 +3,22 @@
 
   nixConfig = {
     extra-substituters = [
+      # hyprland
       "https://hyprland.cachix.org"
+      # devenv
       "https://devenv.cachix.org"
+      # walker
+      "https://walker.cachix.org"
+      "https://walker-git.cachix.org"
     ];
     extra-trusted-public-keys = [
+      # hyprland
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      # devenv
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      # walker
+      "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
+      "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
     ];
   };
 
@@ -23,6 +33,11 @@
 
     devenv = {
       url = "github:cachix/devenv/main";
+    };
+
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rose-pine-hyprcursor = {
@@ -93,7 +108,9 @@
                   inherit inputs;
                 }; # allows access to flake inputs in hm modules
                 users = {
-                  klaasjan.imports = [ ./home/klaasjan/razer.nix ];
+                  klaasjan.imports = [
+                    ./home/klaasjan/razer.nix
+                  ];
                 };
               };
             }

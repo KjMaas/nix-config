@@ -11,8 +11,8 @@ in
 
     # Default Terminal
     ../../kitty
-    # Quick-Menu
-    ../rofi
+    # App-launcher
+    ../walker
     # Everything-Bar
     ../waybar
     # Notifications
