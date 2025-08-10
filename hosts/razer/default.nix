@@ -125,6 +125,8 @@
 
   environment.systemPackages = with pkgs; [
 
+    cachix # Command-line client for Nix binary cache hosting https://cachix.org
+
     # INFO: if you get the following error on wayland: "Gtk-WARNING **: 15:25:24.921: cannot open display: :0", run:
     # $sudo -EH gparted
     # more info: https://unix.stackexchange.com/a/423287
