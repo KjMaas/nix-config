@@ -1,9 +1,10 @@
 {
   // AI Assistant Configuration
-  "assistant": {
+  "agent": {
+    "default_profile": "ask",
     "button": true,
     "default_model": {
-      "model": "claude-3-5-sonnet-latest",
+      "model": "claude-sonnet-4",
       "provider": "zed.dev"
     },
     "default_open_ai_model": null,
@@ -36,7 +37,7 @@
       "proxy": null,
       "proxy_no_verify": null
     },
-    "enabled_in_assistant": true
+    "enabled_in_text_threads": true
   },
 
   // Editor UI and Display
