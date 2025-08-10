@@ -12,8 +12,8 @@ in
 {
   home.packages = with pkgs; [
 
-    # unstable.walker # Wayland-native application runner
-    inputs.walker.packages."x86_64-linux".default # install latest version from flake
+    unstable.walker # Wayland-native application runner
+    # inputs.walker.packages."x86_64-linux".default # install latest version from flake
 
     # Extend walker with Calculator, bluetooth and wifi managers
     unstable.bzmenu # Launcher-driven Bluetooth manager for Linux

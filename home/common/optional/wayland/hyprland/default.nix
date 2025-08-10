@@ -12,7 +12,8 @@ in
     # Default Terminal
     ../../kitty
     # App-launcher
-    ../walker
+    # ../walker # Too memory intensive for the time being
+    ../rofi
     # Everything-Bar
     ../waybar
     # Notifications
