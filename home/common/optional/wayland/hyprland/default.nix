@@ -21,6 +21,8 @@ in
     ../swaylock
     # Idle Daemon
     ../swayidle
+    # Image viewer
+    ../swayimg
   ];
 
   xdg.portal = {
