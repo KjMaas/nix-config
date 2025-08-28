@@ -9,6 +9,22 @@ return {
     q_to_close_float = true,
     kulala_keymaps = true,
     global_keymaps = true,
+
+    lsp = {
+      -- enable/disable built-in LSP server
+      enable = true,
+      -- enable/disable/customize HTTP formatter
+      formatter = {
+        sort = { -- enable/disable alphabetical sorting in request body
+          metadata = true,
+          variables = true,
+          commands = false,
+          json = false,
+        },
+      },
+
+      on_attach = nil, -- function called when Kulala LSP attaches to the buffer
+    },
   },
   keys = {
     {
