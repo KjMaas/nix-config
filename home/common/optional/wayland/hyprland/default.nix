@@ -82,7 +82,7 @@ in
     pamixer # Pulseaudio command line mixer
 
     # clipboard
-    wl-clipboard # Command-line copy/paste utilities for Wayland
+    wl-clipboard-rs # Command-line copy/paste utilities for Wayland, written in Rust
 
     # Color Picker
     hyprpicker # A wlroots-compatible Wayland color picker that does not suck

@@ -14,8 +14,7 @@ in
   home.shellAliases = {
     # INFO: for more about why the WAYLAND_DISPLAY is needed, see:
     # https://github.com/eero-lehtinen/oklch-color-picker.nvim/issues/3#issuecomment-2555577076
-    v = "WAYLAND_DISPLAY= && nvim";
-    nvim = "WAYLAND_DISPLAY= && nvim";
+    v = "nvim";
   };
 
   # generate the script to stow neovim's configuration files
