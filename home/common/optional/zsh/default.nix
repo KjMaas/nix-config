@@ -40,6 +40,9 @@
       echo "logoutExtra: loaded!"
     '';
     profileExtra = ''
+      if uwsm check may-start && uwsm select; then
+          exec uwsm start default
+      fi
       echo "profileExtra: loaded!"
     '';
     initContent = ''

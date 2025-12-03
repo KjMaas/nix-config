@@ -51,7 +51,10 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd.variables = [ "--all" ];
+    systemd = {
+      enable = false;
+      variables = [ "--all" ];
+    };
     extraConfig = ''
 
       # source "out of store" configuration for hyprland.
