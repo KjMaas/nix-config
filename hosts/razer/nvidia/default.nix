@@ -25,7 +25,7 @@
   # Tell Xorg to use the nvidia driver
   services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
   hardware.graphics.extraPackages = with pkgs; [
-    vaapiVdpau # VDPAU driver for the VAAPI library: https://nixos.wiki/wiki/Accelerated_Video_Playback
+    libva-vdpau-driver # VDPAU driver for the VAAPI library: https://nixos.wiki/wiki/Accelerated_Video_Playback
   ];
 
   hardware.nvidia = {

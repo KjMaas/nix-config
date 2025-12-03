@@ -5,9 +5,11 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    userName = "Klaasjan Maas";
-    userEmail = "klaasjan@majok.dev";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Klaasjan Maas";
+        email = "klaasjan@majok.dev";
+      };
       branch = {
         autoSetupRemote = "true";
         autoSetupMerge = "simple";
@@ -27,7 +29,9 @@
   programs.lazygit = {
     enable = true;
     settings = {
-      git.paging.externalDiffCommand = "difft --color=always";
+      git.pagers = [
+        { "externalDiffCommand" = "difft --color=always"; }
+      ];
     };
   };
 

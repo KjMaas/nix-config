@@ -21,6 +21,11 @@
     ../common/users/klaasjan
   ];
 
+  # Permitted Insecure Packages
+  nixpkgs.config.permittedInsecurePackages = [
+    "broadcom-sta-6.30.223.271-59-6.12.59"
+  ];
+
   # Unfree Packages
   nixpkgs.config.allowUnfreePredicate =
     pkg:
@@ -119,8 +124,12 @@
 
   # What happens when the laptop's lid is closed
   services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "suspend";
+    settings = {
+      Login = {
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "suspend";
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [

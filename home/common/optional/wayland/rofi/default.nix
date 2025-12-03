@@ -5,9 +5,9 @@ let
   customLib = import ./../../../../../customLib.nix;
   stow_script = customLib.stow_dotfiles_script "common/optional/wayland/rofi";
 
-  rofi =
+  rofi-with-packages =
     with pkgs;
-    rofi-wayland.override {
+    rofi.override {
       plugins = [
         rofi-calc # Do live calculations in rofi!
         rofi-emoji # An emoji selector plugin for Rofi
@@ -17,7 +17,7 @@ let
 in
 {
 
-  home.packages = [ rofi ];
+  home.packages = [ rofi-with-packages ];
 
   # generate the script to stow rofi's configuration files
   home.file."stow_dotfiles/stow_rofi.sh" = {

@@ -2,7 +2,7 @@
 
 let
   unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
+    system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
 
@@ -42,6 +42,7 @@ in
 
     # Applications
     # ../common/optional/etcher     # Flash OS on SD and USB --- Etcher has been deprecated for security reasons (Electron-related)
+    ../common/optional/flameshot # Powerful yet simple to use screenshot software
     ../common/optional/obsstudio # video recording and live streaming
     ../common/optional/vimiv # Image viewer
     ../common/optional/zathura # PDF viewer
@@ -103,40 +104,27 @@ in
     keepassxc # Offline password manager with many features.
 
     # Tools
-    glxinfo # Test utilities for OpenGL
+    mesa-demos # Test utilities for OpenGL
     baobab # Graphical application to analyse disk usage
     arp-scan # ARP scanning and fingerprinting tool
-    unstable.angryipscanner # Angry IP Scanner - fast and friendly network scanner
-    drawio # A desktop application for creating diagrams
     dbeaver-bin # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
 
     # Utility Apps
-    poppler_utils # A PDF rendering library
+    poppler-utils # A PDF rendering library
     imagemagick # A software suite to create, edit, compose, or convert bitmap images
     pdfsam-basic # Multi-platform software designed to extract pages, split, merge, mix and rotate PDF files
     ffmpeg # A complete, cross-platform solution to record, convert and stream audio and video
     mpv # General-purpose media player, fork of MPlayer and mplayer2
 
     # Social media
-    unstable.signal-desktop # Private, simple, and secure messenger
-    whatsapp-for-linux # Whatsapp desktop messaging app
+    signal-desktop # Private, simple, and secure messenger (nixpkgs build)
+    wasistlos # Unofficial WhatsApp desktop application
 
     # Development
     devenv # Fast, Declarative, Reproducible, and Composable Developer Environments
     insomnia # The open-source, cross-platform API client for GraphQL, REST, WebSockets, SSE and gRPC. With Cloud, Local and Git storage.
 
   ];
-
-  services.flameshot = {
-    enable = true;
-    package = pkgs.flameshot.override { enableWlrSupport = true; };
-    settings = {
-      # General = {
-      #   disabledTrayIcon = true;
-      #   showStartupLaunchMessage = false;
-      # };
-    };
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
