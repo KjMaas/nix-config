@@ -1,4 +1,9 @@
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   inherit (config.colorscheme) palette;
@@ -28,17 +33,27 @@ let
   gpuMonitor = terminal-spawn nvtop;
 
   # Function to simplify making waybar outputs
-  jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
-    set -euo pipefail
-    ${pre}
-    ${jq} -cn \
-      --arg text "${text}" \
-      --arg tooltip "${tooltip}" \
-      --arg alt "${alt}" \
-      --arg class "${class}" \
-      --arg percentage "${percentage}" \
-      '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
-  ''}/bin/waybar-${name}";
+  jsonOutput =
+    name:
+    {
+      pre ? "",
+      text ? "",
+      tooltip ? "",
+      alt ? "",
+      class ? "",
+      percentage ? "",
+    }:
+    "${pkgs.writeShellScriptBin "waybar-${name}" ''
+      set -euo pipefail
+      ${pre}
+      ${jq} -cn \
+        --arg text "${text}" \
+        --arg tooltip "${tooltip}" \
+        --arg alt "${alt}" \
+        --arg class "${class}" \
+        --arg percentage "${percentage}" \
+        '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
+    ''}/bin/waybar-${name}";
 
 in
 {
@@ -48,11 +63,10 @@ in
   ];
 
   home.packages = [
-      pkgs.jq
-      pkgs.playerctl
-      pkgs.pavucontrol
+    pkgs.jq
+    pkgs.playerctl
+    pkgs.pavucontrol
   ];
-
 
   programs.waybar = {
     enable = true;
@@ -127,13 +141,13 @@ in
           "backlight"
           "temperature"
           "pulseaudio"
-          "custom/gammastep"
+          # "custom/gammastep"
+          "battery"
         ];
         modules-right = [
           "custom/gamemode"
           "network"
           "custom/tailscale-ping"
-          "battery"
           "tray"
           "custom/hostname"
         ];
@@ -144,9 +158,9 @@ in
           exec = jsonOutput "disk" {
             text = "$(${df} --output=pcent -h / | tail -n +2)";
             tooltip = ''
-             Disk Usage
-             -------------------------------
-             $(${df} -h --output=target,size,avail,used,pcent,source,fstype)
+              Disk Usage
+              -------------------------------
+              $(${df} -h --output=target,size,avail,used,pcent,source,fstype)
             '';
           };
           format = "󰋊  {}";
@@ -154,7 +168,10 @@ in
         };
 
         clock = {
-          timezones = ["Europe/Amsterdam" "America/Cayenne"];
+          timezones = [
+            "Europe/Amsterdam"
+            "America/Cayenne"
+          ];
           format = "{:%d/%m %H:%M}";
           format-alt = "{:%A, %B %d, %Y (%R)}";
           tooltip-format = ''
@@ -208,20 +225,20 @@ in
           exec = jsonOutput "dgpu" {
             text = "$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits)";
             tooltip = ''
-             Dedicated GPU Usage
-             -------------------------------
-             $(nvidia-smi -q | grep 'Product Name' | sed -E "s/[[:space:]]+/ /g")
-             $(nvidia-smi -q | grep 'Driver Version' | sed -E "s/[[:space:]]+/ /g")
-             $(nvidia-smi -q | grep 'CUDA Version' | sed -E "s/[[:space:]]+/ /g")
+              Dedicated GPU Usage
+              -------------------------------
+              $(nvidia-smi -q | grep 'Product Name' | sed -E "s/[[:space:]]+/ /g")
+              $(nvidia-smi -q | grep 'Driver Version' | sed -E "s/[[:space:]]+/ /g")
+              $(nvidia-smi -q | grep 'CUDA Version' | sed -E "s/[[:space:]]+/ /g")
 
-             GPU : $(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader)
-             Memory : $(nvidia-smi --query-gpu=utilization.memory --format=csv,noheader)
+              GPU : $(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader)
+              Memory : $(nvidia-smi --query-gpu=utilization.memory --format=csv,noheader)
 
-             Temp GPU : $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader) ºC
-             Temp Mem. : $(nvidia-smi --query-gpu=temperature.memory --format=csv,noheader) ºC
+              Temp GPU : $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader) ºC
+              Temp Mem. : $(nvidia-smi --query-gpu=temperature.memory --format=csv,noheader) ºC
 
-             Power Draw : $(nvidia-smi --query-gpu=power.draw --format=csv,noheader)
-           '';
+              Power Draw : $(nvidia-smi --query-gpu=power.draw --format=csv,noheader)
+            '';
           };
           format = "d󰒋  {}%";
           on-click = gpuMonitor;
@@ -240,7 +257,11 @@ in
             headphone = "󰋋";
             headset = "󰋎";
             portable = "";
-            default = [ "" "" "" ];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = pavucontrol;
         };
@@ -248,7 +269,18 @@ in
         battery = {
           bat = "BAT0";
           interval = 10;
-          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           onclick = "";
@@ -258,12 +290,26 @@ in
           critical-threshold = 70;
           format-critical = "{temperatureC}°C ⚠️ ";
           format = "{temperatureC}°C {icon}";
-          format-icons = ["" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
         };
 
         backlight = {
           format = "{percent}% {icon}";
-          format-icons = ["" "" "" "" "" "" "" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           on-scroll-up = "light -T 1.1";
           on-scroll-down = "light -T 0.9";
         };
@@ -325,7 +371,7 @@ in
           };
           on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
         };
-        
+
         "custom/currentplayer" = {
           interval = 2;
           return-type = "json";
@@ -401,7 +447,7 @@ in
         border: 2px solid #${palette.base0C};
         border-radius: 10px;
       }
-      
+
       window#waybar.bottom {
         opacity: 0.90;
         background-color: #${palette.base00};
