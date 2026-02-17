@@ -31,6 +31,15 @@ vim.o.scrolloff          = 12 -- Minimum offset in lines to screen borders
 vim.o.sidescrolloff      = 8
 vim.o.mouse              = 'a'
 
+-- Folds - use zA to toggle, zM to close all, zR to open all, zj and zk to navigate folds
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldcolumn = "0"
+vim.opt.foldtext = ""
+vim.opt.foldlevelstart = 5
+vim.opt.foldlevel = 99
+vim.opt.foldnestmax = 4
+
 -- Vim specific
 vim.o.hidden             = true           -- Do not save when switching buffers
 vim.o.fileencoding       = "utf-8"
