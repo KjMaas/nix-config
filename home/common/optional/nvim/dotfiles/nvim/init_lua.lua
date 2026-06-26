@@ -3,6 +3,7 @@ vim.env.MYVIMRC = "~/.config/nvim/init.lua"
 -- Setup all the stuff you can do with native Neovim
 require("config.keymaps")
 require("config.options")
+require("config.lsp")
 
 -- Manage external plugins with lazy.nvim
 vim.g.mapleader = " "

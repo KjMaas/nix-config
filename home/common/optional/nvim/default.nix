@@ -58,10 +58,12 @@ in
 
       # Frontend
       djlint # HTML Template Linter and Formatter. Django - Jinja - Nunjucks - Handlebars - GoLang
-      nodePackages.typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
+      typescript-language-server # Language Server Protocol (LSP) implementation for TypeScript using tsserver
       tailwindcss-language-server # Intelligent Tailwind CSS tooling for Visual Studio Code
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
       prettierd # Prettier, as a daemon, for improved formatting speed
+      vue-language-server # Official Vue.js language server
+      vtsls # LSP wrapper for typescript extension of vscode
 
       # Make
       cmake-language-server
@@ -76,10 +78,15 @@ in
       # python
       ruff # Extremely fast Python linter and code formatter
       pyright # Type checker for the Python language
+      basedpyright # Type checker for the Python language
+      python313Packages.python-lsp-server # Python implementation of the Language Server Protocol
 
       # Rust
       cargo # Downloads your Rust project's dependencies and builds your project
       rustfmt # Tool for formatting Rust code according to style guidelines
+
+      # IaC
+      tofu-ls # OpenTofu Language Server
 
       # Required to compile Treesitter parsers (gcc >= 14 required for Neorg)
       gcc14 # GNU Compiler Collection, version 14.2.0 (wrapper script)
