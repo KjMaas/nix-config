@@ -20,6 +20,14 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/master";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +57,12 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
+      determinate,
+      disko,
+      nixos-facter-modules,
+      nixos-hardware,
       home-manager,
+      sops-nix,
       devenv,
       blender-bin,
       ...
@@ -103,6 +116,60 @@
                 };
               };
             }
+          ];
+        };
+
+        serverIso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            disko.nixosModules.disko
+            ./hosts/common/global
+            ./hosts/common/optional/iso.nix
+            ./hosts/common/optional/kde.nix
+            ./hosts/common/optional/wayland.nix
+            ./hosts/common/users/root
+          ];
+        };
+
+        atlax = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/atlax
+
+            nixos-facter-modules.nixosModules.facter
+            {
+              config.facter.reportPath =
+                if builtins.pathExists ./facter.json then
+                  ./facter.json
+                else
+                  throw "Have you forgotten to run nixos-anywhere with `--generate-hardware-config nixos-facter ./facter.json`?";
+            }
+            disko.nixosModules.disko
+            # nixos-hardware.nixosModules.framework-desktop-amd-ai-max-300-series
+            determinate.nixosModules.default
+            # {
+            #   system.activationScripts = {
+            #     mybootstrap.text = ''
+            #       if [[ ! -e /bootstrap ]]; then
+            #         cp -r ${./.} /bootstrap
+            #       fi
+            #     '';
+            #     # Make install.sh executable and available at boot
+            #     install.text = ''
+            #       #!/bin/bash
+            #       sudo nix --experimental-features "nix-command flakes" run \
+            #         github:nix-community/disko/latest -- \
+            #         --mode destroy,format,mount \
+            #         /tmp/disk-config.nix
+            #     '';
+            #   };
+            # }
           ];
         };
       };

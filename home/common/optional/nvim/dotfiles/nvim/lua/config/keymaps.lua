@@ -60,7 +60,7 @@ map("v", "<C-Left>", "<Esc>:vertical resize -2<CR>gv", opts("Increase window hei
 map("v", "<C-Right>", "<Esc>:vertical resize +2<CR>gv", opts("Decrease window height"))
 
 -- Save with Ctrl + S
-map("i", "<C-s>", "<Esc>:w<CR>", opts("save"))
+-- map("i", "<C-s>", "<Esc>:w<CR>", opts("save"))
 map("n", "<C-s>", ":w<CR>", opts("save"))
 
 -- Close Window

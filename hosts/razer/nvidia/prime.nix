@@ -13,25 +13,27 @@ let
     exec "$@"
   '';
 
-in {
+in
+{
 
   environment.systemPackages = [ nvidia-offload ];
 
   hardware.nvidia.prime = {
 
-      offload ={
-        enable = lib.mkOverride 990 true;
-        enableOffloadCmd = true;
-      };
+    offload = {
+      enable = lib.mkOverride 990 true;
+      enableOffloadCmd = true;
+    };
 
-      # to determine the BusIds:
-      # nix-shell -p lshw --run "lshw -c display"
-      nvidiaBusId = "PCI:1:0:0";
-      amdgpuBusId = "PCI:4:0:0";
+    # to determine the BusIds:
+    # nix-shell -p lshw --run "lshw -c display"
+    nvidiaBusId = "PCI:1:0:0";
+    amdgpuBusId = "PCI:4:0:0";
 
-      # In sync mode the Nvidia card is turned on constantly,
-      # having impact on laptop battery and health 
-      sync.enable = false;
+    # In sync mode the Nvidia card is turned on constantly,
+    # having impact on laptop battery and health
+    sync.enable = false;
+    reverseSync.enable = true;
 
   };
 }

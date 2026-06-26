@@ -9,7 +9,7 @@
     desktopManager.plasma6.enable = true;
 
     vault = {
-      enable = true;
+      enable = false;
       package = pkgs.vault-bin;
 
       extraConfig = ''

@@ -25,6 +25,7 @@ in
     # Window Manager - uses the Wayland compositor
     ../common/optional/wayland/hyprland
     ../common/optional/kitty
+    ../common/optional/ghostty
 
     # Development Environment
     ../common/optional/nvim
@@ -96,9 +97,14 @@ in
     # epiphany # WebKit based web browser for GNOME
     firefox # A web browser built from Firefox source tree
 
+    # file managers
+    spacedrive # Open source file manager, powered by a virtual distributed filesystem
+    superfile # Pretty fancy and modern terminal file manager
+
     # Multimedia
     audacity # Sound editor with graphical UI
     vlc # Cross-platform media player and streaming server
+    gimp3-with-plugins # GNU Image Manipulation Program
 
     # Cloud
     keepassxc # Offline password manager with many features.
@@ -108,6 +114,9 @@ in
     baobab # Graphical application to analyse disk usage
     arp-scan # ARP scanning and fingerprinting tool
     dbeaver-bin # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
+    synology-drive-client # Desktop application to synchronize files and folders between the computer and the Synology Drive server
+    kdePackages.qtwayland # Cross-platform application framework for C++
+    qt6.qtwayland
 
     # Utility Apps
     poppler-utils # A PDF rendering library
@@ -123,6 +132,7 @@ in
     # Development
     devenv # Fast, Declarative, Reproducible, and Composable Developer Environments
     insomnia # The open-source, cross-platform API client for GraphQL, REST, WebSockets, SSE and gRPC. With Cloud, Local and Git storage.
+    # uv # Extremely fast Python package installer and resolver, written in Rust
 
   ];
 

@@ -34,14 +34,16 @@
     modesetting.enable = true;
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    powerManagement.enable = true;
+    # to manually reload nvidia's 'Unified Virtual Memory', run :
+    # $ sudo rmmod nvidia_uvm && sudo modprobe nvidia_uvm
+    powerManagement.enable = false;
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
     powerManagement.finegrained = true;
 
     # Use the open source version of the kernel module
     # Only available on driver 515.43.04+
-    open = true;
+    open = false;
 
     # Enable the nvidia settings menu
     nvidiaSettings = true;

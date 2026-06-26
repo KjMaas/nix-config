@@ -95,7 +95,11 @@ in
 
     # Wallpaper setter
     # swww          # Efficient animated wallpaper daemon for wayland, controlled at runtime
-    hyprpaper # A blazing fast wayland wallpaper utility
+
+    hyprsysteminfo # Tiny qt6/qml application to display information about the running system
+    hyprpwcenter # A GUI Pipewire control center
+    hyprlauncher # A multipurpose and versatile launcher / picker for Hyprland   hyprpaper # A blazing fast wayland wallpaper utility
+    hyprmagnifier # wlroots-compatible Wayland magnifier that does not suck
 
     # Forward graphics through ssh
     waypipe # A network proxy for Wayland clients (applications)
