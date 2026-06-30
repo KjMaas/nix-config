@@ -69,9 +69,6 @@
       # other tools
       "drawio"
 
-      # Synology driver
-      "synology-drive-client"
-
       # steam
       # "steam"
       # "steam-unwrapped"

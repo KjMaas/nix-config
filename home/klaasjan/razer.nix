@@ -114,7 +114,6 @@ in
     baobab # Graphical application to analyse disk usage
     arp-scan # ARP scanning and fingerprinting tool
     dbeaver-bin # Universal SQL Client for developers, DBA and analysts. Supports MySQL, PostgreSQL, MariaDB, SQLite, and more
-    synology-drive-client # Desktop application to synchronize files and folders between the computer and the Synology Drive server
     kdePackages.qtwayland # Cross-platform application framework for C++
     qt6.qtwayland
 
