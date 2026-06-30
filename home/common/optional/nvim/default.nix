@@ -14,8 +14,13 @@ in
   home.shellAliases = {
     # INFO: for more about why the WAYLAND_DISPLAY is needed, see:
     # https://github.com/eero-lehtinen/oklch-color-picker.nvim/issues/3#issuecomment-2555577076
-    v = "nvim";
+    v = "LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib nvim";
   };
+
+  # NOTE: Required for dynamically linked tree-sitter parsers (e.g. norg) to find libstdc++
+  # This patch is scoped to neovim only — setting LD_LIBRARY_PATH globally breaks
+  # other programs (e.g. Hyprland) that ship their own libstdc++ in their closure.
+  home.shellAliases.nvim = "LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib nvim";
 
   # generate the script to stow neovim's configuration files
   home.file."stow_dotfiles/stow_nvim.sh" = {
