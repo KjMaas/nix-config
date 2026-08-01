@@ -49,72 +49,10 @@
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"]
-    }
-  },
-  // Vim Mode Bindings
-  {
-    "context": "vim_mode == insert",
-    "bindings": {
-      // Escape with 'jk'
-      "shift j k": ["workspace::SendKeystrokes", "escape"],
-      // Completions
-      "ctrl-h": "editor::OpenContextMenu",
-      "ctrl-l": "editor::ShowCompletions",
-      "ctrl-j": "editor::ContextMenuNext",
-      "ctrl-k": "editor::ContextMenuPrevious",
-      "ctrl-shift-j": "editor::ContextMenuLast",
-      "ctrl-shift-k": "editor::ContextMenuFirst"
-    }
-  },
-  {
-    "context": "vim_mode == normal && !menu",
-    "bindings": {
-      "shift-y": ["workspace::SendKeystrokes", "y $"],
-      "j": ["workspace::SendKeystrokes", "g j"],
-      "k": ["workspace::SendKeystrokes", "g k"]
-    }
-  },
-  {
-    "context": "vim_mode == visual",
-    "bindings": {
-      "shift-s": ["vim::PushAddSurrounds", {}]
-    }
-  },
-  {
-    "context": "vim_mode == normal || vim_mode == visual",
-    "bindings": {
-      // Motion Commands
-      "s": "vim::PushSneak",
-      "shift-s": "vim::PushSneakBackward",
-      "alt-j": "editor::MoveLineDown",
-      "alt-k": "editor::MoveLineUp"
-    }
-  },
-  // Git
-  {
-    "context": "(Pane || Dock || Editor) && vim_mode == normal",
-    "bindings": {
-      // Lazygit integration
-      "space g g": [
-        "task::Spawn",
-        { "task_name": "lazygit", "reveal_target": "center" }
-      ],
-      // Git-gutter like integration
-      "space g j": "editor::GoToHunk",
-      "space g k": "editor::GoToPreviousHunk",
-      "space g s": "git::ToggleStaged",
-      "space g d": "editor::ToggleSelectedDiffHunks",
-      "space g r": "git::Restore",
-      "space g c": "git::Commit"
-    }
-  },
-  // Global bindings
-  {
-    "bindings": {
-      "ctrl-j": "menu::SelectNext",
-      "ctrl-k": "menu::SelectPrevious"
-      // "ctrl-alt-d k": "debug::OpenKeyContextView"
+      "shift-enter": [
+        "terminal::SendText",
+        "\u001b\r"
+      ]
     }
   }
 ]

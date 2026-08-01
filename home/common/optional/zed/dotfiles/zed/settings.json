@@ -16,8 +16,7 @@
         "model": "claude-3-5-sonnet-latest",
         "provider": "zed.dev"
       }
-    ],
-    "version": "2"
+    ]
   },
   "language_models": {
     "ollama": {
@@ -118,10 +117,10 @@
       "format_on_save": "on",
       "formatter": [
         {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
-          }
+          "code_action": "source.organizeImports.ruff"
+        },
+        {
+          "code_action": "source.fixAll.ruff"
         },
         {
           "language_server": {
@@ -141,13 +140,24 @@
       "binary": {
         "path_lookup": true
       }
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "vue": "html"
+        },
+        "experimental": {
+          "classRegex": [
+            "class=\"([^\"]*)\"",
+            "class='([^']*)'",
+            ":class=\"([^\"]*)\"",
+            ":class='([^']*)'"
+          ]
+        }
+      }
     }
   },
 
-  "node": {
-    "npm_path": "/nix/store/wfxq6w9bkp5dcfr8yb6789b0w7128gnb-nodejs-20.18.1/bin/npm",
-    "path": "/nix/store/wfxq6w9bkp5dcfr8yb6789b0w7128gnb-nodejs-20.18.1/bin/node"
-  },
   "load_direnv": "shell_hook",
 
   // Terminal Configuration
