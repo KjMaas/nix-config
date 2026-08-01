@@ -8,6 +8,8 @@
 let
   inherit (config.colorscheme) palette;
 
+  hasNvidiaGPU = builtins.pathExists "/proc/driver/nvidia";
+
   unstable = import inputs.nixpkgs-unstable {
     system = pkgs.stdenv.hostPlatform.system;
   };
@@ -20,7 +22,8 @@ let
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btop = "${pkgs.btop}/bin/btop";
-  nvtop = "${pkgs.nvtopPackages.full}/bin/nvtop";
+
+  nvtop = if hasNvidiaGPU then "${pkgs.nvtopPackages.full}/bin/nvtop" else null;
   df = "${pkgs.coreutils-full}/bin/df";
   # nvidia-smi = "${pkgs.linuxPackages.nvidia_x11}/bin/nvidia-smi"; # ToFix
 
@@ -30,7 +33,8 @@ let
   diskUsage_gui = "${pkgs.baobab}/bin/baobab";
 
   systemMonitor = terminal-spawn btop;
-  gpuMonitor = terminal-spawn nvtop;
+  gpuMonitor =
+    if hasNvidiaGPU then terminal-spawn nvtop else terminal-spawn "echo 'No NVIDIA GPU detected.'";
 
   # Function to simplify making waybar outputs
   jsonOutput =
@@ -131,11 +135,11 @@ in
           "custom/currentplayer"
           "custom/player"
         ];
-        modules-center = [
+        modules-center = builtins.filter (x: x != null) [
           "custom/disk"
           "cpu"
           "custom/igpu"
-          "custom/dgpu"
+          (if hasNvidiaGPU then "custom/dgpu" else null)
           "memory"
           "clock"
           "backlight"
