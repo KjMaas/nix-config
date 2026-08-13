@@ -7,10 +7,27 @@ local function layout_bind(bind_table)
 			return
 		end
 
-		local layout = workspace.tiled_layout
+		local entry = bind_table[workspace.tiled_layout]
 
-		if bind_table[layout] then
-			hl.dispatch(bind_table[layout])
+		if type(entry) == "function" then
+			entry()
+		elseif entry then
+			hl.dispatch(entry)
+		end
+	end
+end
+
+-- swapcol only reorders tiled columns, so floating windows need window.move instead
+local function scrolling_swapcol_or_move(direction)
+	local swap_arg = direction == "left" and "l" or "r"
+
+	return function()
+		local window = hl.get_active_window()
+
+		if window and window.floating then
+			hl.dispatch(hl.dsp.window.move({ direction = direction }))
+		else
+			hl.dispatch(hl.dsp.layout("swapcol " .. swap_arg))
 		end
 	end
 end
@@ -85,7 +102,7 @@ hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 hl.bind(
 	mainMod .. " + SHIFT + H",
 	layout_bind({
-		scrolling = hl.dsp.layout("swapcol l"), -- Scrolling: swap column with left one
+		scrolling = scrolling_swapcol_or_move("left"),
 		dwindle = hl.dsp.window.move({ direction = "left" }),
 		monocle = hl.dsp.layout("cycleprev"),
 		master = hl.dsp.layout("cycleprev"),
@@ -94,7 +111,7 @@ hl.bind(
 hl.bind(
 	mainMod .. " + SHIFT + L",
 	layout_bind({
-		scrolling = hl.dsp.layout("swapcol r"),
+		scrolling = scrolling_swapcol_or_move("right"),
 		dwindle = hl.dsp.window.move({ direction = "right" }),
 		monocle = hl.dsp.layout("cyclenext"),
 		master = hl.dsp.layout("cyclenext"),
