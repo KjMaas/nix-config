@@ -119,11 +119,21 @@ hl.bind(
 	})
 )
 
--- Switch workspaces with mainMod + [0-9]
+-- Switch workspaces with mainMod + [0-9] (switches to previous workspace if already active)
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+
+	hl.bind(mainMod .. " + " .. key, function()
+		local workspace = hl.get_active_workspace()
+
+		if workspace and workspace.id == i then
+			hl.dispatch(hl.dsp.focus({ workspace = "previous" }))
+		else
+			hl.dispatch(hl.dsp.focus({ workspace = i }))
+		end
+	end)
+
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
