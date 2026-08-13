@@ -34,7 +34,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    helvum # A GTK patchbay for pipewire
+    crosspipe # PipeWire graph GTK4/Libadwaita GUI
   ];
 
 }

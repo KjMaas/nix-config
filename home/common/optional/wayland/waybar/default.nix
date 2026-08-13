@@ -102,6 +102,8 @@ in
 
         "hyprland/workspaces" = {
           sort-by-number = true;
+          all-outputs = true;
+          show-special = true;
           on-click = "activate";
           disable-scroll = false;
           on-scroll-up = "hyprctl dispatch workspace e+1";
@@ -149,9 +151,7 @@ in
           "battery"
         ];
         modules-right = [
-          "custom/gamemode"
           "network"
-          "custom/tailscale-ping"
           "tray"
           "custom/hostname"
         ];
@@ -393,7 +393,7 @@ in
             tooltip = "$player ($count available)";
             text = "$more";
           };
-          format = "{icon}{}";
+          format = "{icon} {text}";
           format-icons = {
             "No player active" = " ";
             "Celluloid" = "󰎁 ";
@@ -415,7 +415,7 @@ in
           return-type = "json";
           interval = 2;
           max-length = 30;
-          format = "{icon} {}";
+          format = "{icon} {text}";
           format-icons = {
             "Playing" = "󰐊";
             "Paused" = "󰏤 ";

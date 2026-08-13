@@ -126,7 +126,7 @@ in
 
     # Social media
     signal-desktop # Private, simple, and secure messenger (nixpkgs build)
-    wasistlos # Unofficial WhatsApp desktop application
+    karere # Gtk4 Whatsapp client
 
     # Development
     devenv # Fast, Declarative, Reproducible, and Composable Developer Environments

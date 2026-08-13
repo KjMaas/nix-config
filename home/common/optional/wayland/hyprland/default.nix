@@ -50,18 +50,19 @@ in
   # load native (not nixified) configuration file
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "lua";
     xwayland.enable = true;
     systemd = {
       enable = false;
       variables = [ "--all" ];
     };
-    extraConfig = ''
+    # extraConfig = ''
 
-      # source "out of store" configuration for hyprland.
-      # edits done to the following file will be taken into account directly after saving
-      # (there's no need to rebuild a new nixos/HM generation)
-      source=~/.config/hypr/hyprland_not_nixified.conf
-    '';
+    #   # source "out of store" configuration for hyprland.
+    #   # edits done to the following file will be taken into account directly after saving
+    #   # (there's no need to rebuild a new nixos/HM generation)
+    #   source=~/.config/hypr/hyprland_not_nixified.conf
+    # '';
   };
 
   # generate the script to stow hyprland's configuration files

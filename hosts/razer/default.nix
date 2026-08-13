@@ -23,7 +23,7 @@
 
   # Permitted Insecure Packages
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-59-6.12.59"
+    "broadcom-sta-6.30.223.271-59-6.18.43"
   ];
 
   # Unfree Packages
@@ -40,6 +40,7 @@
       "nvidia"
       "nvidia-x11"
       "nvidia-settings"
+      "nvidia-kernel-modules"
 
       # A compiler for NVIDIA GPUs, math libraries, and tools
       "cudatoolkit"
@@ -123,9 +124,6 @@
     };
   };
 
-  # backlight
-  programs.light.enable = true;
-
   # ToDo restart geoclue service after wpa_supplicant
   services.geoclue2.enable = true;
 
@@ -146,6 +144,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    brightnessctl # This program allows you read and control device brightness
 
     cachix # Command-line client for Nix binary cache hosting https://cachix.org
 
@@ -164,12 +163,6 @@
     domain = "127.0.0.1";
     # preInstalled = true;
     # initialDbPasswordFile = "/run/keys/dolibarr-db-ini-password";
-  };
-
-  services.ollama = {
-    enable = false;
-    acceleration = "cuda";
-    loadModels = [ "deepseek-coder" ];
   };
 
   services.open-webui.enable = false;

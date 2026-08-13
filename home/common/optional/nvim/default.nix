@@ -52,7 +52,7 @@ in
       neovim-remote # A tool that helps controlling nvim processes from a terminal
 
       # Bash
-      nodePackages.bash-language-server
+      bash-language-server # Language server for Bash
       shellcheck
 
       # lua
@@ -77,7 +77,7 @@ in
       marksman # Language Server for Markdown
 
       # Nix
-      nixfmt-rfc-style # Official formatter for Nix code
+      nixfmt # Official formatter for Nix code
       nixd # Nix language server
 
       # python

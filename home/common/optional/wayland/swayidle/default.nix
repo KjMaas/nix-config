@@ -11,20 +11,27 @@ let
   lockTime = 5 * 60;
 
   # Makes two timeouts: one for when the screen is not locked (lockTime+timeout) and one for when it is.
-  afterLockTimeout = { timeout, command, resumeCommand ? null }: [
+  afterLockTimeout =
     {
-      timeout = lockTime + timeout;
-      inherit command resumeCommand;
-    }
-    {
-      command = "${isLocked} && ${command}";
-      inherit resumeCommand timeout;
-    }
-  ];
-in {
+      timeout,
+      command,
+      resumeCommand ? null,
+    }:
+    [
+      {
+        timeout = lockTime + timeout;
+        inherit command resumeCommand;
+      }
+      {
+        command = "${isLocked} && ${command}";
+        inherit resumeCommand timeout;
+      }
+    ];
+in
+{
   services.swayidle = {
     enable = false;
-    systemdTarget = "graphical-session.target";
+    systemdTargets = [ "graphical-session.target" ];
 
     events = [
       {
@@ -37,8 +44,7 @@ in {
       }
       {
         event = "lock";
-        command =
-          "${notify} -t 5000 -u normal 'lock' && ${swaylock} --daemonize";
+        command = "${notify} -t 5000 -u normal 'lock' && ${swaylock} --daemonize";
       }
       {
         event = "unlock";
@@ -49,17 +55,20 @@ in {
     timeouts =
 
       # Lock screen
-      [{
-        timeout = lockTime;
-        command = "${swaylock} --daemonize";
-      }] ++
+      [
+        {
+          timeout = lockTime;
+          command = "${swaylock} --daemonize";
+        }
+      ]
+      ++
 
-      # Turn off displays (on Hyprland)
-      (afterLockTimeout {
-        timeout = 60;
-        command = "${hyprctl} dispatch dpms off";
-        resumeCommand = "${hyprctl} dispatch dpms on";
-      });
+        # Turn off displays (on Hyprland)
+        (afterLockTimeout {
+          timeout = 60;
+          command = "${hyprctl} dispatch dpms off";
+          resumeCommand = "${hyprctl} dispatch dpms on";
+        });
 
   };
 }
