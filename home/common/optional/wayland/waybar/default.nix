@@ -314,8 +314,8 @@ in
             ""
             ""
           ];
-          on-scroll-up = "light -T 1.1";
-          on-scroll-down = "light -T 0.9";
+          on-scroll-up = "~/.config/hypr/scripts/brightness.sh 2";
+          on-scroll-down = "~/.config/hypr/scripts/brightness.sh -2";
         };
 
         network = {
