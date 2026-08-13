@@ -31,6 +31,7 @@ in
     ../common/optional/nvim
     ../common/optional/zed
     # ../common/optional/vscode
+    ../common/optional/ai/mistral
 
     # File Explorers
     # ../common/optional/nnn
