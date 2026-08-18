@@ -94,6 +94,7 @@ in
       tofu-ls # OpenTofu Language Server
 
       # Required to compile Treesitter parsers (gcc >= 14 required for Neorg)
+      tree-sitter # Parser generator tool and an incremental parsing library
       gcc14 # GNU Compiler Collection, version 14.2.0 (wrapper script)
 
       # AI assistant
