@@ -33,10 +33,14 @@
     # Modesetting is needed for most wayland compositors
     modesetting.enable = true;
 
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Nvidia power management. Needed alongside powerManagement.finegrained
+    # below: without it, nvidia-suspend/nvidia-resume aren't installed, so the
+    # driver can't save/restore GPU state across S3 sleep, and resume hangs
+    # (blank screen, power LED stuck blinking) whenever the dGPU is runtime
+    # suspended (D3cold) at the moment the system sleeps.
     # to manually reload nvidia's 'Unified Virtual Memory', run :
     # $ sudo rmmod nvidia_uvm && sudo modprobe nvidia_uvm
-    powerManagement.enable = false;
+    powerManagement.enable = true;
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
     powerManagement.finegrained = true;
