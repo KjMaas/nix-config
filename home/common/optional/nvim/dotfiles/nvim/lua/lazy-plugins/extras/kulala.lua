@@ -1,12 +1,16 @@
 local kulala_filetypes = { "http", "rest" }
 return {
   -- HTTP REST-Client Interface
-  "mistweaverco/kulala.nvim",
+  "dont-be-evil-company/kulala.nvim",
+  -- v6+ depends on the closed-source, license-gated kulala-core binary.
+  -- v5.3.4 is the last release using plain curl.
+  tag = "v5.3.4",
   ft = kulala_filetypes,
   opts = {
     debug = false,
-    display_mode = "float",
-    q_to_close_float = true,
+    ui = {
+      display_mode = "float",
+    },
     kulala_keymaps = true,
     global_keymaps = true,
 
